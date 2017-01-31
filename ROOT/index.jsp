@@ -1,23 +1,23 @@
+<!DOCTYPE html>
 <html>
 <head>
-<title>server</title>
+	<title>The Scoring App Login</title>
+	<link rel="stylesheet" type="text/css" href="login-style.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> <!-- OOH! JQuery! -->
+	<script src="login.js" type="text/javascript"></script>
 </head>
 <body>
-<h1>OOOH! Tomcat!</h1>
-<button id="button" onclick="checkTime();">Check Time</button>
-<p id="logger"></p>
-<script>
-	logger = document.getElementById("logger");
-	
-	function checkTime(){
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function() {
-		  if (this.readyState == 4 && this.status == 200) {
-		    logger.innerHTML += this.responseText + "</br>";
-		  }
-		};
-		xhttp.open("GET", "time.jsp", true);
-		xhttp.send();
-	}
-</script>
+	<div id="login-pane">
+		<div class="transparent-box">
+			<div>
+				<form id="login-form" name="login-form" method="post">
+					Username: <input type="text" name="username"><br>
+					Password: <input type="password" name="password"><br>
+					<input type="submit" value="Submit">
+				</form>
+			</div>
+		</div>
+	</div>
+	<p id="isLoggedIn"></p>
 </body>
+</html>

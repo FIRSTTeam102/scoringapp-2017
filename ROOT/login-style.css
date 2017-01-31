@@ -1,0 +1,20 @@
+body {
+	margin: 0;
+	padding: 0;
+	
+	background-image: url("steampunk-stylized-1.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#login-form {
+	width: 250px;
+	
+	opacity: 1.0;
+}
+
+.transparent-box {
+	background-color: white;
+	opacity: 0.7;
+	border: 5px solid orange;
+}
