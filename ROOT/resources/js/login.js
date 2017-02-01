@@ -3,7 +3,7 @@ $(function(){
 		   event.preventDefault();//hopefully stops reload
 		   var usr = $(this).find('[name=username]').val();
 		   var pass = $(this).find('[name=password]').val();
-		   $.post("auth.jsp",
+		   $.post("login.jsp",
 			{
 				aUsr: usr,
 				aPass: pass
