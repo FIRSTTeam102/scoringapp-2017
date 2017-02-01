@@ -2,9 +2,9 @@
 <html>
 <head>
 	<title>The Scoring App Login</title>
-	<link rel="stylesheet" type="text/css" href="login-style.css" />
+	<link rel="stylesheet" type="text/css" href="resources/css/login-style.css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> <!-- OOH! JQuery! -->
-	<script src="login.js" type="text/javascript"></script>
+	<script src="resources/js/login.js" type="text/javascript"></script>
 </head>
 <body>
 	<div id="content">
