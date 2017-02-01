@@ -7,17 +7,19 @@
 	<script src="login.js" type="text/javascript"></script>
 </head>
 <body>
-	<div id="login-pane">
-		<div class="transparent-box">
-			<div>
-				<form id="login-form" name="login-form" method="post">
-					Username: <input type="text" name="username"><br>
-					Password: <input type="password" name="password"><br>
-					<input type="submit" value="Submit">
-				</form>
+	<div id="content">
+		<div id="login-pane">
+			<div class="transparent-box">
+				<div>
+					<form id="login-form" name="login-form" method="post">
+						Username: <input type="text" name="username"><br>
+						Password: <input type="password" name="password"><br>
+						<input type="submit" value="Submit">
+					</form>
+				</div>
 			</div>
 		</div>
+		<p id="isLoggedIn"></p>
 	</div>
-	<p id="isLoggedIn"></p>
 </body>
 </html>

@@ -10,10 +10,13 @@ $(function(){
 			},
 			
 			function(data, status) {
-				//maybe change this to set a div's contents to the return... or something
-				$("#login-pane").html(data); //let's make a jquery page that returns either "logged in." or "not logged in."
+				//Sets the content div's contents to whatever the jsp page has on it.
+				$("#content").html(data); 
 			});
 			
-		});
+		   
+		   
+		}); 
+	
 });
 
