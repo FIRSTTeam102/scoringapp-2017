@@ -7,6 +7,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> <!-- OOH! JQuery! -->
 	<script src="resources/js/main.js" type="text/javascript"></script>
 	<script src="resources/js/login.js" type="text/javascript"></script>
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+	
 </head>
 <body>
 	<div class="content" id="content">
@@ -16,7 +18,7 @@
 		</header>
 		<nav id="login" class="login-pane">
 				<form id="login-form" class="login-form" name="login-form" method="post">
-					Your Initials: <input type="text" name="username"><br>
+					Your Initials: <input type="text" name="username" autocorrect=off autocapitalize=characters ><br>
 					&nbsp;&nbsp;&nbsp;Password: <input type="password" name="password"><br>
 					<div class="btn-container">
 						<input type="submit" value="Team 102 Scoring App">
