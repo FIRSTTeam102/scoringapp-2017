@@ -1,12 +1,12 @@
 $(function(){
 	$("#login-form").on("submit", function(event) {
-		   event.preventDefault();//hopefully stops reload
-		   var usr = $(this).find('[name=username]').val();
+		   event.preventDefault();//Stops refresh
+		   var user = $(this).find('[name=username]').val();
 		   var pass = $(this).find('[name=password]').val();
-		   $.post("auth.jsp",
+		   $.post("login.jsp",
 			{
-				aUsr: usr,
-				aPass: pass
+				user: user,
+				pass: pass
 			},
 			
 			function(data, status) {
@@ -14,8 +14,6 @@ $(function(){
 				$("#content").html(data); 
 			});
 			
-		   
-		   
 		}); 
 	
 });

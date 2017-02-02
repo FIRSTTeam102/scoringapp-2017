@@ -1,0 +1,55 @@
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	
+	background-image: url("../images/steampunk-stylized-1.jpg");
+	background-repeat: repeat-y;
+	background-size: cover;
+	
+	text-align: center;
+	
+	font-size: 1.3em;
+	color: white;
+	font-family: verdana, Sans-serif;
+}
+
+.content{
+	width: 80%;
+	margin-left: 10%;
+}
+
+.title-large{
+	max-width: 90%;
+}
+
+.login-pane{
+	margin-top: 50px;
+}
+
+input, textarea, select{
+	
+	background-color: #afb3bb;
+	background: -webkit-gradient(linear, left top, left bottom, from(#d6d8dc),   to(#7b7ca7));
+ 	border: 1px solid #43474b;
+	padding: 0.5em;
+	margin: 0.2em;
+	color: white;
+	font-weight: bold;
+}
+
+input[type=submit]{
+	background-color: #afb3bb;
+	background: -webkit-gradient(linear, left top, left bottom, from(#d6d8dc),   to(#7b7ca7));
+ 	border: 3px solid #43474b;
+	padding: 0.5em;
+	margin: 0.2em;
+}
+
+/*
+.transparent-box {
+	background-color: white;
+	opacity: 0.4;
+	border: 2px solid orange;
+}
+*/
