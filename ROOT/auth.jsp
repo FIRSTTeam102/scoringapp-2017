@@ -10,12 +10,16 @@
 <%
 if(!request.getMethod().equals("POST")){
 	response.setStatus(response.SC_MOVED_TEMPORARILY);
-	response.setHeader("Location", "index.jsp");
+	response.setHeader("Location", ".");
 }
 %>
+
+<%
+String 
+userKey = "user",
+passKey = "pass";
+%>
            
-<%-- SQL business for later.         
 <sql:setDataSource var="database" driver="com.mysql.jdbc.Driver"
-	url="jdbc:mysql://Gearheads-5/scoring2016?useOldAliasMetadataBehavior=true" user="scoring102"
-	password="${SQLPassword }"/>
---%>  
+	url="jdbc:mysql://Gearheads-5/scoring2016?useOldAliasMetadataBehavior=true" user="gearheads"
+	password=""/>
