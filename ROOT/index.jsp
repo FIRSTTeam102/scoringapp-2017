@@ -16,7 +16,7 @@
 		<header id="header">
 			<img class="title-large" src="resources/images/header-steamworks-1.png"/>
 		</header>
-		<nav id="login" class="login-pane">
+		<nav id="login" class="login-container">
 				<form id="login-form" class="login-form" name="login-form" method="post">
 					Your Initials: <input type="text" name="username" autocorrect=off autocapitalize=characters ><br>
 					&nbsp;&nbsp;&nbsp;Password: <input type="password" name="password"><br>
@@ -40,6 +40,8 @@
 					</div>
 				</form>
 		</nav>
+		<nav id="alliance" class="alliance-container"></nav>
+		<nav id="autonomous" class="autonomous-container"></nav>
 	</div>
 </body>
 </html>

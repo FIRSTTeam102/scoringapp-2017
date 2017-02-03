@@ -17,9 +17,10 @@ if(!request.getMethod().equals("POST")){
 <%
 String 
 userKey = "user",
-passKey = "pass";
+passKey = "pass",
+allianceKey = "allianceColor";
 %>
            
 <sql:setDataSource var="database" driver="com.mysql.jdbc.Driver"
-	url="jdbc:mysql://Gearheads-5/scoring2016?useOldAliasMetadataBehavior=true" user="gearheads"
-	password=""/>
+	url="jdbc:mysql://team102.net/Scoring2017?useOldAliasMetadataBehavior=true" user="gearheads"
+	password="Gearhe3ads4prezdent"/>
