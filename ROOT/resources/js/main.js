@@ -5,6 +5,8 @@ $(function(){
 });
 
 function remove(){
+	//Any script returned from server has id 'self-destruct' and at the end of its code calling this function.
+	//removes any script with id of 'self-destruct'
 	$('#self-destruct').remove();
 }
 
@@ -52,6 +54,7 @@ function requestChoosematch(){
 }
 
 function requestAllianceSelection(){
+	console.log("Requesting alliance...");
 	$.post("alliance.jsp",
 			{
 				

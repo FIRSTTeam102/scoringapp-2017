@@ -41,7 +41,10 @@
 				</form>
 		</nav>
 		<nav id="alliance" class="alliance-container"></nav>
-		<nav id="autonomous" class="autonomous-container"></nav>
+		<nav id="choosematch" class="choosematch-container"></nav>
+		<div id="autonomous" class="autonomous-container"></div>
+		<div id="teleop" class="teleop-container"></div>
+		<nav id="post-match" class="postmatch-container"></nav>
 	</div>
 </body>
 </html>
