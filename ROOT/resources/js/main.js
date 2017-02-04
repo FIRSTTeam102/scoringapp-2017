@@ -34,23 +34,23 @@ function finishAlliance() {
 }
 
 function requestChoosematch(){
-		   event.preventDefault();//Stops refresh
-		   $.post("chooseMatch.jsp",
-			{
-			
-			},
-			
-			function(data, status, xhr) {
-				//Sets the content div's contents to whatever the jsp page has on it.
-				//$("#content").html(data); 
-				if(status == "success"){
-					alert("requestChoosematch has run");
-					$("#content").append(data.trim());
-				}else if(status == "error"){
-					alert("An error occurred.");
-					error("Error:" + xhr.status);
-				}
-			});
+	console.log("Requesting Choosematch...");
+	   $.post("choosematch.jsp",
+	{
+	
+	},
+	
+	function(data, status, xhr) {
+		//Sets the content div's contents to whatever the jsp page has on it.
+		//$("#content").html(data); 
+		if(status == "success"){
+			alert("requestChoosematch has run");
+			$("#content").append(data.trim());
+		}else if(status == "error"){
+			alert("An error occurred.");
+			error("Error:" + xhr.status);
+		}
+	});
 }
 
 function requestAllianceSelection(){
