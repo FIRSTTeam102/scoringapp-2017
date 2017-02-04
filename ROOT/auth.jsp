@@ -22,5 +22,5 @@ allianceKey = "allianceColor";
 %>
 
 <sql:setDataSource var="database" driver="com.mysql.jdbc.Driver"
-	url="jdbc:mysql://localhost/Scoring2017" user="gearheads"
+	url="jdbc:mysql://198.100.45.55/Scoring2017" user="gearheads"
 	password="Gearhe3ads4prezdent"/>

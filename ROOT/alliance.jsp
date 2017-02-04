@@ -7,18 +7,9 @@
 </sql:query>
 <c:set var="tournament" scope="session" value="${tournamentQuery}" />
 
-<%
-	String allianceInput = (String) request.getParameter("rdoAlliance"),
-			sideInput = (String) request.getParameter("rdoSide");
-	if (allianceInput != null && sideInput != null) {
-		session.setAttribute(allianceKey, allianceInput);
-		response.setStatus(response.SC_MOVED_TEMPORARILY);
-		response.setHeader("Location", "choosematch.jsp");
 
-	}
-%>
 
-<form id="CompetitionForm" action="scoringapp.jsp" method="post">
+<form id="CompetitionForm" method="post">
 	<div id="Alliance">
 		<div>Choose an Alliance</div>
 		<div class="allianceList">
@@ -28,17 +19,6 @@
 			</label> &nbsp;&nbsp; <label for="rdoAllianceBlue" id="lblBlue"> <input
 				type="radio" name="rdoAlliance" id="rdoAllianceBlue" value="Blue"
 				tabindex="3" />Blue
-			</label>
-		</div>
-	</div>
-	<div class="allianceList">
-		<div>What side is the secret passage?</div>
-		<div class="allianceList">
-			<label for="rdoSideNear" id="lblNear"> <input type="radio"
-				name="rdoSide" id="rdoSideNear" value="Near" tabindex="2" />Near
-			</label> &nbsp;&nbsp; <label for="rdoSideFar" id="lblFar"> <input
-				type="radio" name="rdoSide" id="rdoSideFar" value="Far"
-				tabindex="3" />Far
 			</label>
 		</div>
 	</div>
