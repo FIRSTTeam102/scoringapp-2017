@@ -56,10 +56,10 @@ Integer team3 = (Integer)session.getAttribute(team3Key);
 
 <% if(isServer == true){ %> <%-- If program is running on server, use localhost --%>
 <sql:setDataSource var="database" driver="com.mysql.jdbc.Driver"
-	url="jdbc:mysql://localhost/Scoring2017" user="gearheads"
+	url="jdbc:mysql://localhost/Scoring2017?useOldAliasMetadataBehavior=true" user="gearheads"
 	password="Gearhe3ads4prezdent"/>
 <% } else { %> <%-- If program is running on Eclipse, use IP --%>
 <sql:setDataSource var="database" driver="com.mysql.jdbc.Driver"
-	url="jdbc:mysql://198.100.45.55/Scoring2017" user="gearheads"
+	url="jdbc:mysql://198.100.45.55/Scoring2017?useOldAliasMetadataBehavior=true" user="gearheads"
 	password="Gearhe3ads4prezdent"/>
 <% } %>
