@@ -3,19 +3,12 @@
 <%@include file="auth.jsp"%>
 
 <%
-	String allianceInput;
-	if (Boolean.valueOf(request.getParameter("rdioRedChecked"))) {
-		allianceInput = "RED";
-	}
-	else {
-		allianceInput = "BLUE";
-	}
+	String allianceInput = request.getParameter("selAlliance");
 	if (allianceInput != null) {
 		session.setAttribute(allianceKey, allianceInput);
 		%>
-		<script>requestChoosematch();</script>
 		<script id="self-destruct">
-			//requestChoosematch();
+			requestChoosematch();
 			remove();
 		</script>
 		<%

@@ -13,10 +13,10 @@ function remove(){
 function finishAlliance() {
 	$("#CompetitionForm").on("submit", function(event) {
 	   event.preventDefault();//Stops refresh
-	   var redRadState = $("#rdoAllianceRed").is('checked');
+	   var rdoAlliance = $("input[name='rdoAlliance']:checked").val();
 	   $.post("alliance-finish.jsp",
 		{
-		   rdioRedChecked: redRadState 
+		   selAlliance: rdoAlliance 
 		},
 		
 		function(data, status, xhr) {
@@ -34,8 +34,9 @@ function finishAlliance() {
 }
 
 function requestChoosematch(){
-		   event.preventDefault();//Stops refresh
-		   $.post("chooseMatch.jsp",
+			alert("requestChooseMatch is running");
+		   //event.preventDefault();//Stops refresh
+		   $.post("choosematch.jsp",
 			{
 			
 			},
