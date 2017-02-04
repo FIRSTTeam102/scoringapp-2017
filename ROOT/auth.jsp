@@ -20,7 +20,7 @@ userKey = "user",
 passKey = "pass",
 allianceKey = "allianceColor";
 %>
-           
+
 <sql:setDataSource var="database" driver="com.mysql.jdbc.Driver"
-	url="jdbc:mysql://team102.net/Scoring2017?useOldAliasMetadataBehavior=true" user="gearheads"
+	url="jdbc:mysql://localhost/Scoring2017" user="gearheads"
 	password="Gearhe3ads4prezdent"/>
