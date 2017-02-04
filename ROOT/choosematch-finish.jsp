@@ -40,7 +40,7 @@
 %>
 
 <% 
-	pageContext.setAttribute(initialsKey, initials);
+	//pageContext.setAttribute(initialsKey, initials);
 %>
 
 <c:if test="${initials != null }">

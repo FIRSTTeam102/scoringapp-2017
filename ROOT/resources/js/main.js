@@ -47,14 +47,18 @@ function requestChoosematch(){
 		//$("#content").html(data); 
 		if(status == "success"){
 			console.log("Successfully loaded Choosematch");
-			$(currentPage).hide(0, function(){
-				
+			if(currentPage != "#choosematch"){
+				$(currentPage).hide(0, function(){
+					
+					$("#choosematch").html(data.trim());
+					currentPage = "#choosematch";
+				});
+			}else{
 				$("#choosematch").html(data.trim());
-				currentPage = "#choosematch";
-			});
+			}
 			
 		}else if(status == "error"){
-			alert("An error occurred.");
+			alert("A choosematch error occurred.");
 			error("Error:" + xhr.status);
 		}
 	});
@@ -71,15 +75,19 @@ function requestAllianceSelection(){
 				//$("#content").html(data); 
 				if(status == "success"){
 					console.log("Successfully loaded AllianceSelection");
-					$(currentPage).hide(0, function(){
-						
+					if(currentPage != "#alliance"){
+						$(currentPage).hide(0, function(){
+							
+							$("#alliance").html(data.trim());
+							currentPage = "#alliance";
+						});
+					}else{
 						$("#alliance").html(data.trim());
-						currentPage = "#alliance";
-					});
+					}
 						
 			}else if(status == "error"){
 					error("Error:" + xhr.status);
-					alert("An error occurred.");
+					alert("An allianceSelection error occurred.");
 				}
 			});
 }
