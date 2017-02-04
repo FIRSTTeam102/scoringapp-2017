@@ -8,11 +8,16 @@ if(request.getParameter(userKey) != null && request.getParameter(passKey) != nul
 	
 	user = request.getParameter(userKey); pass = request.getParameter(passKey);
 	 
+	
 	if (pass.equals("Gearheads") ){
+		
+		//sets session variable for initials
+		//session.setAttribute(userKey, user);
 		%>
 			<script id='self-destruct'>
 				//Created loggedOn var (currently unused); calls function to request choosematch.jsp.
 				loggedOn = true;
+				console.log("Login successful");
 				requestAllianceSelection();
 				remove();
 			</script>

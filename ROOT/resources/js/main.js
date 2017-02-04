@@ -5,10 +5,13 @@ $(function(){
 });
 
 function remove(){
+	//Any script returned from server has id 'self-destruct' and at the end of its code calling this function.
+	//removes any script with id of 'self-destruct'
 	$('#self-destruct').remove();
 }
 
 function requestChoosematch(){
+	console.log("Requesting choosematch...");
 	$.post("choosematch.jsp",
 	{
 		
@@ -19,7 +22,7 @@ function requestChoosematch(){
 		if(status == "success"){
 			$("#alliance").hide(0, function(){
 				
-				$("#content").append(data.trim());
+				$("#choosematch").append(data.trim());
 			})
 		}else if(status == "error"){
 			alert("An error occurred.");
@@ -29,6 +32,7 @@ function requestChoosematch(){
 }
 
 function requestAllianceSelection(){
+	console.log("Requesting alliance...");
 	$.post("alliance.jsp",
 			{
 				
@@ -39,7 +43,7 @@ function requestAllianceSelection(){
 				if(status == "success"){
 					$("#login").hide(0, function(){
 						
-						$("#content").append(data.trim());
+						$("#alliance").html(data.trim());
 					})
 				}else if(status == "error"){
 					alert("An error occurred.");

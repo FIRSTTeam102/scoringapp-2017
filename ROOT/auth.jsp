@@ -9,18 +9,33 @@
 
 <%
 if(!request.getMethod().equals("POST")){
-	response.setStatus(response.SC_MOVED_TEMPORARILY);
-	response.setHeader("Location", ".");
+	%>
+	<script>alert("Either there has been an error or you have attempted to load a page you are unauthorized to access.");</script>
+	<%
+	//response.setStatus(response.SC_MOVED_TEMPORARILY);
+	//response.setHeader("Location", ".");
 }
 %>
 
-<%
+<% //Sets keys for naming session variables and request parameters. Useful because renaming a variable is easier than renaming a string.
 String 
-userKey = "user",
+userKey = "user", //Username = user's initials.
 passKey = "pass",
-allianceKey = "allianceColor";
+allianceKey = "allianceColor",
+tournamentNameKey = "tournamentName",
+tournamentIDKey = "tournamentID",
+matchKey = "matchNumber";
+%>
+
+<% //Sets local variables from session variables when each page loads.
+String alliance = (String)session.getAttribute(allianceKey); //Alliance color
+String tournament = (String)session.getAttribute(tournamentNameKey); //Tournament name
+String tournamentID = (String)session.getAttribute(tournamentIDKey); //
+String match = (String)session.getAttribute(matchKey); //Match number
+String initials = (String)session.getAttribute(userKey); //User = initials
+
 %>
 
 <sql:setDataSource var="database" driver="com.mysql.jdbc.Driver"
-	url="jdbc:mysql://localhost/Scoring2017" user="gearheads"
+	url="jdbc:mysql://198.100.45.55/Scoring2017" user="gearheads"
 	password="Gearhe3ads4prezdent"/>
