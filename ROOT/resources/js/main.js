@@ -1,4 +1,5 @@
 var loggedOn = false;
+var currentPage = "#login"; //currentPage makes it easier to switch pages
 
 $(function(){
 	initLogin();
@@ -23,7 +24,8 @@ function finishAlliance() {
 			//Sets the content div's contents to whatever the jsp page has on it.
 			//$("#content").html(data); 
 			if(status == "success"){
-				$("#content").append(data.trim());
+				$("#content").append(data.trim()); //alliance-finish will return scripts
+				
 			}else if(status == "error"){
 				alert("An error occurred.");
 				error("Error:" + xhr.status);
@@ -44,8 +46,13 @@ function requestChoosematch(){
 		//Sets the content div's contents to whatever the jsp page has on it.
 		//$("#content").html(data); 
 		if(status == "success"){
-			alert("requestChoosematch has run");
-			$("#content").append(data.trim());
+			console.log("Successfully loaded Choosematch");
+			$(currentPage).hide(0, function(){
+				
+				$("#choosematch").html(data.trim());
+				currentPage = "#choosematch";
+			});
+			
 		}else if(status == "error"){
 			alert("An error occurred.");
 			error("Error:" + xhr.status);
@@ -63,13 +70,16 @@ function requestAllianceSelection(){
 				//Sets the content div's contents to whatever the jsp page has on it.
 				//$("#content").html(data); 
 				if(status == "success"){
-					$("#login").hide(0, function(){
+					console.log("Successfully loaded AllianceSelection");
+					$(currentPage).hide(0, function(){
 						
-						$("#content").append(data.trim());
-					})
-				}else if(status == "error"){
-					alert("An error occurred.");
+						$("#alliance").html(data.trim());
+						currentPage = "#alliance";
+					});
+						
+			}else if(status == "error"){
 					error("Error:" + xhr.status);
+					alert("An error occurred.");
 				}
 			});
 }

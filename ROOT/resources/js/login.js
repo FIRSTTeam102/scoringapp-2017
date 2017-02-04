@@ -22,8 +22,8 @@ function initLogin(){
 					}, 1);
 
 				}else if(status == "error"){
-					alert("An error occurred.");
-					error("Error:" + xhr.status);
+					alert("A login error occurred.");
+					console.error("Error:" + xhr.status);
 				}
 			});
 			
