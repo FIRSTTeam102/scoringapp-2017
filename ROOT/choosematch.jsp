@@ -4,9 +4,10 @@
 
 <%-- HTML --%>
 
-<div id="title" style="visibility: hidden"><c:forEach var="t" items="${tournament.rows}">
+<div id="title" style="visibility: hidden">
+	Match Selection: <c:forEach var="t" items="${tournament.rows}">
 		<c:out value="${t.title}" />
-	</c:forEach> Selection</div>
+	</c:forEach></div>
 <script id="self-destruct">
 	document.title = $("#title").html();
 	$("#title").remove();

@@ -7,15 +7,15 @@
 <%@ taglib prefix="fmt" 
            uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<%
+<%--
 if(!request.getMethod().equals("POST")){
 	%>
 	<script>alert("Either there has been an error or you have attempted to load a page you are unauthorized to access.");</script>
 	<%
-	//response.setStatus(response.SC_MOVED_TEMPORARILY);
-	//response.setHeader("Location", ".");
+	response.setStatus(response.SC_MOVED_TEMPORARILY);
+	response.setHeader("Location", ".");
 }
-%>
+--%>
 
 <% //Sets keys for naming session variables and request parameters. Useful because renaming a variable is easier than renaming a string.
 String 
