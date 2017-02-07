@@ -43,7 +43,7 @@ team3Key = "team3";
 %>
 
 <% //Sets local variables from session variables when each page loads.
-String alliance = "Blue";//TEMPORARY VALUE(String)session.getAttribute(allianceKey); //Alliance color
+String alliance = (String)session.getAttribute(allianceKey); //Alliance color
 String tournament = (String)session.getAttribute(tournamentNameKey); //Tournament name
 String tournamentID = (String)session.getAttribute(tournamentIDKey); //
 String match = (String)session.getAttribute(matchKey); //Match number

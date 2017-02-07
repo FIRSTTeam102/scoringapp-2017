@@ -70,7 +70,7 @@ function finishAlCallChoosematch() {
 		});
 	});
 }
-/* Tried to condense these into one, WORKING function. Does not right now.
+// Tried to condense these into one, WORKING function. Does not right now.
 function finishAlliance() {
 		console.log("beginning finishAlliance");
 	   var rdoAlliance = $("input[name='rdoAlliance']:checked").val();//should be a string either "Red" or "Blue"
