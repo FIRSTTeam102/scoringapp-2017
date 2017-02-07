@@ -1,5 +1,11 @@
 var loggedOn = false;
 var currentPage = "#login"; //currentPage makes it easier to switch pages
+var login = false,
+alliance = false,
+choosematch = false,
+autonomous = false,
+teleop = false;
+
 
 $(function(){
 	initLogin();
@@ -64,7 +70,6 @@ function finishAlCallChoosematch() {
 		});
 	});
 }
-/* Tried to condense these into one, WORKING function. Does not right now.
 function finishAlliance() {
 	$("#CompetitionForm").on("submit", function(event) {
 		
@@ -119,7 +124,7 @@ function requestChoosematch(){
 		}
 	});
 }
-*/
+
 function requestAllianceSelection(){
 	console.log("Requesting alliance...");
 	$.post("alliance.jsp",

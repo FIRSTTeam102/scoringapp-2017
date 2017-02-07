@@ -21,9 +21,6 @@ select mt1.match_number, m.start_time, mt1.team_number as team1, mt2.team_number
 </sql:query>
 <c:set var="matches" scope="page" value="${result}" />
 
-<c:out value="${matches}"/>
-
-
 <div id="title" style="visibility: hidden">
 	Match Selection: <c:forEach var="t" items="${tournament.rows}">
 		<c:out value="${t.title}" />
@@ -33,46 +30,40 @@ select mt1.match_number, m.start_time, mt1.team_number as team1, mt2.team_number
 	$("#title").remove();
 	remove();
 </script>
-		<header class="header">
-			<h1>Choose a Match</h1>
-			<h1 id="allianceColor" class="<%=alliance%>"><%=alliance%>
-				Alliance
-			</h1>
-		</header>
-		<form id="MatchForm" action="choosematch.jsp" method="POST">
-			<div id="nav">
-				<input type="submit" name="btnNext" value="Next" />
-			</div>
-			<div id="Match">
-					<c:forEach var="row" items="${matches.rows}"> <c:out value="${row}"/><c:out value="${row.team1}"/><c:out value="${row.team2}"/><c:out value="${row.team3}"/>
-						<label for="rdoMatch<c:out value="${row.match_number}" />"> 
-							<div class="match_number">
-								<input type="radio" name="rdoMatch"
-									id="<c:out value="rdoMatch${row.match_number}" />"
-									value="m:<c:out value="${row.match_number}" />a:<c:out value="${row.team1}"/>b:<c:out value="${row.team2}"/>c:<c:out value="${row.team3}"/>" />
-								<%="#"%><c:out value="${row.match_number}" />
-								@ 
-								<c:out value="${row.start_time}" />
-							</div> <input type="hidden" value="<c:out value="${row.team1}"/>"
-							name="team1"></input> <input type="hidden"
-							value="<c:out value="${row.team2}"/>" name="team2"></input> <input
-							type="hidden" value="<c:out value="${row.team3}"/>" name="team3"></input>
-							<div class="team_holder">
-								<c:out value="${row.team1}" />
-							</div>
-							<div class="team_holder">
-								<c:out value="${row.team2}" />
-							</div>
-							<div class="team_holder">
-								<c:out value="${row.team3}" />
-							</div>
-							<div class="team_holder">
-								<c:out value="${row.initials}" />
-							</div>
-							<div style="clear: both;"></div>
-						</label>
-					</c:forEach>
+<header class="header">
+	<h1>Choose a Match</h1>
+	<h1 id="allianceColor" class="<%=alliance%>"><%=alliance%>
+		Alliance
+	</h1>
+</header>
+<form id="MatchForm" action="choosematch.jsp" method="POST">
+		<input type="submit" name="btnNext" value="Next" />
+		<c:forEach var="row" items="${matches.rows}">
+			<label for="rdoMatch<c:out value="${row.match_number}" />"> 
+				<div class="match_number">
+					<input type="radio" name="rdoMatch"
+						id="<c:out value="rdoMatch${row.match_number}" />"
+						value="m:<c:out value="${row.match_number}" />a:<c:out value="${row.team1}"/>b:<c:out value="${row.team2}"/>c:<c:out value="${row.team3}"/>" />
+					<%="#"%><c:out value="${row.match_number}" />
+					@ 
+					<c:out value="${row.start_time}" />
+				</div> <input type="hidden" value="<c:out value="${row.team1}"/>"
+				name="team1"></input> <input type="hidden"
+				value="<c:out value="${row.team2}"/>" name="team2"></input> <input
+				type="hidden" value="<c:out value="${row.team3}"/>" name="team3"></input>
+				<div class="team_holder">
+					<c:out value="${row.team1}" />
 				</div>
-			</div>
-		</form>
-	</div>
+				<div class="team_holder">
+					<c:out value="${row.team2}" />
+				</div>
+				<div class="team_holder">
+					<c:out value="${row.team3}" />
+				</div>
+				<div class="team_holder">
+					<c:out value="${row.initials}" />
+				</div>
+				<div style="clear: both;"></div>
+			</label>
+		</c:forEach>
+</form>

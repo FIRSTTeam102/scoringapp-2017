@@ -130,6 +130,27 @@ h1{
 		background-size: cover;
 	}
 }
+
+.match_number
+{
+	float: none; 
+	width:25em;
+	text-align:left;
+	padding: 3px 2px; 
+	margin-left: 5px;
+}
+
+.team_holder {
+	float:left; 
+	width:3em;
+	text-align:right; 
+	padding: 3px 2px;
+}
+
+.team_holder_holder{
+	margin-left: 25px;
+}
+
 /*
 @media only screen and (max-device-width: 700px){
 	body{
