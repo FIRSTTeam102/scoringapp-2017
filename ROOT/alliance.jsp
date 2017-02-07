@@ -9,7 +9,7 @@
 
 
 
-<form id="CompetitionForm" method="post" >
+<form id="AllianceForm" method="post" >
 	<div id="Alliance">
 		<div>Choose an Alliance</div>
 		<div class="allianceList">
@@ -22,10 +22,11 @@
 			</label>
 		</div>
 	</div>
-	<div style="padding-top: 10px; padding-bottom: 10px;">
-		<input type="submit" name="btnChooseMatch" value="Choose Match" />
-	</div>
+
 </form>
+	<div style="padding-top: 10px; padding-bottom: 10px;">
+		<input type="submit" class="submit" name="btnChooseMatch" onclick="finishAlliance()" value="Choose Match"/>
+	</div>
 <script id="self-destruct">
 	$("#header").html("<%@include file='header.jsp'%>");
 	remove();

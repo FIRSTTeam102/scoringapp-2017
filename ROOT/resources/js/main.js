@@ -9,7 +9,7 @@ teleop = false;
 
 $(function(){
 	initLogin();
-	finishAlCallChoosematch();
+	
 });
 
 function remove(){
@@ -70,30 +70,29 @@ function finishAlCallChoosematch() {
 		});
 	});
 }
+/* Tried to condense these into one, WORKING function. Does not right now.
 function finishAlliance() {
-	$("#CompetitionForm").on("submit", function(event) {
-		
-		event.preventDefault();//Stops refresh
-		console.log("beginning finishAlliance()");
+		console.log("beginning finishAlliance");
 	   var rdoAlliance = $("input[name='rdoAlliance']:checked").val();//should be a string either "Red" or "Blue"
+	   console.log("rdoAlliance = " + rdoAlliance);
 	   $.post("alliance-finish.jsp",
 		{
 		   selAlliance: rdoAlliance 
-		},
-		
-		function(data, status, xhr) {
+		}, function(data, status, xhr) {
+			console.log("Received post thing");
 			//Sets the content div's contents to whatever the jsp page has on it.
 			//$("#content").html(data); 
 			if(status == "success"){
 				$("#content").append(data.trim()); //alliance-finish will return scripts
-				
+				console.log("Post success");
 			}else if(status == "error"){
+				
 				alert("An error occurred.");
 				error("Error:" + xhr.status);
 			}
 		});
-		
-}); 
+		console.log("Submitted post");
+ 
 }
 
 function requestChoosematch(){
@@ -151,4 +150,27 @@ function requestAllianceSelection(){
 					alert("An allianceSelection error occurred.");
 				}
 			});
+}
+
+function finishChoosematch() {
+	console.log("starting finishChoosematch()");
+	var theMatch = $("input[name='rdoMatch']:checked").val();
+	$.post("choosematch-finish.jsp",
+			{
+			   selMatch: theMatch 
+			}, function(data, status, xhr) {
+				console.log("Received post thing");
+				//Sets the content div's contents to whatever the jsp page has on it.
+				//$("#content").html(data); 
+				if(status == "success"){
+					$("#content").append(data.trim()); //alliance-finish will return scripts
+					console.log("Post success");
+				}else if(status == "error"){
+					
+					alert("An error occurred.");
+					error("Error:" + xhr.status);
+				}
+			});
+			console.log("Submitted post");
+	
 }

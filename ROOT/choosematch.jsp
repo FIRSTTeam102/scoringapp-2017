@@ -21,6 +21,9 @@ select mt1.match_number, m.start_time, mt1.team_number as team1, mt2.team_number
 </sql:query>
 <c:set var="matches" scope="page" value="${result}" />
 
+<c:out value="${matches}"/>
+
+
 <div id="title" style="visibility: hidden">
 	Match Selection: <c:forEach var="t" items="${tournament.rows}">
 		<c:out value="${t.title}" />
@@ -67,3 +70,4 @@ select mt1.match_number, m.start_time, mt1.team_number as team1, mt2.team_number
 			</label>
 		</c:forEach>
 </form>
+<input type="submit" name="btnNext" value="Next" onclick="finishChoosematch()"/>
