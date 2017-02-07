@@ -93,3 +93,26 @@ function requestAllianceSelection(){
 				}
 			});
 }
+
+function finishChoosematch() {
+	console.log("starting finishChoosematch()");
+	var theMatch = $("input[name='rdoMatch']:checked").val();
+	$.post("choosematch-finish.jsp",
+			{
+			   selMatch: theMatch 
+			}, function(data, status, xhr) {
+				console.log("Received post thing");
+				//Sets the content div's contents to whatever the jsp page has on it.
+				//$("#content").html(data); 
+				if(status == "success"){
+					$("#content").append(data.trim()); //alliance-finish will return scripts
+					console.log("Post success");
+				}else if(status == "error"){
+					
+					alert("An error occurred.");
+					error("Error:" + xhr.status);
+				}
+			});
+			console.log("Submitted post");
+	
+}

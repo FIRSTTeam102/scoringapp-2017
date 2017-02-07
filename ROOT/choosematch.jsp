@@ -41,7 +41,7 @@ select mt1.match_number, m.start_time, mt1.team_number as team1, mt2.team_number
 		</header>
 		<form id="MatchForm" action="choosematch.jsp" method="POST">
 			<div id="nav">
-				<input type="submit" name="btnNext" value="Next" />
+				
 			</div>
 			<div id="Match">
 					<c:forEach var="row" items="${matches.rows}"> <c:out value="${row}"/><c:out value="${row.team1}"/><c:out value="${row.team2}"/><c:out value="${row.team3}"/>
@@ -75,4 +75,5 @@ select mt1.match_number, m.start_time, mt1.team_number as team1, mt2.team_number
 				</div>
 			</div>
 		</form>
+		<input type="submit" name="btnNext" value="Next" onclick="finishChoosematch()"/>
 	</div>
