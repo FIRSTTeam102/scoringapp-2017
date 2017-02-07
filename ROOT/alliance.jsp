@@ -9,7 +9,7 @@
 
 
 
-<form id="CompetitionForm" method="post">
+<form id="CompetitionForm" method="post" >
 	<div id="Alliance">
 		<div>Choose an Alliance</div>
 		<div class="allianceList">

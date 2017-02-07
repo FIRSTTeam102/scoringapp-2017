@@ -8,7 +8,7 @@
 		session.setAttribute(allianceKey, allianceInput);
 		%>
 		<script id="self-destruct">
-			requestChoosematch();
+			//requestChoosematch(); uncommented to test finishAlCallChoosematch()
 			remove();
 		</script>
 		<%

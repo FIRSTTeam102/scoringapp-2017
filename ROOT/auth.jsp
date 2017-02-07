@@ -51,7 +51,6 @@ String initials = (String)session.getAttribute(userKey); //User = initials
 Integer team1 = (Integer)session.getAttribute(team1Key); //Team numbers
 Integer team2 = (Integer)session.getAttribute(team2Key);
 Integer team3 = (Integer)session.getAttribute(team3Key);
-
 %>
 
 <% if(isServer == true){ %> <%-- If program is running on server, use localhost --%>

@@ -21,7 +21,7 @@ select mt1.match_number, m.start_time, mt1.team_number as team1, mt2.team_number
 </sql:query>
 <c:set var="matches" scope="page" value="${result}" />
 
-<c:out value="${matches }"/>
+<c:out value="${matches}"/>
 
 
 <div id="title" style="visibility: hidden">
@@ -51,7 +51,7 @@ select mt1.match_number, m.start_time, mt1.team_number as team1, mt2.team_number
 									id="<c:out value="rdoMatch${row.match_number}" />"
 									value="m:<c:out value="${row.match_number}" />a:<c:out value="${row.team1}"/>b:<c:out value="${row.team2}"/>c:<c:out value="${row.team3}"/>" />
 								<%="#"%><c:out value="${row.match_number}" />
-								@
+								@ 
 								<c:out value="${row.start_time}" />
 							</div> <input type="hidden" value="<c:out value="${row.team1}"/>"
 							name="team1"></input> <input type="hidden"
