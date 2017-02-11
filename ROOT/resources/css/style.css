@@ -15,6 +15,10 @@ body {
 	font-family: verdana, Sans-serif;
 }
 
+h2{
+	font-size: 1.1em;
+}
+
 .content{
 	width: 80%;
 	margin-left: 10%;
@@ -118,18 +122,6 @@ h1{
 	margin-bottom: 20px;
 }
 
-@media only screen and (max-device-width: 700px){
-	body{
-		background-image: url("../images/steampunk-stylized-960.jpg");
-		background-size: cover;
-	}
-}
-@media only screen and (min-device-width: 2200px){
-	body{
-		background-image: url("../images/steampunk-stylized-full.jpg");
-		background-size: cover;
-	}
-}
 
 .match_number
 {
@@ -151,23 +143,26 @@ h1{
 	margin-left: 25px;
 }
 
-/*
-@media only screen and (max-device-width: 700px){
-	body{
-		font-size: 3em;
-	}
-	.content{
-		width: 100%;
-		margin: 0%;
-	}
-	.title-large{
-		max-width: 100%;
-	}
-	input[type=submit]{
-		padding: 0.8em 1.3em;
-	}
+.team{
+	border: solid 1px white;
+    float: left;
+    width: 32%;
 }
-*/
+
+.teamNumber {
+	padding: 5px;
+}
+
+.margin1{
+	margin-left: 15px;
+}
+
+.form-line{
+	margin-top: 6px;
+	margin-bottom: 6px;
+	padding: .2em 0 .2em 0;
+}
+
 .blue{
 	background-color: blue;
 }
@@ -196,4 +191,24 @@ h1{
 	background: radial-gradient(ellipse at center, #ff5e5e 0%,#ff3838 29%,#ff2121 50%,#ff0000 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5e5e', endColorstr='#ff0000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 	height: 800px;
+}
+
+
+@media only screen and (max-width: 800px){
+	body{
+		background-image: url("../images/steampunk-stylized-960.jpg");
+		background-size: cover;
+	}
+	.team{
+		border: solid 1px white;
+	    float: none;
+	    width: 80%;
+	    margin-left: 10%;
+	}
+}
+@media only screen and (min-width: 2200px){
+	body{
+		background-image: url("../images/steampunk-stylized-full.jpg");
+		background-size: cover;
+	}
 }
