@@ -9,27 +9,18 @@
 	//	String str = strings.nextElement();
 	//	out.println(str);
 	//}
-	if(alliance == null){
+	if(alliance == null){//is this actually necessary?? It's a holdover from last year...
 		response.setStatus(response.SC_MOVED_TEMPORARILY);
-		response.setHeader("Location", "scoringapp.jsp");
+		response.setHeader("Location", "index.jsp");
 	}
 	if (match != null) {
-
-		int matchIndex = match.indexOf('m');
-		int team1Index = match.indexOf("a");
-		int team2Index = match.indexOf("b");
-		int team3Index = match.indexOf("c");
-
-		String matchNum = match.substring(matchIndex + 2, team1Index);
-
-		team1 = Integer.parseInt(match.substring(team1Index + 2, team2Index));
-		team2 = Integer.parseInt(match.substring(team2Index + 2, team3Index));
-		team3 = Integer.parseInt(match.substring(team3Index + 2));
-
-		//out.println(team1);
-		//out.println(team2);
-		//out.println(team3);
-
+		String[] matchInfo = match.split("\\s+"); //split on whitespace. First string is "#" and the match number, second is "@", third is start time, 4th is team1, 5th team2, 6th team3 
+		String matchNum = matchInfo[0].substring(1);
+		
+		team1 = Integer.parseInt(matchInfo[3]);
+		team2 = Integer.parseInt(matchInfo[4]);
+		team3 = Integer.parseInt(matchInfo[5]);
+		
 		session.setAttribute("team1", team1);
 		session.setAttribute("team2", team2);
 		session.setAttribute("team3", team3);
@@ -53,8 +44,8 @@
 				AND team_number = ?
 		<sql:param value="${initials }"/>
 		<sql:param value="${tournament.rows[0].id}" />
-		<sql:param value="${sessionScope.matchNumber }" />
-		<sql:param value="${sessionScope.team3 }" />
+		<sql:param value="${sessionScope.matchNumber}" />
+		<sql:param value="${sessionScope.team3}" />
 	</sql:update>
 </c:if>
 
@@ -79,4 +70,8 @@
 								+ " and mt3.match_number = mt1.match_number  and mt3.completed = mt1.completed"
 								+ " and mt3.alliance = mt1.alliance  and mt3.seq_no = 3" + " order by m.match_number;"%>
 </sql:query>
-<c:set var="matches" scope="page" value="${result}" />
+<c:set var="matches" scope="page" value="${result}"/>
+<script id="self-destruct">
+			setTimeout( function(){requestAutonomous();}, 1); 
+			//remove();
+</script>

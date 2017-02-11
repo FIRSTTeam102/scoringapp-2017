@@ -137,7 +137,7 @@ function finishChoosematch() {
 	var theMatch = $("input[name='rdoMatch']:checked").val();
 	$.post("choosematch-finish.jsp",
 			{
-			   selMatch: theMatch 
+			   rdoMatch: theMatch 
 			}, function(data, status, xhr) {
 				console.log("Received post thing");
 				//Sets the content div's contents to whatever the jsp page has on it.
