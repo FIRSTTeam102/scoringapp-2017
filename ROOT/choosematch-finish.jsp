@@ -60,7 +60,7 @@
 
 <%
 		response.setStatus(response.SC_MOVED_TEMPORARILY);
-		response.setHeader("Location", "pre-match.jsp");
+		response.setHeader("Location", "index.jsp");
 	}
 %>
 

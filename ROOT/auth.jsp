@@ -7,8 +7,10 @@
 <%@ taglib prefix="fmt" 
            uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<% //Rejects pageload if request is not 'POST'
-if(!request.getMethod().equals("POST")){
+<% //Rejects pageload if request is not 'POST' or if isLoggedIn is not true
+final String loginKey = "isLoggedIn";
+
+if(!request.getMethod().equals("POST") || session.getAttribute(loginKey) == null){
 	%>
 	<script>alert("Either there has been an error or you have attempted to load a page you are unauthorized to access.");</script>
 	<%
@@ -42,12 +44,21 @@ team2Key = "team2",
 team3Key = "team3";
 %>
 
+<%
+if(session.getAttribute(loginKey) == null){
+	response.setStatus(response.SC_MOVED_TEMPORARILY);
+	response.setHeader("Location", ".");
+}
+%>
+
 <% //Sets local variables from session variables when each page loads.
-String alliance = "Blue";//TEMPORARY VALUE(String)session.getAttribute(allianceKey); //Alliance color
+String alliance = (String)session.getAttribute(allianceKey); //Alliance color
 String tournament = (String)session.getAttribute(tournamentNameKey); //Tournament name
 String tournamentID = (String)session.getAttribute(tournamentIDKey); //
 String match = (String)session.getAttribute(matchKey); //Match number
 String initials = (String)session.getAttribute(userKey); //User = initials
+
+//vvv Using Integer objects to avoid null pointer exceptions.
 Integer team1 = (Integer)session.getAttribute(team1Key); //Team numbers
 Integer team2 = (Integer)session.getAttribute(team2Key);
 Integer team3 = (Integer)session.getAttribute(team3Key);

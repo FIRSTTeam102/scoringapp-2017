@@ -23,6 +23,7 @@
 					<div class="btn-container">
 						<input type="submit" value="Team 102 Scoring App">
 					</div>
+				</form>
 					<div class="btn-container">
 						<input type="submit" value="Scouting Survey">
 					</div>
@@ -36,15 +37,21 @@
 						<input type="submit" value="Alliance Selection">
 					</div>
 					<div class="btn-container">
-						<input type="submit" value="Mobile Alliance Lighter">
+						<input type="submit" value="Mobile Alliance Lighter" onclick="swap('lighter', false);">
 					</div>
-				</form>
 		</nav>
 		<nav id="alliance" class="alliance-container"></nav>
 		<nav id="choosematch" class="choosematch-container"></nav>
 		<div id="autonomous" class="autonomous-container"></div>
 		<div id="teleop" class="teleop-container"></div>
-		<nav id="post-match" class="postmatch-container"></nav>
+		<nav id="postmatch" class="postmatch-container"></nav>
+		<div id="lighter" style="display: none;">
+			<div>&nbsp;</div>
+			<div class="red"><a onclick="lighter('red');" style="color: white; text-decoration: none;">Red Lighter</a></div>
+			<div>&nbsp;</div>
+			<div class="blue"><a onclick="lighter('blue');" style="color: white; text-decoration: none;" class="fullWidthLink">Blue Lighter</a></div>
+		</div>
 	</div>
+	<input id="back" type="submit" value="Back" onclick="lighter();" style="display: none">
 </body>
 </html>

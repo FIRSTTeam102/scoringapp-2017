@@ -5,14 +5,15 @@
 <% String user; String pass;
 
 if(request.getParameter(userKey) != null && request.getParameter(passKey) != null){
-	
+	//^^^ vvv gets user and password
 	user = request.getParameter(userKey); pass = request.getParameter(passKey);
 	 
 	
 	if (pass.equals("Gearheads") ){
 		
-		//sets session variable for initials
-		//session.setAttribute(userKey, user);
+		//sets session variable for initials and checks isLoggedIn as true
+		session.setAttribute(userKey, user);
+		session.setAttribute(loginKey, true);
 		%>
 			<script id='self-destruct'>
 				//Created loggedOn var (currently unused); calls function to request choosematch.jsp.
