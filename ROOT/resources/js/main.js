@@ -141,8 +141,7 @@ function finishChoosematch() {
 	var theMatch = $("input[name='rdoMatch']:checked").val();
 	if (theMatch== null) {
 		alert("Gotta select a match my dude");
-	}
-	else {
+	}else {
 	console.log(theMatch);
 
 	$.post("choosematch-finish.jsp",
@@ -163,7 +162,7 @@ function finishChoosematch() {
 				}
 			});
 			console.log("Requested finishChoosematch");
-	
+	}
 }
 
 function requestAutonomous(){
