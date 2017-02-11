@@ -135,6 +135,10 @@ function requestChoosematch(){
 function finishChoosematch() {
 	console.log("starting finishChoosematch()");
 	var theMatch = $("input[name='rdoMatch']:checked").val();
+	if (theMatch== null) {
+		alert("Gotta select a match my dude");
+	}
+	else {
 	console.log(theMatch);
 	$.post("choosematch-finish.jsp",
 			{
@@ -153,7 +157,7 @@ function finishChoosematch() {
 				}
 			});
 			console.log("Submitted post");
-	
+	}
 }
 
 function requestAutonomous(){
