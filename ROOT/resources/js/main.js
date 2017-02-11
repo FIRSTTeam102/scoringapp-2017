@@ -3,7 +3,7 @@ var currentPage = "#login"; //currentPage makes it easier to switch pages
 var pages = {
 		login: true,
 		alliance: false,
-		choosematch: false,
+		choosematch: false, //Choosematch should stay false
 		autonomous: false,
 		postmatch: false,
 		//vvv extra pages
