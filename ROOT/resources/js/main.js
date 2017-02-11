@@ -21,24 +21,28 @@ function swap(page, refreshInput){
 			$('#' + page + " input").prop('checked', false);
 		}
 		$(currentPage).hide();
-		currentPage = "#" + page; //Hides current page, sets new page, loads new page
+		currentPage = "#" + page; //Hides current page, sets new page, shows new page
 		$(currentPage).show();
 	}else{
 		switch(page){
 		case "login":
 			console.error("Login page was marked as false???");
+			break;
 		case "alliance":
 			requestAllianceSelection();
+			break;
 		case "choosematch":
 			requestChoosematch();
+			break;
 		case "autonomous":
 			requestAutonomous();
+			break;
 		case "teleop":
 			requestTeleop();//doesn't exist yet
+			break;
 		case "postmatch":
 			requestPostMatch();//doesn't exist yet
-		case "lighter":
-			requestLighterPage();
+			break;
 		default:
 			console.error("Unknown page requested to load");
 		}
@@ -87,19 +91,19 @@ function finishAlliance() {
 	{
 	   selAlliance: rdoAlliance 
 	}, function(data, status, xhr) {
-		console.log("Received post thing");
+		console.log("Received finishAlliance");
 		//Sets the content div's contents to whatever the jsp page has on it.
 		//$("#content").html(data); 
 		if(status == "success"){
 			$("#content").append(data.trim()); //alliance-finish will return scripts
-			console.log("Post success");
+			console.log("finishAlliance successful");
 		}else if(status == "error"){
 			
 			alert("An error occurred.");
 			error("Error:" + xhr.status);
 		}
 	});
-	console.log("Submitted post");
+	console.log("Requested finishAlliance");
 
 }
 
@@ -136,23 +140,25 @@ function finishChoosematch() {
 	console.log("starting finishChoosematch()");
 	var theMatch = $("input[name='rdoMatch']:checked").val();
 	console.log(theMatch);
+
 	$.post("choosematch-finish.jsp",
 			{
 			   rdoMatch: theMatch 
+			   
 			}, function(data, status, xhr) {
-				console.log("Received post thing");
+				console.log("Received finishChoosmeatch");
 				//Sets the content div's contents to whatever the jsp page has on it.
 				//$("#content").html(data); 
 				if(status == "success"){
 					$("#content").append(data.trim()); //alliance-finish will return scripts
-					console.log("Post success");
+					console.log("finishChoosematch successful");
 				}else if(status == "error"){
 					
 					alert("An error occurred.");
 					error("Error:" + xhr.status);
 				}
 			});
-			console.log("Submitted post");
+			console.log("Requested finishChoosematch");
 	
 }
 
@@ -183,6 +189,26 @@ function requestAutonomous(){
 			error("Error:" + xhr.status);
 		}
 	});
+}
+
+function finishAutonomous(){
+	console.erorr("finishautonomous not made yet");
+}
+
+function requestTeleop(){
+	console.error("teleop not made yet");
+}
+
+function finishTeleop(){
+	console.error("finishteleop not made yet");
+}
+
+function requestPostMatch(){
+	console.error("requestpostmatch not made yet");
+}
+
+function finishPostMatch(){
+	console.error("finishpostmatch not made yet");
 }
 
 function lighter(color){

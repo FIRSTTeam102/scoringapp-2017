@@ -52,6 +52,6 @@
 			<div class="blue"><a onclick="lighter('blue');" style="color: white; text-decoration: none;" class="fullWidthLink">Blue Lighter</a></div>
 		</div>
 	</div>
-	<input id="back" type="submit" value="Back" onclick="lighter();" style="display: none">
+	<input id="back" type="submit" value="Back" onclick="lighter();" style="display: none"><!-- for lighter -->
 </body>
 </html>
