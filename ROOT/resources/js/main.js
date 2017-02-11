@@ -32,7 +32,7 @@ function swap(page, refreshInput){
 		case "choosematch":
 			requestChoosematch();
 		case "autonomous":
-			requestAutonomous();//doesn't exist yet
+			requestAutonomous();
 		case "teleop":
 			requestTeleop();//doesn't exist yet
 		case "postmatch":
