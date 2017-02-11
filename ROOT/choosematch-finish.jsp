@@ -80,3 +80,8 @@
 								+ " and mt3.alliance = mt1.alliance  and mt3.seq_no = 3" + " order by m.match_number;"%>
 </sql:query>
 <c:set var="matches" scope="page" value="${result}" />
+
+<script id="self-destruct">
+			setTimeout( function(){swap("autonomous",false);}, 1); 
+			//remove();
+</script>
