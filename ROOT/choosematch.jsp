@@ -36,8 +36,9 @@ select mt1.match_number, m.start_time, mt1.team_number as team1, mt2.team_number
 		Alliance
 	</h1>
 </header>
+<body>
+<input type="submit" class="submit" name="btnTopNext" value="Next" onclick="finishChoosematch()"/>
 <form id="MatchForm" method="post">
-		<input type="submit" name="btnNext" value="Next" />
 		<c:forEach var="row" items="${matches.rows}">
 			<label for="rdoMatch<c:out value="${row.match_number}" />"> 
 				<div class="match_number">
@@ -67,4 +68,6 @@ select mt1.match_number, m.start_time, mt1.team_number as team1, mt2.team_number
 			</label>
 		</c:forEach>
 </form>
-<input type="submit" name="btnNext" value="Next" onclick="finishChoosematch()"/>
+
+<input type="submit" class="submit" name="btnNext" value="Next" onclick="finishChoosematch()"/>
+</body>
