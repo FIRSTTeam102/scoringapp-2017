@@ -149,7 +149,7 @@ function finishChoosematch() {
 			   rdoMatch: theMatch 
 			   
 			}, function(data, status, xhr) {
-				console.log("Received finishChoosmeatch");
+				console.log("Received finishChoosmatch");
 				//Sets the content div's contents to whatever the jsp page has on it.
 				//$("#content").html(data); 
 				if(status == "success"){
@@ -194,9 +194,7 @@ function requestAutonomous(){
 	});
 }
 
-function finishAutonomous(){
-	console.erorr("finishautonomous not made yet");
-}
+
 
 function requestTeleop(){
 	console.error("teleop not made yet");
