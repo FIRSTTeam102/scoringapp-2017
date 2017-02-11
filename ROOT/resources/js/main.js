@@ -135,6 +135,7 @@ function requestChoosematch(){
 function finishChoosematch() {
 	console.log("starting finishChoosematch()");
 	var theMatch = $("input[name='rdoMatch']:checked").val();
+	console.log(theMatch);
 	$.post("choosematch-finish.jsp",
 			{
 			   rdoMatch: theMatch 
@@ -153,6 +154,35 @@ function finishChoosematch() {
 			});
 			console.log("Submitted post");
 	
+}
+
+function requestAutonomous(){
+	console.log("Requesting autonomous...");
+	   $.post("autonomous.jsp",
+	{
+	
+	},
+	
+	function(data, status, xhr) {
+		//Sets the content div's contents to whatever the jsp page has on it.
+		//$("#content").html(data); 
+		if(status == "success"){
+			console.log("Successfully loaded autonomous");
+			if(currentPage != "#autonomous"){
+				$(currentPage).hide(0, function(){
+					
+					$("#autonomous").html(data.trim());
+					currentPage = "#autonomous";
+				});
+			}else{
+				$("#autonomous").html(data.trim());
+			}
+			
+		}else if(status == "error"){
+			alert("An autonomous error occurred.");
+			error("Error:" + xhr.status);
+		}
+	});
 }
 
 function lighter(color){
