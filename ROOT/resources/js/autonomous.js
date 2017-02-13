@@ -1,14 +1,23 @@
 function finishAutonomous(){
 	console.log("starting finishAutonomous()");
 	
-	//need vars for:
-	//t1NoShow t2NoShow t3NoShow
+
+	//t1NoShow not implemented yet
+	//t2NoShow t3NoShow
+	
 	//t1XbaseLn t2XbaseLn t3XbaseLn
+	var t1XbaseLn = $("input[name='chkTeam1Cross']:checked").val();
+	
 	//t1AttGear t2AttGear t3AttGear
+	var t1AttGear = $("input[name='chkTeam1AttGear']:checked").val();
 	//t1RGS t2RGS t3RGS //R(obot)G(ear)S(uccess)
+	var t1RGS = $("input[name='chkTeam1RobotGearSucc']:checked").val();
 	//t1HGS t2HGS t3HGS //Human gear success
+	var t1HGS = $("input[name='chkTeam1HumanGearSucc']:checked").val();
 	//t1AttShot t2AttShot t3AttShot //attempted shot (which goal)
+	//var t1AttShot = $("input[name='']:checked").val();
 	//t1SS t2SS t3SS //Shot success/fail
+	//var t1SS = $("input[name='']:checked").val(); 
 	$.post("autonomous-finish.jsp",
 			{
 			//  t1Baseline: t1Xbaseln
