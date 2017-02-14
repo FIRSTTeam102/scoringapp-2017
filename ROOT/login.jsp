@@ -19,8 +19,8 @@ if(request.getParameter(userKey) != null && request.getParameter(passKey) != nul
 				//Created loggedOn var (currently unused); calls function to request choosematch.jsp.
 				loggedOn = true;
 				console.log("Login successful");
-				requestAllianceSelection();
-				remove();
+				
+				swap("alliance", false);
 			</script>
 		<%
 	}
