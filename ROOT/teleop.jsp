@@ -1,12 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+	pageEncoding="ISO-8859-1"%>
+<%@include file="auth.jsp"%>
 
-</body>
-</html>
+<%
+%>
+<nav class="team" id="t1TeleNav">
+	<h2 id="team1Number" class="teamNumber"><%=team1%></h2>
+</nav>
+
+<nav class="team" id="t2TeleNav">
+	<h2 id="team2Number" class="teamNumber"><%=team2%></h2>
+</nav>
+
+<nav class="team" id="t3TeleNav">
+	<h2 id="team2Number" class="teamNumber"><%=team2%></h2>
+</nav>
