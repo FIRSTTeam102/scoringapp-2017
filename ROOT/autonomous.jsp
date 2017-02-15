@@ -21,8 +21,6 @@
 			value="Y"> <label for="chkTeam1HumanGearSucc">Human Loaded Gear</label>
 	</div>
 </nav>
-<br>
-<br>
 <nav class="team" id="team2holder">
 	<h2 id="Team2Number" class="teamNumber"><%=team2%></h2>
 	<div id="Team2Cross">
@@ -42,8 +40,6 @@
 			value="Y"> <label for="chkTeam2HumanGearSucc">Human Loaded Gear</label>
 	</div>
 </nav>
-<br>
-<br>
 <nav class="team" id="team3holder">
 	<h2 id="Team3Number" class="teamNumber"><%=team3%></h2>
 	<div id="Team3Cross">
@@ -63,6 +59,3 @@
 			value="Y"> <label for="chkTeam3HumanGearSucc">Human Loaded Gear</label>
 	</div>
 </nav>
-<br>
-<br>
-<br>
