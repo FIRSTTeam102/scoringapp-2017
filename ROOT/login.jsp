@@ -1,19 +1,19 @@
 <%-- server-side login handler --%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@include file="auth.jsp" %>
+    
 <% String user; String pass;
 
-if(request.getParameter(userKey) != null && request.getParameter(passKey) != null){
+if(request.getParameter("user") != null && request.getParameter("pass") != null){
 	//^^^ vvv gets user and password
-	user = request.getParameter(userKey); pass = request.getParameter(passKey);
+	user = request.getParameter("user"); pass = request.getParameter("pass");
 	 
 	
 	if (pass.equals("Gearheads") ){
 		
 		//sets session variable for initials and checks isLoggedIn as true
-		session.setAttribute(userKey, user);
-		session.setAttribute(loginKey, true);
+		session.setAttribute("user", user);
+		session.setAttribute("isLoggedIn", true);
 		%>
 			<script id='self-destruct'>
 				//Created loggedOn var (currently unused); calls function to request choosematch.jsp.
