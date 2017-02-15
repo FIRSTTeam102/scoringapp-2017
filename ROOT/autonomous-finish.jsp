@@ -39,7 +39,9 @@
 	t3AutInf[4] = request.getParameter("t3HuGearSucc");
 	t3AutInf[5] = request.getParameter("t3AttemptedShot");
 	t3AutInf[6] = request.getParameter("t3ShotSucc");
-
+	
+	//Make MySQL calls below, using Integer.parseInt() on 
+	
 %>	
 	
 	
