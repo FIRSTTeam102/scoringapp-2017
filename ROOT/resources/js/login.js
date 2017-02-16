@@ -1,7 +1,7 @@
 function initLogin(){
 	$("#login-form").on("submit", function(event) {
 		   event.preventDefault();//Stops refresh
-		   var user = $(this).find('[name=username]').val();
+		   var user = $(this).find('[name=initialsInput]').val();
 		   var pass = $(this).find('[name=password]').val();
 		   $.post("login.jsp",
 			{

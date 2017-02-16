@@ -63,3 +63,246 @@ function finishAutonomous(){
 			console.log("Requested finishAutonomous");
 	
 }
+t1c = "#chkTeam1Cross"
+$(function(){
+	$("#chkTeam1Cross").click(function(){
+		if(!this.checked){
+			$("#chkTeam1AttGear").prop("checked", false);
+			$("#chkTeam1RobotGearSucc").prop("checked", false);
+			$("#chkTeam1HumanGearSucc").prop("checked", false);
+		}
+	});
+	
+	$("#chkTeam1AttGear").click(function(){
+		
+		if(!this.checked){
+			$("#chkTeam1RobotGearSucc").prop("checked", false);
+			$("#chkTeam1HumanGearSucc").prop("checked", false);
+		}
+		else{
+			$("#chkTeam1Cross").prop("checked", true);
+		}
+	});
+	
+	$("#chkTeam1RobotGearSucc").click(function(){
+		
+		if(!this.checked){
+			$("#chkTeam1HumanGearSucc").prop("checked", false);
+		}
+		else{
+			$("#chkTeam1Cross").prop("checked", true);
+			$("#chkTeam1AttGear").prop("checked", true);
+		}
+	});	
+	
+	$("#chkTeam1HumanGearSucc").click(function(){
+		
+		if(this.checked){
+			$("#chkTeam1Cross").prop("checked", true);
+			$("#chkTeam1AttGear").prop("checked", true);
+			$("#chkTeam1RobotGearSucc").prop("checked", true);
+		}
+	});
+	
+	$("#chkTeam1AttHigh").click(function(){
+		
+		if(!this.checked){
+			$("#chkTeam1HighSucc").prop("checked", false);
+		}
+		else{
+			$("#chkTeam1AttLow").prop("checked", false);
+			$("#chkTeam1LowSucc").prop("checked", false);
+		}
+	});
+	
+	$("#chkTeam1HighSucc").click(function(){
+		
+		if(this.checked){
+			$("#chkTeam1AttHigh").prop("checked", true)
+			$("#chkTeam1AttLow").prop("checked", false);
+			$("#chkTeam1LowSucc").prop("checked", false);
+			
+		}
+	});
+	
+	$("#chkTeam1AttLow").click(function(){
+		
+		if(!this.checked){
+			$("#chkTeam1LowSucc").prop("checked", false);
+		}
+		else{
+			$("#chkTeam1AttHigh").prop("checked", false);
+			$("#chkTeam1HighSucc").prop("checked", false);
+		}
+	});
+	
+	$("#chkTeam1LowSucc").click(function(){
+		
+		if(this.checked){
+			$("#chkTeam1AttLow").prop("checked", true)
+			$("#chkTeam1AttHigh").prop("checked", false);
+			$("#chkTeam1HighSucc").prop("checked", false);
+			
+		}
+	});
+	$("#chkTeam2Cross").click(function(){
+		if(!this.checked){
+			$("#chkTeam2AttGear").prop("checked", false);
+			$("#chkTeam2RobotGearSucc").prop("checked", false);
+			$("#chkTeam2HumanGearSucc").prop("checked", false);
+		}
+	});
+	
+	$("#chkTeam2AttGear").click(function(){
+		
+		if(!this.checked){
+			$("#chkTeam2RobotGearSucc").prop("checked", false);
+			$("#chkTeam2HumanGearSucc").prop("checked", false);
+		}
+		else{
+			$("#chkTeam2Cross").prop("checked", true);
+		}
+	});
+	
+	$("#chkTeam2RobotGearSucc").click(function(){
+		
+		if(!this.checked){
+			$("#chkTeam2HumanGearSucc").prop("checked", false);
+		}
+		else{
+			$("#chkTeam2Cross").prop("checked", true);
+			$("#chkTeam2AttGear").prop("checked", true);
+		}
+	});	
+	
+	$("#chkTeam2HumanGearSucc").click(function(){
+		
+		if(this.checked){
+			$("#chkTeam2Cross").prop("checked", true);
+			$("#chkTeam2AttGear").prop("checked", true);
+			$("#chkTeam2RobotGearSucc").prop("checked", true);
+		}
+	});
+	
+	$("#chkTeam2AttHigh").click(function(){
+		
+		if(!this.checked){
+			$("#chkTeam2HighSucc").prop("checked", false);
+		}
+		else{
+			$("#chkTeam2AttLow").prop("checked", false);
+			$("#chkTeam2LowSucc").prop("checked", false);
+		}
+	});
+	
+	$("#chkTeam2HighSucc").click(function(){
+		
+		if(this.checked){
+			$("#chkTeam2AttHigh").prop("checked", true)
+			$("#chkTeam2AttLow").prop("checked", false);
+			$("#chkTeam2LowSucc").prop("checked", false);
+			
+		}
+	});
+	
+	$("#chkTeam2AttLow").click(function(){
+		
+		if(!this.checked){
+			$("#chkTeam2LowSucc").prop("checked", false);
+		}
+		else{
+			$("#chkTeam2AttHigh").prop("checked", false);
+			$("#chkTeam2HighSucc").prop("checked", false);
+		}
+	});
+	
+	$("#chkTeam2LowSucc").click(function(){
+		
+		if(this.checked){
+			$("#chkTeam2AttLow").prop("checked", true)
+			$("#chkTeam2AttHigh").prop("checked", false);
+			$("#chkTeam2HighSucc").prop("checked", false);
+			
+		}
+	});
+	$("#chkTeam3Cross").click(function(){
+		if(!this.checked){
+			$("#chkTeam3AttGear").prop("checked", false);
+			$("#chkTeam3RobotGearSucc").prop("checked", false);
+			$("#chkTeam3HumanGearSucc").prop("checked", false);
+		}
+	});
+	
+	$("#chkTeam3AttGear").click(function(){
+		
+		if(!this.checked){
+			$("#chkTeam3RobotGearSucc").prop("checked", false);
+			$("#chkTeam3HumanGearSucc").prop("checked", false);
+		}
+		else{
+			$("#chkTeam3Cross").prop("checked", true);
+		}
+	});
+	
+	$("#chkTeam3RobotGearSucc").click(function(){
+		
+		if(!this.checked){
+			$("#chkTeam3HumanGearSucc").prop("checked", false);
+		}
+		else{
+			$("#chkTeam3Cross").prop("checked", true);
+			$("#chkTeam3AttGear").prop("checked", true);
+		}
+	});	
+	
+	$("#chkTeam3HumanGearSucc").click(function(){
+		
+		if(this.checked){
+			$("#chkTeam3Cross").prop("checked", true);
+			$("#chkTeam3AttGear").prop("checked", true);
+			$("#chkTeam3RobotGearSucc").prop("checked", true);
+		}
+	});
+	
+	$("#chkTeam3AttHigh").click(function(){
+		
+		if(!this.checked){
+			$("#chkTeam3HighSucc").prop("checked", false);
+		}
+		else{
+			$("#chkTeam3AttLow").prop("checked", false);
+			$("#chkTeam3LowSucc").prop("checked", false);
+		}
+	});
+	
+	$("#chkTeam3HighSucc").click(function(){
+		
+		if(this.checked){
+			$("#chkTeam3AttHigh").prop("checked", true)
+			$("#chkTeam3AttLow").prop("checked", false);
+			$("#chkTeam3LowSucc").prop("checked", false);
+			
+		}
+	});
+	
+	$("#chkTeam3AttLow").click(function(){
+		
+		if(!this.checked){
+			$("#chkTeam3LowSucc").prop("checked", false);
+		}
+		else{
+			$("#chkTeam3AttHigh").prop("checked", false);
+			$("#chkTeam3HighSucc").prop("checked", false);
+		}
+	});
+	
+	$("#chkTeam3LowSucc").click(function(){
+		
+		if(this.checked){
+			$("#chkTeam3AttLow").prop("checked", true)
+			$("#chkTeam3AttHigh").prop("checked", false);
+			$("#chkTeam3HighSucc").prop("checked", false);
+			
+		}
+	});
+})

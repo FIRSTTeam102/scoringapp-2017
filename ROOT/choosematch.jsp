@@ -37,6 +37,11 @@ select mt1.match_number, m.start_time, mt1.team_number as team1, mt2.team_number
 	</h1>
 </header>
 <body>
+<%
+pageContext.setAttribute(initialsKey, initials);
+%>
+
+
 <input type="submit" class="submit" name="btnTopNext" value="Next" onclick="finishChoosematch()"/>
 <form id="MatchForm" method="post">
 		<c:forEach var="row" items="${matches.rows}">
@@ -62,7 +67,7 @@ select mt1.match_number, m.start_time, mt1.team_number as team1, mt2.team_number
 					<c:out value="${row.team3}" />
 				</div>
 				<div class="team_holder">
-					<c:out value="${row.initials}" />
+					<c:out value="${row.initials }" />
 				</div>
 				<div style="clear: both;"></div>
 			</label>

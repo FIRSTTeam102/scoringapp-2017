@@ -16,11 +16,12 @@ if(request.getParameter("user") != null && request.getParameter("pass") != null)
 		session.setAttribute("isLoggedIn", true);
 		%>
 			<script id='self-destruct'>
-				//Created loggedOn var (currently unused); calls function to request choosematch.jsp.
+				//Created loggedOn var (currently unused); calls function to request alliance.jsp.
 				loggedOn = true;
 				console.log("Login successful");
 				
 				swap("alliance", false);
+				remove();
 			</script>
 		<%
 	}

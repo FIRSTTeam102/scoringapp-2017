@@ -33,7 +33,7 @@ if(osName.equals("Linux")){
 
 <% //Sets keys for naming session variables and request parameters. Useful because renaming a variable is easier than renaming a string.
 final String 
-userKey = "user", //Username = user's initials.
+initialsKey = "user", //Username = user's initials.
 passKey = "pass",
 allianceKey = "allianceColor",
 tournamentNameKey = "tournamentName",
@@ -56,7 +56,7 @@ String alliance = (String)session.getAttribute(allianceKey); //Alliance color
 String tournament = (String)session.getAttribute(tournamentNameKey); //Tournament name
 String tournamentID = (String)session.getAttribute(tournamentIDKey); //
 String match = (String)session.getAttribute(matchKey); //Match number
-String initials = (String)session.getAttribute(userKey); //User = initials
+String initials = (String)session.getAttribute(initialsKey); //User = initials
 
 //vvv Using Integer objects to avoid null pointer exceptions.
 Integer team1 = (Integer)session.getAttribute(team1Key); //Team numbers

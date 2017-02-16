@@ -39,24 +39,20 @@
 		
 %>
 
-<% 
-	//pageContext.setAttribute(initialsKey, initials);
-%>
 
-<c:if test="${initials != null }">
-	<sql:update dataSource="${database}">
-		UPDATE match_teams
-			SET initials = ?
-				WHERE
-				tournament_id = ?
-				AND match_number = ?
-				AND team_number = ?
-		<sql:param value="${initials }"/>
-		<sql:param value="${tournament.rows[0].id}" />
-		<sql:param value="${sessionScope.matchNumber }" />
-		<sql:param value="${sessionScope.team3 }" />
-	</sql:update>
-</c:if>
+
+<sql:update dataSource="${database}">
+	UPDATE match_teams
+		SET initials = ?
+			WHERE
+			tournament_id = ?
+			AND match_number = ?
+			AND team_number = ?
+	<sql:param value="${sessionScope.initials }"/>
+	<sql:param value="${tournament.rows[0].id}" />
+	<sql:param value="${sessionScope.matchNumber }" />
+	<sql:param value="${sessionScope.team3 }" />
+</sql:update>
 
 <%
 	}
