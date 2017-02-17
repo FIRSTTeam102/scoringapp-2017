@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     <%@include file="auth.jsp"%>
 <%
+	
 	String[] t1AutInf = new String[7];
 	String[] t2AutInf = new String[7]; 
 	String[] t3AutInf = new String[7]; //will hold all relavant autonomous info foreach team
@@ -40,8 +41,12 @@
 	t3AutInf[5] = request.getParameter("t3AttemptedShot");
 	t3AutInf[6] = request.getParameter("t3ShotSucc");
 	
-	//Make MySQL calls below, using Integer.parseInt() on 
-	
+	/*
+		MySQL Calls
+	*/
 %>	
-	
+<script id="self-destruct">
+			setTimeout( function() {swap("teleop",false);}, 3);
+			remove();
+		</script>	
 	

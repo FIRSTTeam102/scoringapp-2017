@@ -1,7 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@include file="auth.jsp"%>
-
+<script src="resources/js/autonomous.js"></script>
+<h2>Autonomous Scoring</h2>
+<!-- Pilot selector ---- Not yet fully implemented --- -->
+<div id="pilotSelection">
+	<h2>The alliance's pilot teams</h2>
+	<h4>Pilot 1</h4>
+	<input type="radio" name="pilot1Select" id="rdoPilTeam1" value="<%=team1%>"/>
+		<label id="lblPilTeam1" for="rdoPilTeam1" class="teamNumber"><%=team1%></label>
+	<input type="radio" name="pilot1Select" id="rdoPilTeam2" value="<%=team2%>"/>
+		<label id="lblPilTeam2" for="rdoPilTeam2" class="teamNumber"><%=team2%></label>
+	<input type="radio" name="pilot1Select" id="rdoPilTeam3" value="<%=team3%>"/>
+		<label id="lblPilTeam3" for="rdoPilTeam3" class="teamNumber"><%=team3%></label>
+		
+		
+	<h4>Pilot 2</h4>
+	<input type="radio" name="pilot2Select" id="rdoPilTeam1" value="<%=team1%>"/>
+		<label id="lblPilTeam1" for="rdoPilTeam1" class="teamNumber"><%=team1%></label>
+	<input type="radio" name="pilot2Select" id="rdoPilTeam2" value="<%=team2%>"/>
+		<label id="lblPilTeam2" for="rdoPilTeam2" class="teamNumber"><%=team2%></label>
+	<input type="radio" name="pilot2Select" id="rdoPilTeam3" value="<%=team3%>"/>
+		<label id="lblPilTeam3" for="rdoPilTeam3" class="teamNumber"><%=team3%></label>
+		
+		
+</div>
 <nav class="team" id="team1holder">
 	<h2 id="team1Number" class="teamNumber"><%=team1%></h2>
 	<div class="form-line" id="team1Cross">
@@ -110,4 +133,4 @@
 			value="Y"> <label for="chkTeam3LowSucc">Scored Low Boiler</label>
 	</div>
 </nav>
-<script src="resources/js/autonomous.js"></script>
+<input type="submit" onclick="finishAutonomous()" id="subAuto"> 

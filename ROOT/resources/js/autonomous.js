@@ -1,7 +1,10 @@
 function finishAutonomous(){
 	console.log("starting finishAutonomous()");
 	
-
+	
+	var alPilot1 = $("input[name='pilot1Select']:checked").val();
+	var alPilot2 = $("input[name='pilot1Select']:checked").val();
+	
 	//t1NoShow not implemented yet
 	//t2NoShow t3NoShow
 	
@@ -20,6 +23,9 @@ function finishAutonomous(){
 	//var t1SS = $("input[name='']:checked").val(); 
 	$.post("autonomous-finish.jsp",
 			{
+			//pilot1: alPilot1
+			//pilot2: alPilot2
+			//
 			//  t1Baseline: t1Xbaseln
 			//	t2Baseline: t2Xbaseln
 	    	//  t3Baseline: t3Xbaseln

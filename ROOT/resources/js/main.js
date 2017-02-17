@@ -197,7 +197,31 @@ function requestAutonomous(){
 
 
 function requestTeleop(){
-	console.error("teleop not made yet");
+	console.log("Requesting teleop...");
+	   $.post("teleop.jsp",
+	{
+	
+	},
+	
+	function(data, status, xhr) {
+		//Sets the content div's contents to whatever the jsp page has on it.
+		if(status == "success"){
+			console.log("Successfully loaded teleop");
+			if(currentPage != "#teleop"){
+				$(currentPage).hide(0, function(){
+					
+					$("#teleop").html(data.trim());
+					currentPage = "#teleop";
+				});
+			}else{
+				$("#teleop").html(data.trim());
+			}
+			
+		}else if(status == "error"){
+			alert("A teleop error occurred.");
+			error("Error:" + xhr.status);
+		}
+	});
 }
 
 function finishTeleop(){

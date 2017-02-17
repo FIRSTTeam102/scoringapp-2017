@@ -8,8 +8,9 @@
 		session.setAttribute(allianceKey, allianceInput);
 		%>
 		<script id="self-destruct">
-			setTimeout( function(){requestChoosematch();}, 1); 
-			//remove();
+			//setTimeout( function(){requestChoosematch();}, 1); 
+			setTimeout( function() {swap("choosematch",true);}, 3);
+			remove();
 		</script>
 		<%
 	}
