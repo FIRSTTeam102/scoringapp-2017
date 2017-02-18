@@ -7,6 +7,9 @@
 	String[] t2AutInf = new String[7]; 
 	String[] t3AutInf = new String[7]; //will hold all relavant autonomous info foreach team
 	
+	int pilot1, pilot2;
+	
+	
 	/* ARRAY INDICIES AND WHAT THEY CORRESPOND TO:
 	0: NoShowed
 	1. Crossed Baseline
@@ -16,6 +19,9 @@
 	5: Attempted Shot
 	6: Shot S/F 
 	*/
+	
+	pilot1 = Integer.parseInt(request.getParameter("pilot1"));
+	pilot2 = Integer.parseInt(request.getParameter("pilot2"));
 	
 	t1AutInf[0] = request.getParameter("t1Showed");
 	t1AutInf[1] = request.getParameter("t1XBaseline");

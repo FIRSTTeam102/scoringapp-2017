@@ -252,3 +252,9 @@ function lighter(color){
 		swap('login', false);
 	}
 }
+
+function subTeleCycle() {
+	console.error("Not implemented yet!");
+	
+}
+

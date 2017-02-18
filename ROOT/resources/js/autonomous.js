@@ -1,4 +1,17 @@
+/*UNFINISHED FUNCTION THING MAKES ARRAY OF INPUT ELEMENTS AND MAKES NEW ARRAY OF THEIR IDS + WHETHER THEY ARE CHECKED OR NOT
+ * 
+ * var autoChkInput = $("#autonomous input");
+var arrayOut = [];
+for(var i = 0; i < arr.length; i++){
+	arrayOut[i] = autoChkInput[i].id + " " + autoChkInput[i].checked;
+}
+ * 
+ * 
+ */
+
+
 function finishAutonomous(){
+	if (($("input[name='pilot1Select']:checked").val() != null)&&($("input[name='pilot2Select']:checked").val() != null)) {
 	console.log("starting finishAutonomous()");
 	
 	
@@ -23,35 +36,35 @@ function finishAutonomous(){
 	//var t1SS = $("input[name='']:checked").val(); 
 	$.post("autonomous-finish.jsp",
 			{
-			//pilot1: alPilot1
-			//pilot2: alPilot2
+			pilot1: alPilot1,
+			pilot2: alPilot2,
 			//
-			//  t1Baseline: t1Xbaseln
-			//	t2Baseline: t2Xbaseln
-	    	//  t3Baseline: t3Xbaseln
+			//  t1Baseline: t1Xbaseln,
+			//	t2Baseline: t2Xbaseln,
+	    	//  t3Baseline: t3Xbaseln,
 			 
-			//  t1AttemptedGear: t1AttGear
-			//	t2AttemptedGear: t2AttGear
-			//	t3AttemptedGear: t3AttGear
+			//  t1AttemptedGear: t1AttGear,
+			//	t2AttemptedGear: t2AttGear,
+			//	t3AttemptedGear: t3AttGear,
 			 
-			//	t1RoboGearSucc: t1RGS
-			//	t2RoboGearSucc: t2RGS
-		    //  t3RoboGearSucc: t3RGS
+			//	t1RoboGearSucc: t1RGS,
+			//	t2RoboGearSucc: t2RGS,
+		    //  t3RoboGearSucc: t3RGS,
 			
-			//  t1HuGearSucc: t1HGS
-			//	t2HuGearSucc: t2HGS
-			//  t3HuGearSucc: t3HGS
+			//  t1HuGearSucc: t1HGS,
+			//	t2HuGearSucc: t2HGS,
+			//  t3HuGearSucc: t3HGS,
 		
-			//  t1AttemptedShot: t1AttShot
-			//  t2AttemptedShot: t2AttShot
-			//  t3AttemptedShot: t3AttShot
+			//  t1AttemptedShot: t1AttShot,
+			//  t2AttemptedShot: t2AttShot,
+			//  t3AttemptedShot: t3AttShot,
 			
-			//  t1ShotSucc: t1SS
-			//  t2ShotSucc: t2SS
-			//  t3ShotSucc: t3SS
+			//  t1ShotSucc: t1SS,
+			//  t2ShotSucc: t2SS,
+			//  t3ShotSucc: t3SS,
 		
-			//  t1Showed: t1NoShow
-			//  t2Showed: t2NoShow
+			//  t1Showed: t1NoShow,
+			//  t2Showed: t2NoShow,
 			//  t3Showed: t3NoShow
 			}, function(data, status, xhr) {
 				console.log("Received finishAutonomous");
@@ -65,9 +78,13 @@ function finishAutonomous(){
 					alert("An error occurred.");
 					error("Error:" + xhr.status);
 				}
-			});
+			});	
 			console.log("Requested finishAutonomous");
-	
+	}
+	else {
+		alert("You gotta select those pilots my dude");
+		console.error("Pilots unselected");
+	}
 }
 t1c = "#chkTeam1Cross"
 $(function(){
