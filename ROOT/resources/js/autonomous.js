@@ -8,9 +8,43 @@ for(var i = 0; i < arr.length; i++){
  * 
  * 
  */
-
-
 function finishAutonomous(){
+	if ( $("input[name='pilot1Select']:checked").val() == null || $("input[name='pilot2Select']:checked").val() == null ) {
+		alert("Team pilots have not been selected!");
+		
+	} else{
+		
+		var autoChkInput = $("#autonomous input");
+		var arrayOut = [];
+		
+		for(var i = 0; i < autoChkInput.length; i++){
+			arrayOut[i] = autoChkInput[i].id + " " + autoChkInput[i].checked;
+		}
+		
+		var autoData = arrayOut.toString();
+		console.log("autoData: " + autoData);
+		
+		$.post("autonomous-finish.jsp",
+			{
+				autoData: autoData
+			}
+			,function(data, status, xhr) {
+				console.log("Received finishAutonomous");
+				//Sets the content div's contents to whatever the jsp page has on it.
+				//$("#content").html(data); 
+				if(status == "success"){
+					$("#content").append(data.trim()); 
+					console.log("finishAutonomous successful");
+				}else if(status == "error"){
+					
+					alert("An error occurred on finishAutonomous.");
+					error("Error:" + xhr.status);
+				}
+			});	
+	}
+}
+
+function finishAutonomousOld(){
 	if (($("input[name='pilot1Select']:checked").val() != null)&&($("input[name='pilot2Select']:checked").val() != null)) {
 	console.log("starting finishAutonomous()");
 	

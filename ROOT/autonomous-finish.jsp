@@ -1,7 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@include file="auth.jsp"%>
+
 <%
+if(request.getParameter("autoData") != null){
+	String autoData = request.getParameter("autoData");
+	
+	List<String> items = Arrays.asList(autoData.split("\\s*,\\s*"));
+	
+	out.print(items);
+	
+	%>
+	<script id="self-destruct">
+		
+		alert("Got data");
+		
+		//setTimeout( function() {swap("teleop",true);}, 3);
+		remove();
+	</script>
+<%
+}else{
+%>
+	<script id="self-destruct">
+		console.error("Data not successfully passed to alliance-finish");
+		remove();
+	</script>
+<%
+}
+%>
+
+<%--
 	
 	String[] t1AutInf = new String[7];
 	String[] t2AutInf = new String[7]; 
@@ -50,9 +78,10 @@
 	/*
 		MySQL Calls
 	*/
-%>	
+--%>	
+<!-- 
 <script id="self-destruct">
 			setTimeout( function() {swap("teleop",false);}, 3);
 			remove();
-		</script>	
-	
+</script>	
+	 -->
