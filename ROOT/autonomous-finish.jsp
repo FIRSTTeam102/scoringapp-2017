@@ -1,87 +1,109 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@include file="auth.jsp"%>
-
-<%
-if(request.getParameter("autoData") != null){
-	String autoData = request.getParameter("autoData");
-	
-	List<String> items = Arrays.asList(autoData.split("\\s*,\\s*"));
-	
-	out.print(items);
-	
-	%>
-	<script id="self-destruct">
-		
-		alert("Got data");
-		
-		//setTimeout( function() {swap("teleop",true);}, 3);
-		remove();
-	</script>
-<%
-}else{
-%>
+    
+<c:if test="${param.autoData == null }">
 	<script id="self-destruct">
 		console.error("Data not successfully passed to alliance-finish");
 		remove();
 	</script>
-<%
-}
-%>
+</c:if>
 
-<%--
+<c:if test="${param.autoData != null }">
 	
-	String[] t1AutInf = new String[7];
-	String[] t2AutInf = new String[7]; 
-	String[] t3AutInf = new String[7]; //will hold all relavant autonomous info foreach team
+	<%-- Gathers data and creates array --%>
+	<c:set var="autoData" value="${param.autoData }"/>
+	<c:set var="dataArray" value="${fn:split(autoData, ',')}"/>
+	<c:set var="autoDataRW" value=""/>
 	
-	int pilot1, pilot2;
-	
-	
-	/* ARRAY INDICIES AND WHAT THEY CORRESPOND TO:
-	0: NoShowed
-	1. Crossed Baseline
-	2: Attempted Gear
-	3: Robot Gear S/F
-	4: Human Gear S/F
-	5: Attempted Shot
-	6: Shot S/F 
-	*/
-	
-	pilot1 = Integer.parseInt(request.getParameter("pilot1"));
-	pilot2 = Integer.parseInt(request.getParameter("pilot2"));
-	
-	t1AutInf[0] = request.getParameter("t1Showed");
-	t1AutInf[1] = request.getParameter("t1XBaseline");
-	t1AutInf[2] = request.getParameter("t1AttemptedGear");
-	t1AutInf[3] = request.getParameter("t1RoboGearSucc");
-	t1AutInf[4] = request.getParameter("t1HuGearSucc");
-	t1AutInf[5] = request.getParameter("t1AttemptedShot");
-	t1AutInf[6] = request.getParameter("t1ShotSucc");
-	
-	t2AutInf[0] = request.getParameter("t2Showed");
-	t2AutInf[1] = request.getParameter("t2XBaseline");
-	t2AutInf[2] = request.getParameter("t2AttemptedGear");
-	t2AutInf[3] = request.getParameter("t2RoboGearSucc");
-	t2AutInf[4] = request.getParameter("t2HuGearSucc");
-	t2AutInf[5] = request.getParameter("t2AttemptedShot");
-	t2AutInf[6] = request.getParameter("t2ShotSucc");
-	
-	t3AutInf[0] = request.getParameter("t3Showed");
-	t3AutInf[1] = request.getParameter("t3XBaseline");
-	t3AutInf[2] = request.getParameter("t3AttemptedGear");
-	t3AutInf[3] = request.getParameter("t3RoboGearSucc");
-	t3AutInf[4] = request.getParameter("t3HuGearSucc");
-	t3AutInf[5] = request.getParameter("t3AttemptedShot");
-	t3AutInf[6] = request.getParameter("t3ShotSucc");
-	
-	/*
-		MySQL Calls
-	*/
---%>	
-<!-- 
+	<%-- Rewrites true-false into Y-N. This way is safer than doing it in JS, because dangerous SQL could be injected otherwise. --%>
+	<c:forEach var="str" items="${dataArray }">
+		<c:if test="${fn:substringAfter(str, ' ').equals('true') }">
+			<c:set var="autoDataRW" value="${autoDataRW},${fn:substringBefore(str, ' ')}Y"/>
+		</c:if>
+		<c:if test="${fn:substringAfter(str, ' ').equals('false') }">
+			<c:set var="autoDataRW" value="${autoDataRW},${fn:substringBefore(str, ' ')}F"/>
+		</c:if>
+	</c:forEach>
+
+<%-- Team 1 --%>
+<sql:update dataSource="${database}">
+		UPDATE match_teams
+			SET auto_crossed_baseline = ?
+				, auto_gear_attempt = ?
+				, auto_gear_outcome = ?
+				, auto_goal_attempt = ?
+			WHERE
+				tournament_id = ?
+				AND match_number = ?
+				AND team_number = ?
+		<sql:param value="${fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam1Cross'), ',' )}" /><%-- Searches through string and finds the one character 
+																			between specified search key and the comma (indicating next variable)--%>
+		<sql:param value="${fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam1AttGear'), ',' )}" />
+		<sql:param value="${
+			fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam1HumanGearSucc'), ',' ) == 'Y' ? 
+				'S' : fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam1RobotGearSucc'), ',' ) == 'Y' ?
+					'H' : 'R'
+		}" /> <%-- Determines the gear outcome by whether robot or human was successful: S=success, H=human failure, R=robot failure --%>
+		<sql:param value="${fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam1Cross'), ',' )}" />
+		<sql:param value="${tournament.rows[0].id}" />
+		<sql:param value="${sessionScope.matchNumber }" />
+		<sql:param value="${sessionScope.team1 }" />
+</sql:update>
+
+<%-- Team 2 --%>
+<sql:update dataSource="${database}">
+		UPDATE match_teams
+			SET auto_crossed_baseline = ?
+				, auto_gear_attempt = ?
+				, auto_gear_outcome = ?
+				, auto_goal_attempt = ?
+			WHERE
+				tournament_id = ?
+				AND match_number = ?
+				AND team_number = ?
+		<sql:param value="${fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam2Cross'), ',' )}" />
+		<sql:param value="${fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam2AttGear'), ',' )}" />
+		<sql:param value="${
+			fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam2HumanGearSucc'), ',' ) == 'Y' ? 
+				'S' : fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam2RobotGearSucc'), ',' ) == 'Y' ?
+					'H' : 'R'
+		}" />
+		<sql:param value="${fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam2Cross'), ',' )}" />
+		<sql:param value="${tournament.rows[0].id}" />
+		<sql:param value="${sessionScope.matchNumber }" />
+		<sql:param value="${sessionScope.team2 }" />
+</sql:update>
+
+<%-- Team 3 --%>
+<sql:update dataSource="${database}">
+		UPDATE match_teams
+			SET auto_crossed_baseline = ?
+				, auto_gear_attempt = ?
+				, auto_gear_outcome = ?
+				, auto_goal_attempt = ?
+			WHERE
+				tournament_id = ?
+				AND match_number = ?
+				AND team_number = ?
+		<sql:param value="${fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam3Cross'), ',' )}" />
+		<sql:param value="${fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam3AttGear'), ',' )}" />
+		<sql:param value="${
+			fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam3HumanGearSucc'), ',' ) == 'Y' ? 
+				'S' : fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam3RobotGearSucc'), ',' ) == 'Y' ?
+					'H' : 'R'
+		}" />
+		<sql:param value="${fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam3Cross'), ',' )}" />
+		<sql:param value="${tournament.rows[0].id}" />
+		<sql:param value="${sessionScope.matchNumber }" />
+		<sql:param value="${sessionScope.team3 }" />
+</sql:update>
+
 <script id="self-destruct">
-			setTimeout( function() {swap("teleop",false);}, 3);
-			remove();
-</script>	
-	 -->
+	console.log("Autonomous successful");
+	
+	setTimeout( function() {swap("teleop",true);}, 0);
+	remove();
+</script>
+</c:if>
+

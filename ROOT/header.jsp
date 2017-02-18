@@ -1,1 +1,0 @@
-<img class='title-small' src='resources/images/header-steamworks-1.png' /><div id='Tournament' class='header'><c:out value='${tournament.rows[0].title}' /></div>

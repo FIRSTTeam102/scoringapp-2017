@@ -24,16 +24,26 @@ h2{
 	margin-left: 10%;
 }
 
-.title-large{
-	margin-top: 20px;
-	max-width: 90%;
-	max-height: 300px;
-}
-
 .title-small{
 	margin-top: 20px;
 	max-width: 45%;
 	max-height: 150px;
+}
+
+.sidenav{
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 30px; /* Place content 60px from the top */
+    padding-left: 20px;
+    /*transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}.sidenav input{
+    display: block;
+    margin-top: 20px !important;
 }
 
 .login-container, .alliance-container, .autonomous-container{
@@ -66,6 +76,11 @@ input[type=submit]{
 	text-shadow: 1px 1px 7px black;
 	background-image: url("../images/gear-small-bg-gradient.jpg");
 	background-size: cover;
+}
+
+input[type=submit]:disabled{
+	background: -webkit-gradient(linear, left top, left bottom, from(#a7a9af), to(#393950));
+    color: #c7c7c7;
 }
 
 input[type=checkbox], input[type=radio] {
@@ -193,7 +208,6 @@ h1{
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5e5e', endColorstr='#ff0000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 	height: 800px;
 }
-
 
 @media only screen and (max-width: 800px){
 	body{

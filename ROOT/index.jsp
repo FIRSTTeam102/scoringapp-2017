@@ -1,3 +1,14 @@
+<%-- Loads tag libraries to load database page without errors --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+
+<%@include file="database.jsp" %>
+
+<sql:query dataSource="${database}" var="tournamentQuery">
+	SELECT * FROM tournaments WHERE active = 'Y'
+</sql:query>
+<c:set var="tournament" scope="session" value="${tournamentQuery}" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +25,8 @@
 	<div class="content" id="content">
 		<!-- Contains larger header image by default. Main header loaded as part of AJAX. -->
 		<header id="header">
-			<img class="title-large" src="resources/images/header-steamworks-1.png"/>
+			<img class='title-small' src='resources/images/header-steamworks-1.png' />
+			<div id='Tournament' class='header'><c:out value='${tournament.rows[0].title}' /></div>
 		</header>
 		<nav id="login" class="login-container">
 				<form id="login-form" class="login-form" name="login-form" method="post">
@@ -40,11 +52,11 @@
 						<input type="submit" value="Mobile Alliance Lighter" onclick="swap('lighter', false);">
 					</div>
 		</nav>
-		<nav id="alliance" class="alliance-container"></nav>
-		<nav id="choosematch" class="choosematch-container"></nav>
-		<div id="autonomous" class="autonomous-container"></div>
-		<div id="teleop" class="teleop-container"></div>
-		<nav id="postmatch" class="postmatch-container"></nav>
+		<article id="alliance" class="alliance-container"></article>
+		<article id="choosematch" class="choosematch-container"></article>
+		<article id="autonomous" class="autonomous-container"></article>
+		<article id="teleop" class="teleop-container"></article>
+		<article id="postmatch" class="postmatch-container"></article>
 		<div id="lighter" style="display: none;">
 			<div>&nbsp;</div>
 			<div class="red"><a onclick="lighter('red');" style="color: white; text-decoration: none;">Red Lighter</a></div>
@@ -52,6 +64,14 @@
 			<div class="blue"><a onclick="lighter('blue');" style="color: white; text-decoration: none;" class="fullWidthLink">Blue Lighter</a></div>
 		</div>
 	</div>
+	<nav id="sidenav" class="sidenav">
+		<input type="submit" id="navLogin" value="Login" onclick="swap('login')">
+		<input disabled type="submit" id="navAlliance" value="Alliance">
+		<input disabled type="submit" id="navChoosematch" value="Choosematch">
+		<input disabled type="submit" id="navAutonomous" value="Autonomous">
+		<input disabled type="submit" id="navTeleop" value="Teleop">
+		<input disabled type="submit" id="navPostMatch" value="Post-Match">
+	</nav>
 	<input id="back" type="submit" value="Back" onclick="lighter();" style="display: none"><!-- for lighter -->
 </body>
 </html>

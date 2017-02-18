@@ -2,13 +2,6 @@
 	pageEncoding="ISO-8859-1"%>
 <%@include file="auth.jsp"%>
 
-<sql:query dataSource="${database}" var="tournamentQuery">
-	<%="SELECT * FROM tournaments WHERE active = 'Y'"%>
-</sql:query>
-<c:set var="tournament" scope="session" value="${tournamentQuery}" />
-
-
-
 <form id="AllianceForm" method="post" >
 	<div id="Alliance">
 		<div>Choose an Alliance</div>
@@ -27,7 +20,3 @@
 	<div style="padding-top: 10px; padding-bottom: 10px;">
 		<input type="submit" class="submit" name="btnChooseMatch" onclick="finishAlliance()" value="Choose Match"/>
 	</div>
-<script id="self-destruct">
-	$("#header").html("<%@include file='header.jsp'%>");
-	remove();
-</script>

@@ -65,7 +65,7 @@ function requestAllianceSelection(){
 				//Sets the content div's contents to whatever the jsp page has on it.
 				//$("#content").html(data); 
 				if(status == "success"){
-					console.log("Successfully loaded AllianceSelection");
+					
 					if(currentPage != "#alliance"){
 						$(currentPage).hide(0, function(){
 							
@@ -96,7 +96,7 @@ function finishAlliance() {
 		//$("#content").html(data); 
 		if(status == "success"){
 			$("#content").append(data.trim()); //alliance-finish will return scripts
-			console.log("finishAlliance successful");
+			
 		}else if(status == "error"){
 			
 			alert("An error occurred.");
@@ -118,7 +118,7 @@ function requestChoosematch(){
 		//Sets the content div's contents to whatever the jsp page has on it.
 		//$("#content").html(data); 
 		if(status == "success"){
-			console.log("Successfully loaded Choosematch");
+			
 			if(currentPage != "#choosematch"){
 				$(currentPage).hide(0, function(){
 					
@@ -140,7 +140,7 @@ function finishChoosematch() {
 	console.log("starting finishChoosematch()");
 	var theMatch = $("input[name='rdoMatch']:checked").val();
 	if (theMatch== null) {
-		alert("Gotta select a match my dude");
+		alert("Please select a match!");
 	}else {
 	console.log(theMatch);
 
@@ -154,7 +154,7 @@ function finishChoosematch() {
 				//$("#content").html(data); 
 				if(status == "success"){
 					$("#content").append(data.trim()); //alliance-finish will return scripts
-					console.log("finishChoosematch successful");
+					
 				}else if(status == "error"){
 					
 					alert("An error occurred.");
@@ -176,7 +176,7 @@ function requestAutonomous(){
 		//Sets the content div's contents to whatever the jsp page has on it.
 		//$("#content").html(data); 
 		if(status == "success"){
-			console.log("Successfully loaded autonomous");
+			
 			if(currentPage != "#autonomous"){
 				$(currentPage).hide(0, function(){
 					
@@ -206,7 +206,7 @@ function requestTeleop(){
 	function(data, status, xhr) {
 		//Sets the content div's contents to whatever the jsp page has on it.
 		if(status == "success"){
-			console.log("Successfully loaded teleop");
+			
 			if(currentPage != "#teleop"){
 				$(currentPage).hide(0, function(){
 					

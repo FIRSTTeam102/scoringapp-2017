@@ -22,7 +22,6 @@ function finishAutonomous(){
 		}
 		
 		var autoData = arrayOut.toString();
-		console.log("autoData: " + autoData);
 		
 		$.post("autonomous-finish.jsp",
 			{

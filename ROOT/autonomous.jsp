@@ -2,11 +2,9 @@
     pageEncoding="ISO-8859-1"%>
 <%@include file="auth.jsp"%>
 <script src="resources/js/autonomous.js"></script>
-<h2>Autonomous Scoring</h2>
-<!-- Pilot selector ---- Not yet fully implemented --- -->
+<h1>Autonomous</h1>
 <div id="pilotSelection">
-	<h2>The alliance's pilot teams</h2>
-	<h4>Pilot 1</h4>
+	<h2 class="teamNumber">Pilot 1</h2>
 	<input type="radio" name="pilot1Select" id="rdoPilTeam1" value="<%=team1%>"/>
 		<label id="lblPilTeam1" for="rdoPilTeam1" class="teamNumber"><%=team1%></label>
 	<input type="radio" name="pilot1Select" id="rdoPilTeam2" value="<%=team2%>"/>
@@ -15,7 +13,7 @@
 		<label id="lblPilTeam3" for="rdoPilTeam3" class="teamNumber"><%=team3%></label>
 		
 		
-	<h4>Pilot 2</h4>
+	<h2 class="teamNumber" >Pilot 2</h2>
 	<input type="radio" name="pilot2Select" id="rdoPilTeam1" value="<%=team1%>"/>
 		<label id="lblPilTeam1" for="rdoPilTeam1" class="teamNumber"><%=team1%></label>
 	<input type="radio" name="pilot2Select" id="rdoPilTeam2" value="<%=team2%>"/>
