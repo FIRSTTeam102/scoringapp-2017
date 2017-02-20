@@ -9,6 +9,7 @@ var pages = {
 		//vvv extra pages
 		lighter: true //element is already embedded into html and is hidden
 };
+var nav = false;
 
 $(function(){
 	initLogin();
@@ -52,6 +53,24 @@ function swap(page, refreshInput){
 function navSwap(page, refreshInput){ //Used to check whether the nav buttons are disabled or not, then passes the same request to swap() if it is not disabled
 	if($("#nav-"+page).prop("disabled") == false){
 		swap(page, refreshInput);
+	}
+}
+
+function toggleSidenav(){
+	if(!nav){ //if nav = false, nav must be opened
+		
+		$("#sidenav").css("width", "16%");
+		$("#sidenav").css("padding-left", "20px");
+		$("#content").css("margin-left", "19%");
+		nav = true;
+		
+	}else{	
+		
+		$("#sidenav").css("width", "0%");
+		$("#sidenav").css("padding-left", "0px");
+		$("#content").css("margin-left", "10%");
+		nav = false;
+		
 	}
 }
 

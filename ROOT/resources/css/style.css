@@ -22,6 +22,7 @@ h2{
 .content{
 	width: 80%;
 	margin-left: 10%;
+	transition: 0.3s;
 }
 
 .title-small{
@@ -38,12 +39,22 @@ h2{
     top: 0;
     left: 0;
     overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 30px; /* Place content 60px from the top */
-    padding-left: 20px;
-    /*transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    padding-top: 60px; /* Place content 60px from the top */
+    padding-left: 0px;
+    transition: 0.3s; /* 0.5 second transition effect to slide in the sidenav */
+    
+    background-color: rgba(139, 199, 226, 0.41);
 }.sidenav input{
     display: block;
     margin-top: 20px !important;
+    transition: 0.3s;
+}.sidenav-button{
+    display: block;
+    position: fixed;
+    z-index: 2;
+    top: 20px;
+    left: 20px;
+	
 }
 
 .login-container, .alliance-container, .autonomous-container{
@@ -177,12 +188,17 @@ h1{
 	margin-top: 2px;
 	margin-bottom: 10px;
 	padding: .2em 0 .2em 0;
+}.form-block{
+	margin: 0;
+	border: solid 1px white;
+}.pilot1{
+	float: left;
+    margin-left: 5%;
 }
 
 .blue{
 	background-color: blue;
-}
-.red{
+}.red{
 	background-color: red;
 }
 
@@ -196,8 +212,7 @@ h1{
 	background: radial-gradient(ellipse at center,  #7c87cc 0%,#3f54cc 50%,#4153cc 51%,#142bcc 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7c87cc', endColorstr='#142bcc',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 	height: 800px;
-}
-.redLighter{
+}.redLighter{
 	background: #ff5e5e; /* Old browsers */
 	background: -moz-radial-gradient(center, ellipse cover, #ff5e5e 0%, #ff3838 29%, #ff2121 50%, #ff0000 100%); /* FF3.6+ */
 	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#ff5e5e), color-stop(29%,#ff3838), color-stop(50%,#ff2121), color-stop(100%,#ff0000)); /* Chrome,Safari4+ */

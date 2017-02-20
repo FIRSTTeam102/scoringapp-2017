@@ -15,8 +15,8 @@
 			</label>
 		</div>
 	</div>
-
 </form>
-	<div style="padding-top: 10px; padding-bottom: 10px;">
-		<input type="submit" class="submit" name="btnChooseMatch" onclick="finishAlliance()" value="Choose Match"/>
-	</div>
+
+<div style="padding-top: 10px; padding-bottom: 10px;">
+	<input type="submit" class="submit" name="btnChooseMatch" onclick="finishAlliance()" value="Choose Match"/>
+</div>

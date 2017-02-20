@@ -64,6 +64,7 @@
 			<div class="blue"><a onclick="lighter('blue');" style="color: white; text-decoration: none;" class="fullWidthLink">Blue Lighter</a></div>
 		</div>
 	</div>
+	<input class=sidenav-button id="sidenav-buton" type="submit" onclick="toggleSidenav()" value="Navigation"/>
 	<nav id="sidenav" class="sidenav">
 		<input type="submit" id="navLogin" value="Login" onclick="swap('login', false)">
 		<input disabled type="submit" id="nav-alliance" onclick="navSwap('alliance', true)" value="Alliance">
