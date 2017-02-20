@@ -30,7 +30,7 @@
 		</header>
 		<nav id="login" class="login-container">
 				<form id="login-form" class="login-form" name="login-form" method="post">
-					Your Initials: <input type="text" name="initialsInput" maxlength="4" autocorrect=off autocapitalize=characters ><br>
+					Your Initials: <input type="text" name="initialsInput" maxlength="4" autocorrect="off" autocapitalize="characters" ><br>
 					&nbsp;&nbsp;&nbsp;Password: <input type="password" name="password"><br>
 					<div class="btn-container">
 						<input type="submit" value="Team 102 Scoring App">
@@ -65,12 +65,12 @@
 		</div>
 	</div>
 	<nav id="sidenav" class="sidenav">
-		<input type="submit" id="navLogin" value="Login" onclick="swap('login')">
-		<input disabled type="submit" id="navAlliance" value="Alliance">
-		<input disabled type="submit" id="navChoosematch" value="Choosematch">
-		<input disabled type="submit" id="navAutonomous" value="Autonomous">
-		<input disabled type="submit" id="navTeleop" value="Teleop">
-		<input disabled type="submit" id="navPostMatch" value="Post-Match">
+		<input type="submit" id="navLogin" value="Login" onclick="swap('login', false)">
+		<input disabled type="submit" id="nav-alliance" onclick="navSwap('alliance', true)" value="Alliance">
+		<input disabled type="submit" id="nav-choosematch" onclick="navSwap('choosematch', true)" value="Choosematch">
+		<input disabled type="submit" id="nav-autonomous" onclick="navSwap('autonomous', true)" value="Autonomous">
+		<input disabled type="submit" id="nav-teleop" onclick="navSwap('teleop', true)" value="Teleop">
+		<input disabled type="submit" id="nav-postMatch" onclick="navSwap('postmatch', true)" value="Post-Match">
 	</nav>
 	<input id="back" type="submit" value="Back" onclick="lighter();" style="display: none"><!-- for lighter -->
 </body>

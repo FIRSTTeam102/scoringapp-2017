@@ -49,6 +49,12 @@ function swap(page, refreshInput){
 	}
 }
 
+function navSwap(page, refreshInput){ //Used to check whether the nav buttons are disabled or not, then passes the same request to swap() if it is not disabled
+	if($("#nav-"+page).prop("disabled") == false){
+		swap(page, refreshInput);
+	}
+}
+
 function remove(){
 	//Any script returned from server has id 'self-destruct' and at the end of its code calling this function.
 	//removes any script with id of 'self-destruct'
@@ -75,6 +81,9 @@ function requestAllianceSelection(){
 					}else{
 						$("#alliance").html(data.trim());
 					}
+					pages["alliance"] = true; //Sets it that alliance-sel is loaded
+					
+					$("#nav-alliance").prop("disabled", false);
 						
 			}else if(status == "error"){
 					error("Error:" + xhr.status);
@@ -128,6 +137,9 @@ function requestChoosematch(){
 			}else{
 				$("#choosematch").html(data.trim());
 			}
+			pages["choosematch"] = true;
+			
+			$("#nav-choosematch").prop("disabled", false);
 			
 		}else if(status == "error"){
 			alert("A choosematch error occurred.");
@@ -186,6 +198,9 @@ function requestAutonomous(){
 			}else{
 				$("#autonomous").html(data.trim());
 			}
+			pages["autonomous"] = true;
+			
+			$("#nav-autonomous").prop("disabled", false);
 			
 		}else if(status == "error"){
 			alert("An autonomous error occurred.");
@@ -216,6 +231,9 @@ function requestTeleop(){
 			}else{
 				$("#teleop").html(data.trim());
 			}
+			
+			pages["teleop"] = true;
+			$("#nav-teleop").prop("disabled", false);
 			
 		}else if(status == "error"){
 			alert("A teleop error occurred.");
