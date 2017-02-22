@@ -21,7 +21,7 @@ function toggleSidenav(){
 	if(!nav){ //if nav = false, nav must be opened
 		if(window.innerWidth < 800){
 			$("#sidenav").css("width", "100%");
-			$("#sidenav").css("padding-left", "20px");
+			$("#sidenav").css("padding-left", "0px");
 			nav = true;
 		}else{
 			$("#sidenav").css("width", "16%");

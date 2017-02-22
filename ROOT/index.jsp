@@ -27,7 +27,7 @@
 		<!-- Contains larger header image by default. Main header loaded as part of AJAX. -->
 		<header id="header">
 			<img class='title-small' src='resources/images/header-steamworks-1.png' />
-			<div id='Tournament' class='header'><c:out value='${tournament.rows[0].title}' /></div>
+			<h2 class='header' id='Tournament'><c:out value='${tournament.rows[0].title}' /></h2>
 		</header>
 		<nav id="login" class="login-container">
 				<form id="login-form" class="login-form" name="login-form" method="post">

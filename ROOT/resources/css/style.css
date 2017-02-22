@@ -239,7 +239,11 @@ h1{
 @media only screen and (max-width: 800px){
 	body{
 		background-image: url("../images/steampunk-stylized-960.jpg");
-		background-size: cover;
+		background-size: auto;
+		font-size: 1.3em;
+	}.content{
+		width: 90%;
+		margin-left: 5%;
 	}
 	.team{
 		border: solid 1px white;
@@ -247,6 +251,10 @@ h1{
 	    width: 80%;
 	    margin-left: 10%;
 	    margin-bottom: 35px;
+	}#autonomous .form-line{
+		margin-bottom: 2px;
+		padding: 0;
+		
 	}
 	.sidenav{
 	    height: 400px; /* 100% Full-height */
