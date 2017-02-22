@@ -12,7 +12,7 @@
 			<label for="rdoPil1Team1" class="pilot">Pilot 1</label>
 		</div>
 		<div class="form-line" id="pilot2team2">
-			<input type="radio" name="pilot1Select" id="rdoPil2Team1">
+			<input type="radio" name="pilot2Select" id="rdoPil2Team1">
 			<label for="rdoPil2Team1" class="pilot">Pilot 2</label>
 		</div>
 	</div>
@@ -61,7 +61,7 @@
 			<label for="rdoPil1Team2" class="pilot">Pilot 1</label>
 		</div>
 		<div class="form-line" id="pilot2team2">
-			<input type="radio" name="pilot1Select" id="rdoPil2Team2">
+			<input type="radio" name="pilot2Select" id="rdoPil2Team2">
 			<label for="rdoPil2Team2" class="pilot">Pilot 2</label>
 		</div>
 	</div>
@@ -110,7 +110,7 @@
 			<label for="rdoPil1Team3" class="pilot">Pilot 1</label>
 		</div>
 		<div class="form-line" id="pilot2team2">
-			<input type="radio" name="pilot1Select" id="rdoPil2Team3">
+			<input type="radio" name="pilot2Select" id="rdoPil2Team3">
 			<label for="rdoPil2Team3" class="pilot">Pilot 2</label>
 		</div>
 	</div>

@@ -75,4 +75,6 @@ pageContext.setAttribute(initialsKey, initials);
 </form>
 
 <input type="submit" class="submit" name="btnNext" value="Next" onclick="finishChoosematch()"/>
+<input type="submit" class="submit" name="btnRefresh" value="Refresh Page" onclick="requestChoosematch()"/>
 </body>
+

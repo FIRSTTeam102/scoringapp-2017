@@ -54,9 +54,6 @@
 	<sql:param value="${sessionScope.team3 }" />
 </sql:update>
 
-<%
-	}
-%>
 
 <sql:query dataSource="${database}" var="result">
 	<%="select mt1.match_number, m.start_time, mt1.team_number as team1, mt2.team_number as team2, mt3.team_number as team3, mt1.initials"
@@ -79,3 +76,23 @@
 			setTimeout( function(){swap("autonomous",false);}, 1); 
 			//remove();
 </script>
+
+
+<script id="self-destruct">
+	team1 = <%=team1%>;
+	team2 = <%=team2%>;
+	team3 = <%=team3%>;
+	matchNum = "<%=matchNum%>"
+	remove();
+</script>
+
+<%
+	}else{
+%>
+	<script id="self-destruct">
+		alert("No match selected, or an error has occurred");
+		remove();
+	</script>
+<%
+	}
+%>

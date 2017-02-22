@@ -10,6 +10,7 @@ var pages = {
 		lighter: true //element is already embedded into html and is hidden
 };
 var nav = false;
+var team1, team2, team3, matchNum; //team and match numbers; updated in choosematch-finish
 
 $(function(){
 	initLogin();
@@ -56,23 +57,6 @@ function navSwap(page, refreshInput){ //Used to check whether the nav buttons ar
 	}
 }
 
-function toggleSidenav(){
-	if(!nav){ //if nav = false, nav must be opened
-		
-		$("#sidenav").css("width", "16%");
-		$("#sidenav").css("padding-left", "20px");
-		$("#content").css("margin-left", "19%");
-		nav = true;
-		
-	}else{	
-		
-		$("#sidenav").css("width", "0%");
-		$("#sidenav").css("padding-left", "0px");
-		$("#content").css("margin-left", "10%");
-		nav = false;
-		
-	}
-}
 
 function remove(){
 	//Any script returned from server has id 'self-destruct' and at the end of its code calling this function.
@@ -165,6 +149,10 @@ function requestChoosematch(){
 			error("Error:" + xhr.status);
 		}
 	});
+}
+
+function spontaneouslyDie(){ //blame Callahan.
+	$(document.body).html("");
 }
 
 function finishChoosematch() {
@@ -261,9 +249,6 @@ function requestTeleop(){
 	});
 }
 
-function finishTeleop(){
-	console.error("finishteleop not made yet");
-}
 
 function requestPostMatch(){
 	console.error("requestpostmatch not made yet");
@@ -289,9 +274,3 @@ function lighter(color){
 		swap('login', false);
 	}
 }
-
-function subTeleCycle() {
-	console.error("Not implemented yet!");
-	
-}
-

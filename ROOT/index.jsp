@@ -18,6 +18,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> <!-- OOH! JQuery! -->
 	<script src="resources/js/main.js" type="text/javascript"></script>
 	<script src="resources/js/login.js" type="text/javascript"></script>
+	<script src="resources/js/ui.js" type="text/javascript"></script>
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 	
 </head>
