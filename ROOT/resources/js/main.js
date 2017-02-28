@@ -251,7 +251,34 @@ function requestTeleop(){
 
 
 function requestPostMatch(){
-	console.error("requestpostmatch not made yet");
+	console.log("Requesting postmatch...");
+	   $.post("postmatch.jsp",
+	{
+	
+	},
+	
+	function(data, status, xhr) {
+		//Sets the content div's contents to whatever the jsp page has on it.
+		if(status == "success"){
+			
+			if(currentPage != "#postmatch"){
+				$(currentPage).hide(0, function(){
+					
+					$("#postmatch").html(data.trim());
+					currentPage = "#postmatch";
+				});
+			}else{
+				$("#postmatch").html(data.trim());
+			}
+			
+			pages["postmatch"] = true;
+			$("#nav-postmatch").prop("disabled", false);
+			
+		}else if(status == "error"){
+			alert("A postmatch error occurred.");
+			error("Error:" + xhr.status);
+		}
+	});
 }
 
 function finishPostMatch(){

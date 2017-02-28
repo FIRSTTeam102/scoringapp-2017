@@ -34,7 +34,7 @@ $(function(){
 		subTeleCycle("online");
 	})
 	$("#btnFinishTeleop").click(function(){
-		finishTeleop();
+		requestPostMatch(); //or should this be swap postmatch?
 	});
 });
 
