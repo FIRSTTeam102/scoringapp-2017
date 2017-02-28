@@ -47,15 +47,91 @@ function unHighlight(element){
 }
 
 function subTeleCycle(button){
+	//Hi Jordan! I went with the switch, but as you can see, it's pretty much useless...
+	var val;
 	switch(button){
 	case "success":
-		var val = $("input[name='actionAttempt']:checked")[0].value;
+		console.log(button);
+		val = $("input[name='actionAttempt']:checked")[0].value;//holds value of button clicked; not necessary (and can't be used) with broke down and back online
+		$.post("teleop-cycle.jsp",
+				{
+					clickedButton: button,
+					action: val
+				},
+				function(data, status, xhr) {
+					if(status == "success"){
+					//clear all checkboxes... for now, I'll just reload teleop again?	
+						requestTeleop();	
+					}else if(status == "error"){
+						alert("A teleop error occurred.");
+						error("Error:" + xhr.status);
+					}
+				});
+			
 		break;
-		//finish this
+	case "fail":
+		console.log(button);
+		val = $("input[name='actionAttempt']:checked")[0].value;//holds value of button clicked; not necessary (and can't be used) with broke down and back online
+		$.post("teleop-cycle.jsp",
+				{
+					clickedButton: button,
+					action: val
+				},
+				function(data, status, xhr) {
+					if(status == "success"){
+					//clear all checkboxes... for now, I'll just reload teleop again?	
+						requestTeleop();
+					}else if(status == "error"){
+						alert("A teleop error occurred.");
+						error("Error:" + xhr.status);
+					}
+				});
+		
+		break;
+	
+	case "broke":
+		console.log(button);
+		var val = "broke"
+		$.post("teleop-cycle.jsp",
+				{
+					clickedButton: button,
+					action: val
+				},
+				function(data, status, xhr) {
+					if(status == "success"){
+					//clear all checkboxes, etc... for now, I'll just reload teleop again?	
+						requestTeleop();	
+					}else if(status == "error"){
+						alert("A teleop error occurred.");
+						error("Error:" + xhr.status);
+					}
+				});
+		
+		break;
+	
+	case "online":
+		console.log(button);
+		var val = "online"
+		$.post("teleop-cycle.jsp",
+				{
+					clickedButton: button,
+					action: val
+				},
+				function(data, status, xhr) {
+					if(status == "success"){
+					//clear all checkboxes, etc... for now, I'll just reload teleop again?	
+					requestTeleop();	
+					}else if(status == "error"){
+						alert("A teleop error occurred.");
+						error("Error:" + xhr.status);
+					}
+				});
+		break;
+
 	
 	}
 }
 
-function post(info){
+function post(info){//what's this for?
 	//info is object
 }
