@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@include file="auth.jsp"%> 
+
+<%-- for teleop-cycle --%>
+<c:set var="cycleNum" scope="session" value="${0 }"/>
+
 <script src="resources/js/teleop.js"></script>
-<%//THERE ARE <BR>s RIGHT NOW!!!!!!!!!!!(And other gross styling things)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-%>
 <h1>Teleop</h1>
 <table class="form-block teams" id="teleopTeamHolder">
 	<tr>

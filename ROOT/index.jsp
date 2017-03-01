@@ -7,7 +7,8 @@
 <sql:query dataSource="${database}" var="tournamentQuery">
 	SELECT * FROM tournaments WHERE active = 'Y'
 </sql:query>
-<c:set var="tournament" scope="session" value="${tournamentQuery}" />
+<c:set var="tournament" scope="session" value="${tournamentQuery.rows[0].title}" />
+<c:set var="tournamentID" scope="session" value="${tournamentQuery.rows[0].ID}" />
 
 <!DOCTYPE html>
 <html>
@@ -27,7 +28,7 @@
 		<!-- Contains larger header image by default. Main header loaded as part of AJAX. -->
 		<header id="header">
 			<img class='title-small' src='resources/images/header-steamworks-1.png' />
-			<h2 class='header' id='Tournament'><c:out value='${tournament.rows[0].title}' /></h2>
+			<h2 class='header' id='Tournament'><c:out value='${tournament}' /></h2>
 		</header>
 		<nav id="login" class="login-container">
 				<form id="login-form" class="login-form" name="login-form" method="post">

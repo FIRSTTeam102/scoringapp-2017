@@ -13,12 +13,24 @@
 <% //Rejects pageload if request is not 'POST' or if isLoggedIn is not true
 final String loginKey = "isLoggedIn";
 
-if(!request.getMethod().equals("POST") || session.getAttribute(loginKey) == null){
+if(!request.getMethod().equals("POST")){
 	%>
 	<script>alert("Either there has been an error or you have attempted to load a page you are unauthorized to access.");</script>
 	<%
 	response.setStatus(response.SC_MOVED_TEMPORARILY);
 	response.setHeader("Location", ".");
+}if(session.getAttribute(loginKey) == null){
+	%>
+	<script id="self-destruct">
+		setTimeout(function(){
+			currentPage = "#login";
+			swap("login");
+		}, 5);
+
+		remove();
+	</script>
+	<%
+	throw new javax.servlet.jsp.SkipPageException();
 }
 %>
 

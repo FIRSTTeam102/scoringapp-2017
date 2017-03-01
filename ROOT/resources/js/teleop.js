@@ -34,7 +34,8 @@ $(function(){
 		subTeleCycle("online");
 	})
 	$("#btnFinishTeleop").click(function(){
-		requestPostMatch(); //or should this be swap postmatch?
+		//requestPostMatch(); //or should this be swap postmatch?
+		swap("postmatch"); //yup
 	});
 });
 
@@ -132,6 +133,18 @@ function subTeleCycle(button){
 	}
 }
 
-function post(info){//what's this for?
-	//info is object
+function post(teleData){//what's this for?
+	//teleData must be object
+	$.post(
+		"teleop-cycle.jsp",
+		teleData,
+		function(data, status, xhr) {
+			if(status == "success"){
+			//clear all checkboxes... for now, I'll just reload teleop again?	
+				$("#teleop input").prop('checked', false);
+				$("#content").append(data);
+			}else if(status == "error"){
+				error("Error:" + xhr.status);
+			}
+		});
 }
