@@ -5,13 +5,13 @@
 	<%
 		String btn = request.getParameter("clickedButton");
 		String action = request.getParameter("action");
-		//String cycleTeam = request.getParameter("cycleTeam"); //hopefully this will be a team/number, not a class or something
+		int cycleTeam = Integer.parseInt(request.getParameter("cycleTeam")); 
 			
 		
 		//MySQL thingz
 	%>
 	
-<!--<c:choose>
+<c:choose>
 		<%-- Handles new matches and match cycle number. --%>
 		<c:when test="${param.newMatch=='true' }">
 			<c:set var="cycleNum" scope="session" value="${0}"/>
@@ -19,13 +19,13 @@
 		<c:otherwise>
 			<c:set var="cycleNum" scope="session" value="${cycleNum + 1 }"/>
 		</c:otherwise>
-	</c:choose>-->
+	</c:choose>
 	
 	<script id="self-destruct">
 		console.log(<c:out value="${cycleNum }"/>);
 	</script>
 	
-	<c:if test="${true != true }">
+	<c:if test="${true != true }"><%//will get removed after app goes live %>
 		<sql:update dataSource="${database}">
 			INSERT INTO match_team_cycles VALUES (?, ?, ?, ?, ?, ?);
 			<sql:param value="${tournaments.rows[0].ID}" />
@@ -36,7 +36,7 @@
 			<sql:param value='<%=request.getParameterValues("succeeded")[0]%>' />
 		</sql:update>
 	</c:if>
-</c:catch>
+<!--</c:catch>-->
 <c:if test="${teleCycleException != null }">
 	<script id="self-destruct">
 		console.error("Teleop-cycle error! Error:" + '<c:out value="${teleCycleException}"/>');

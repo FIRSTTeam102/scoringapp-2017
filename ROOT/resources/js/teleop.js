@@ -53,15 +53,17 @@ function subTeleCycle(button){
 	switch(button){
 	case "success":
 		console.log(button);
+		console.log(selectedTeam.innerHTML);//testing how to pass the team
 		val = $("input[name='actionAttempt']:checked")[0].value;//holds value of button clicked; not necessary (and can't be used) with broke down and back online
 		$.post("teleop-cycle.jsp",
 				{
 					clickedButton: button,
 					action: val,
-					//cycleTeam: selectedTeam
+					cycleTeam: selectedTeam.innerHTML
 				},
 				function(data, status, xhr) {
 					if(status == "success"){
+						console.log(data);
 					//clear all checkboxes... for now, I'll just reload teleop again?	
 					requestTeleop();	
 					}else if(status == "error"){
