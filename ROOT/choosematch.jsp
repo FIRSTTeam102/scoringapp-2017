@@ -22,7 +22,7 @@ select mt1.match_number, m.start_time, mt1.team_number as team1, mt2.team_number
 <c:set var="matches" scope="page" value="${result}" />
 
 <div id="title" style="visibility: hidden">
-	Match Selection: <c:forEach var="t" items="${tournament.rows}">
+	Match Selection: <c:forEach var="t" items="${tournaments.rows}">
 		<c:out value="${t.title}" />
 	</c:forEach></div>
 <script id="self-destruct">

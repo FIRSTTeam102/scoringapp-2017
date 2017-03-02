@@ -4,7 +4,7 @@
 <script src="resources/js/autonomous.js"></script>
 <h1>Autonomous</h1>
 <c:catch var="autoException">
-	<nav class="team" id="team1holder"><% int x = 5/0; %>
+	<nav class="team" id="team1holder"><%// int x = 5/0; %>
 		<h2 id="team1Number" class="teamNumber form-block"><%=team1%></h2>
 		<div class="form-block">
 			<div class="form-line pilot1" id="pilot1team1">

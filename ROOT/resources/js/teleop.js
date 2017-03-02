@@ -57,12 +57,13 @@ function subTeleCycle(button){
 		$.post("teleop-cycle.jsp",
 				{
 					clickedButton: button,
-					action: val
+					action: val,
+					//cycleTeam: selectedTeam
 				},
 				function(data, status, xhr) {
 					if(status == "success"){
 					//clear all checkboxes... for now, I'll just reload teleop again?	
-						requestTeleop();	
+					requestTeleop();	
 					}else if(status == "error"){
 						alert("A teleop error occurred.");
 						error("Error:" + xhr.status);

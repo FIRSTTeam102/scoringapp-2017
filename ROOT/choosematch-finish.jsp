@@ -49,7 +49,7 @@
 			AND match_number = ?
 			AND team_number = ?
 	<sql:param value="${sessionScope.initials }"/>
-	<sql:param value="${tournament.rows[0].id}" />
+	<sql:param value="${tournaments.rows[0].id}" />
 	<sql:param value="${sessionScope.matchNumber }" />
 	<sql:param value="${sessionScope.team3 }" />
 </sql:update>

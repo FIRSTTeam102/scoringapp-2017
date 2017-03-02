@@ -46,7 +46,7 @@
 					'H' : 'R'
 		}" /> <%-- Determines the gear outcome by whether robot or human was successful: S=success, H=human failure, R=robot failure --%>
 		<sql:param value="${fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam1Cross'), ',' )}" />
-		<sql:param value="${tournament.rows[0].id}" />
+		<sql:param value="${tournaments.rows[0].id}" />
 		<sql:param value="${sessionScope.matchNumber }" />
 		<sql:param value="${sessionScope.team1 }" />
 </sql:update>
@@ -70,7 +70,7 @@
 					'H' : 'R'
 		}" />
 		<sql:param value="${fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam2Cross'), ',' )}" />
-		<sql:param value="${tournament.rows[0].id}" />
+		<sql:param value="${tournaments.rows[0].id}" />
 		<sql:param value="${sessionScope.matchNumber }" />
 		<sql:param value="${sessionScope.team2 }" />
 </sql:update>
@@ -94,7 +94,7 @@
 					'H' : 'R'
 		}" />
 		<sql:param value="${fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam3Cross'), ',' )}" />
-		<sql:param value="${tournament.rows[0].id}" />
+		<sql:param value="${tournaments.rows[0].id}" />
 		<sql:param value="${sessionScope.matchNumber }" />
 		<sql:param value="${sessionScope.team3 }" />
 </sql:update>
