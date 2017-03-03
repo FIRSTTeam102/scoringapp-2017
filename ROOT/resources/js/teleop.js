@@ -75,6 +75,7 @@ function subTeleCycle(button){
 		break;
 	case "fail":
 		console.log(button);
+		console.log(selectedTeam.innerHTML);
 		val = $("input[name='actionAttempt']:checked")[0].value;//holds value of button clicked; not necessary (and can't be used) with broke down and back online
 		$.post("teleop-cycle.jsp",
 				{
@@ -95,6 +96,7 @@ function subTeleCycle(button){
 	
 	case "broke":
 		console.log(button);
+		console.log(selectedTeam.innerHTML);
 		var val = "broke"
 		$.post("teleop-cycle.jsp",
 				{
@@ -115,6 +117,7 @@ function subTeleCycle(button){
 	
 	case "online":
 		console.log(button);
+		console.log(selectedTeam.innerHTML);
 		var val = "online"
 		$.post("teleop-cycle.jsp",
 				{
