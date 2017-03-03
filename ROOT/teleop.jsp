@@ -3,15 +3,15 @@
 <%@include file="auth.jsp"%> 
 
 <%-- for teleop-cycle --%>
-<c:set var="cycleNum" scope="session" value="${0 }"/>
+<c:set var="cycleNum" scope="session" value="${0}"/>
 
 <script src="resources/js/teleop.js"></script>
 <h1>Teleop</h1>
 <table class="form-block teams" id="teleopTeamHolder">
 	<tr>
-		<td class="teleTeam" id="team1">102</td>
-		<td class="teleTeam" id="team2">1403</td>
-		<td class="teleTeam" id="team3">303</td>
+		<td class="teleTeam" id="team1"><%=team1 %></td>
+		<td class="teleTeam" id="team2"><%=team2 %></td>
+		<td class="teleTeam" id="team3"><%=team3 %></td>
 	</tr>
 </table>
 <div class="form-block">
