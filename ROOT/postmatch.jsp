@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     <%@include file="auth.jsp"%> 
     
-<h1>Ayyyy postmatch</h1>
+<h1>Post-match</h1>
 <div id="blueAlliancePostMatch">
 
 </div>

@@ -47,6 +47,10 @@
 		}
 		//can directly pass in cycleTeam b/c sent thru Integer.parseInt and is an int
 		
+		//Creates EL variables of sqlOp and sqlSucc for use in sql stuff
+		pageContext.setAttribute("cycleTeam", cycleTeam);
+		pageContext.setAttribute("sqlOp", sqlOp);
+		pageContext.setAttribute("sqlSucc", sqlSucc);
 		
 		//Thar be MySQL thingz below
 	%>
@@ -65,15 +69,15 @@
 		console.log(<c:out value="${cycleNum }"/>);
 	</script>
 	
-	<c:if test="${true != true }"><%//will get removed after app goes live %>
+	<c:if test="${sqlOp != null}"><%-- tests if there is an operation done (just in case) --%>
 		<sql:update dataSource="${database}">
 			INSERT INTO match_team_cycles VALUES (?, ?, ?, ?, ?, ?);<%-- Columns in order: Tournament, matchnum, team number, cycle number, operation, success --%>
-			<sql:param value="${tournaments.rows[0].ID}" />
+			<sql:param value="${tournamentID}" />
 			<sql:param value="${sessionScope.matchNumber}" />
-			<sql:param value='<%=cycleTeam%>' />
+			<sql:param value='${cycleTeam }' />
 			<sql:param value='${cycleNum}' />
-			<sql:param value='<%=sqlOp%>' />
-			<sql:param value='<%=sqlSucc%>' />
+			<sql:param value='${sqlOp}' />
+			<sql:param value='${sqlSucc}' />
 		</sql:update>
 	</c:if>
 <!-- </c:catch> 

@@ -43,7 +43,7 @@ function finishAutonomous(){
 	}
 }
 
-function finishAutonomousOld(){
+function finishAutonomousOld(){ //unused
 	if (($("input[name='pilot1Select']:checked").val() != null)&&($("input[name='pilot2Select']:checked").val() != null)) {
 	console.log("starting finishAutonomous()");
 	
@@ -120,6 +120,8 @@ function finishAutonomousOld(){
 	}
 }
 t1c = "#chkTeam1Cross"
+	
+//Sets up clicky stuff! $(function(){ is jquery's way of executing once dom tree is done
 $(function(){
 	$("#chkTeam1Cross").click(function(){
 		if(!this.checked){
