@@ -281,8 +281,34 @@ function requestPostMatch(){
 	});
 }
 
-function finishPostMatch(){
-	console.error("finishpostmatch not made yet");
+function finishPostmatch(){
+	//console.error("finishpostmatch not made yet");
+	var blueT1Climb = $("input[name='']:checked").val();
+	
+	var blueRotNum = $("input[name='rdoBlueRotors']:checked").val();
+	var redRotNum = $("input[name='rdoRedRotors']:checked").val();
+	
+	
+	
+	$.post("postmatch-finish.jsp",
+			{
+			   //throw in all the things 
+				// remember to filter inputs on other end
+				
+			   
+			}, function(data, status, xhr) {
+				console.log("Received finishPostmatch");
+				//Sets the content div's contents to whatever the jsp page has on it.
+				//$("#content").html(data); 
+				if(status == "success"){
+					$("#content").append(data.trim()); 
+					
+				}else if(status == "error"){
+					
+					alert("An error occurred.");
+					error("Error:" + xhr.status);
+				}
+			});
 }
 
 function lighter(color){
