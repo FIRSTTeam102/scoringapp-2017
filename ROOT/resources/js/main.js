@@ -282,18 +282,18 @@ function requestPostMatch(){
 }
 
 function finishPostmatch(){
-	//blue stuff
-	var blueT1Climb = $("input[name='chkTeam1ClimbedRope']:checked").val();
-	var blueT2Climb = $("input[name='chkTeam2ClimbedRope']:checked").val();
-	var blueT3Climb = $("input[name='chkTeam3ClimbedRope']:checked").val();
+	// stuff
+	var T1Climb = $("input[name='chkTeam1ClimbedRope']:checked").val();
+	var T2Climb = $("input[name='chkTeam2ClimbedRope']:checked").val();
+	var T3Climb = $("input[name='chkTeam3ClimbedRope']:checked").val();
 	
-	var blueRotNum = $("input[name='rdoBlueRotors']:checked").val();
+	var RotNum = $("input[name='rdoRotors']:checked").val();
 	
-	var blueNumFouls = $("input[id='txtBlueNumFouls']").val();
-	var blueNumFoulPts = $("input[id='txtBlueNumFoulPts']").val();
+	var NumFouls = $("input[id='txtNumFouls']").val();
+	var NumFoulPts = $("input[id='txtNumFoulPts']").val();
 	
-	var bluePts = $("input[id='txtBluePts']").val();
-	var bluePressure = $("input[id='txtBluePressure']").val();
+	var Pts = $("input[id='txtPts']").val();
+	var Pressure = $("input[id='txtPressure']").val();
 	
 	
 	
@@ -302,14 +302,14 @@ function finishPostmatch(){
 			   //throw in all the things 
 				// remember to filter inputs on other end
 				
-				t1Climb: blueT1Climb,
-				t2Climb: blueT2Climb,
-				t3Climb: blueT3Climb,
-				rotNum: blueRotNum,
-				numFouls: blueNumFouls,
-				numFoulPoints: blueNumFoulPts,
-				pts: bluePts,
-				pressure: bluePressure
+				t1Climb: T1Climb,
+				t2Climb: T2Climb,
+				t3Climb: T3Climb,
+				rotNum: RotNum,
+				numFouls: NumFouls,
+				numFoulPoints: NumFoulPts,
+				pts: Pts,
+				pressure: Pressure
 			   
 			}, function(data, status, xhr) {
 				console.log("Received finishPostmatch");

@@ -214,6 +214,14 @@ h1{
 	background-color: red;
 }
 
+.rope {
+	width: 33%;
+	display: table-cell;
+	padding: 10px 0% 10px 0%;
+	margin-top: 25px;
+	border: solid 1px white;
+}
+
 .blueLighter{
 	background: #7c87cc; /* Old browsers */
 	background: -moz-radial-gradient(center, ellipse cover,  #7c87cc 0%, #3f54cc 50%, #4153cc 51%, #142bcc 100%); /* FF3.6+ */

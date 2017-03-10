@@ -6,22 +6,50 @@
 	boolean t2Climbed = Boolean.parseBoolean(request.getParameter("t2Climb"));
 	boolean t3Climbed = Boolean.parseBoolean(request.getParameter("t3Climb"));
 	
+	int rotorCount;
+	int foulCount;
+	int foulPoints;
+	int points;
+	int pressure;
+	
 	if(request.getParameter("rotNum") == null){
-		int rotorCount = 0;
+		rotorCount = 0;
 	}else{
-		int rotorCount = Integer.parseInt(request.getParameter("rotNum"));
+		rotorCount = Integer.parseInt(request.getParameter("rotNum"));
 	}
 	if(request.getParameter("numFouls") == null){
-		int rotorCount = 0;
+		foulCount = 0;
 	}else{
-		int rotorCount = Integer.parseInt(request.getParameter("rotNum"));
+		foulCount = Integer.parseInt(request.getParameter("numFouls"));
+	}
+	if(request.getParameter("numFoulPoints") == null){
+		foulPoints = 0;
+	}else{
+		foulPoints = Integer.parseInt(request.getParameter("numFoulPoints"));
+	}
+	/*if(request.getParameter("pts") == null){
+		points = 0;
+	}else{
+		points = Integer.parseInt(request.getParameter("points"));
+	}	*/
+	
+	try {
+		points = Integer.parseInt(request.getParameter("pts"));
+	}
+	catch (NumberFormatException l) {
+		points = 0;
 	}
 	
+	try {
+		pressure = Integer.parseInt(request.getParameter("pressure"));
+	}
+	catch (NumberFormatException l) {
+		pressure = 0;
+	}
 	
-	int foulCount = Integer.parseInt(request.getParameter("numFouls"));
-	int foulPoints = Integer.parseInt(request.getParameter("numFoulPoints"));
-	int points = Integer.parseInt(request.getParameter("pts"));
-	int pressure = Integer.parseInt(request.getParameter("pressure"));
 %>
-
+<script id="self-destruct">
+swap("choosematch",true);
+remove();
+</script>
 	<!--  	ADD COMPLETED FOR THE MATCH!!!!!!!! -->

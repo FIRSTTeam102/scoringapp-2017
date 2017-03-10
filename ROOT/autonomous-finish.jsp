@@ -32,8 +32,7 @@
 		</c:if>
 	</c:forEach>
 	
-	<c:out value="${sessionScope.matchNumber }" />
-	<c:out value="${sessionScope.team1 }${sessionScope.team2 }${sessionScope.team3 }"/>
+	
 	
 <!--  	
 <c:out value="${ autoDataRW}"/>
