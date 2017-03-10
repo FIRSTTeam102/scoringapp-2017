@@ -12,20 +12,16 @@
 	int points;
 	int pressure;
 	
-	if(request.getParameter("rotNum") == null){
-		rotorCount = 0;
-	}else{
+	try{
 		rotorCount = Integer.parseInt(request.getParameter("rotNum"));
+	}catch(NumberFormatException l){
+		rotorCount = 0;
 	}
-	if(request.getParameter("numFouls") == null){
-		foulCount = 0;
-	}else{
-		foulCount = Integer.parseInt(request.getParameter("numFouls"));
-	}
-	if(request.getParameter("numFoulPoints") == null){
-		foulPoints = 0;
-	}else{
+
+	try{
 		foulPoints = Integer.parseInt(request.getParameter("numFoulPoints"));
+	}catch(NumberFormatException l){
+		foulPoints = 0;
 	}
 	/*if(request.getParameter("pts") == null){
 		points = 0;
@@ -47,7 +43,64 @@
 		pressure = 0;
 	}
 	
+	pageContext.setAttribute("score", points);
+	pageContext.setAttribute("pressure", pressure);
+	pageContext.setAttribute("rotors", rotorCount);
+	pageContext.setAttribute("foulpts", foulPoints);
+	
 %>
+<%-- 	debugging
+			<c:out value="${score}"/>
+			<c:out value="${pressure}"/>
+			<c:out value="${rotors}"/>
+			<c:out value="${foulpts}"/>
+			<c:out value="${tournamentID}"/>
+			<c:out value="${matchNum}"/>
+--%>
+<c:choose>
+	<c:when test="${alliance == 'Blue' }">
+		<sql:update dataSource="${database }">
+			UPDATE matches
+				SET blue_score = ?
+			        , blue_pressure = ?
+			        , blue_rotors = ?
+			        , blue_foulpts = ?
+				WHERE
+					tournament_id = ?
+					AND match_number = ?
+			<sql:param value="${score}"/>
+			<sql:param value="${pressure}"/>
+			<sql:param value="${rotors}"/>
+			<sql:param value="${foulpts}"/>
+			<sql:param value="${tournamentID}"/>
+			<sql:param value="${matchNum}"/>
+		</sql:update>
+	</c:when>
+	<c:when test="${alliance == 'Red' }">
+		<sql:update dataSource="${database }">
+			UPDATE matches
+				SET 
+			        red_score = ?
+			        red_pressure = ?
+			        red_rotors = ?
+			        red_foulpts = ?
+				WHERE
+					tournament_id = ?
+					AND match_number = ?
+			<sql:param value="${score}"/>
+			<sql:param value="${pressure}"/>
+			<sql:param value="${rotors}"/>
+			<sql:param value="${foulpts}"/>
+			<sql:param value="${tournamentID}"/>
+			<sql:param value="${matchNum}"/>
+		</sql:update>
+	</c:when>
+	<c:otherwise>
+	<script id="self-destruct">
+	console.error('alliance thing problem thing in postmatch-finish');
+	</script>
+	</c:otherwise>
+</c:choose>
 <script id="self-destruct">
 swap("choosematch",true);
 remove();

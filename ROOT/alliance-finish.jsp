@@ -7,6 +7,7 @@
 	if (allianceInput != null) {
 		session.setAttribute(allianceKey, allianceInput);
 		%>
+		<c:set var="alliance" scope="session" value="${param.selAlliance }"/>
 		<script id="self-destruct">
 			//setTimeout( function(){requestChoosematch();}, 1); 
 			setTimeout( function() {swap("choosematch",true);}, 3);

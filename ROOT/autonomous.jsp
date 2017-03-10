@@ -2,10 +2,10 @@
     pageEncoding="ISO-8859-1"%>
 <%@include file="auth.jsp"%>
 <script src="resources/js/autonomous.js"></script>
-<h1>Autonomous</h1>
+<h1>Autonomous | Match <span id="match"><c:out value="${matchNum }"/></span> | <span id="alliance"><c:out value="${alliance }"/></span> Alliance</h1>
 <c:catch var="autoException">
 	<nav class="team" id="team1holder"><%// int x = 5/0; %>
-		<h2 id="team1Number" class="teamNumber form-block"><%=team1%></h2>
+		<h2 id="team1" class="teamNumber form-block"><%=team1%></h2>
 		<div class="form-block">
 			<div class="form-line pilot1" id="pilot1team1">
 				<input type="radio" name="pilot1Select" id="rdoPil1Team1">
@@ -54,7 +54,7 @@
 		</div>
 	</nav>
 	<nav class="team" id="team2holder">
-		<h2 id="team2Number" class="teamNumber form-block"><%=team2%></h2>
+		<h2 id="team2" class="teamNumber form-block"><%=team2%></h2>
 		<div class="form-block">
 			<div class="form-line pilot1" id="pilot1team1">
 				<input type="radio" name="pilot1Select" id="rdoPil1Team2">
@@ -103,7 +103,7 @@
 		</div>
 	</nav>
 	<nav class="team" id="team3holder">
-		<h3 id="team3Number" class="teamNumber form-block"><%=team3%></h3>
+		<h3 id="team3" class="teamNumber form-block"><%=team3%></h3>
 		<div class="form-block">
 			<div class="form-line pilot1" id="pilot1team1">
 				<input type="radio" name="pilot1Select" id="rdoPil1Team3">

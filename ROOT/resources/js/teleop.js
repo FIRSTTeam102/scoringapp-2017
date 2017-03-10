@@ -36,6 +36,7 @@ $(function(){
 	$("#btnFinishTeleop").click(function(){
 		//requestPostMatch(); //or should this be swap postmatch?
 		swap("postmatch"); //yup
+		pages["postmatch"] = true;
 	});
 });
 

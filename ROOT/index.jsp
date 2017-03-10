@@ -73,7 +73,7 @@
 		<input disabled type="submit" id="nav-choosematch" onclick="navSwap('choosematch', true)" value="Choosematch">
 		<input disabled type="submit" id="nav-autonomous" onclick="navSwap('autonomous', true)" value="Autonomous">
 		<input disabled type="submit" id="nav-teleop" onclick="navSwap('teleop', true)" value="Teleop">
-		<input disabled type="submit" id="nav-postMatch" onclick="navSwap('postmatch', true)" value="Post-Match">
+		<input disabled type="submit" id="nav-postmatch" onclick="navSwap('postmatch', true)" value="Post-Match">
 	</nav>
 	<input id="back" type="submit" value="Back" onclick="lighter();" style="display: none"><!-- for lighter -->
 </body>

@@ -1,21 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@include file="auth.jsp"%> 
-
-<h1>Post-match</h1>
+    
+<h1>Post-match | Match <span id="match"><c:out value="${matchNum }"/></span> | <span id="alliance"><c:out value="${alliance }"/></span> Alliance</h1>
 <div id="AlliancePostMatch">
 	<div class="form-block">
 		<div class="rope">
 			<input type="checkbox" name="chkTeam1ClimbedRope" id="chkTeam1ClimbedRope"
-							value="Y"> <label for="chkTeam1ClimbedRope"><%=team1%> climbed rope</label>
+							value="Y"> <label for="chkTeam1ClimbedRope"><span id="team1"><%=team1%></span> climbed rope</label>
 		</div>
 		<div class="rope">
 			<input type="checkbox" name="chkTeam2ClimbedRope" id="chkTeam2ClimbedRope"
-							value="Y"> <label for="chkTeam2ClimbedRope"><%=team2%> climbed rope</label>
+							value="Y"> <label for="chkTeam2ClimbedRope"><span id="team2"><%=team2%></span> climbed rope</label>
 		</div>
 		<div class="rope">
 			<input type="checkbox" name="chkTeam3ClimbedRope" id="chkTeam3ClimbedRope"
-							value="Y"> <label for="chkTeam3ClimbedRope"><%=team3%> climbed rope</label>
+							value="Y"> <label for="chkTeam3ClimbedRope"><span id="team3"><%=team3%></span> climbed rope</label>
 		</div>
 	</div>
 	<div class="form-block">

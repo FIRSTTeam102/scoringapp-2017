@@ -57,6 +57,24 @@ function navSwap(page, refreshInput){ //Used to check whether the nav buttons ar
 	}
 }
 
+function updateMatch(){
+	
+	$("#autonomous #team1").html(team1);
+	$("#autonomous #team2").html(team2);
+	$("#autonomous #team3").html(team3);
+	
+	$("#teleop #team1").html(team1);
+	$("#teleop #team2").html(team2);
+	$("#teleop #team3").html(team3);
+	
+	$("#postmatch #team1").html(team1);
+	$("#postmatch #team2").html(team2);
+	$("#postmatch #team3").html(team3);
+
+	$("#autonomous #match").html(match);
+	$("#teleop #match").html(match);
+	$("##match").html(match);
+}
 
 function remove(){
 	//Any script returned from server has id 'self-destruct' and at the end of its code calling this function.
@@ -216,8 +234,6 @@ function requestAutonomous(){
 	});
 }
 
-
-
 function requestTeleop(){
 	console.log("Requesting teleop...");
 	   $.post("teleop.jsp",
@@ -248,7 +264,6 @@ function requestTeleop(){
 		}
 	});
 }
-
 
 function requestPostMatch(){
 	console.log("Requesting postmatch...");

@@ -6,7 +6,7 @@
 <c:set var="cycleNum" scope="session" value="${0}"/>
 
 <script src="resources/js/teleop.js"></script>
-<h1>Teleop</h1>
+<h1>Teleop | Match <span id="match"><c:out value="${matchNum }"/></span> | <span id="alliance"><c:out value="${alliance }"/></span> Alliance</h1>
 <table class="form-block teams" id="teleopTeamHolder">
 	<tr>
 		<td class="teleTeam" id="team1"><%=team1 %></td>
