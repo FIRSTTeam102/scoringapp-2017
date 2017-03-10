@@ -8,11 +8,11 @@
 		<h2 id="team1" class="teamNumber form-block"><%=team1%></h2>
 		<div class="form-block">
 			<div class="form-line pilot1" id="pilot1team1">
-				<input type="radio" name="pilot1Select" id="rdoPil1Team1">
+				<input type="radio" name="pilot1Select" id="rdoPil1Team1" class="-pilot -team1" val="<c:out value='${team1}'/>">
 				<label for="rdoPil1Team1" class="pilot">Pilot 1</label>
 			</div>
 			<div class="form-line" id="pilot2team2">
-				<input type="radio" name="pilot2Select" id="rdoPil2Team1">
+				<input type="radio" name="pilot2Select" id="rdoPil2Team1" class="-pilot -team1" val="<c:out value='${team1}'/>">
 				<label for="rdoPil2Team1" class="pilot">Pilot 2</label>
 			</div>
 		</div>
@@ -57,11 +57,11 @@
 		<h2 id="team2" class="teamNumber form-block"><%=team2%></h2>
 		<div class="form-block">
 			<div class="form-line pilot1" id="pilot1team1">
-				<input type="radio" name="pilot1Select" id="rdoPil1Team2">
+				<input type="radio" name="pilot1Select" id="rdoPil1Team2" class="-pilot -team2" val="<c:out value='${team2}'/>">
 				<label for="rdoPil1Team2" class="pilot">Pilot 1</label>
 			</div>
 			<div class="form-line" id="pilot2team2">
-				<input type="radio" name="pilot2Select" id="rdoPil2Team2">
+				<input type="radio" name="pilot2Select" id="rdoPil2Team2" class="-pilot -team2" val="<c:out value='${team2}'/>">
 				<label for="rdoPil2Team2" class="pilot">Pilot 2</label>
 			</div>
 		</div>
@@ -106,11 +106,11 @@
 		<h3 id="team3" class="teamNumber form-block"><%=team3%></h3>
 		<div class="form-block">
 			<div class="form-line pilot1" id="pilot1team1">
-				<input type="radio" name="pilot1Select" id="rdoPil1Team3">
+				<input type="radio" name="pilot1Select" id="rdoPil1Team3" class="-pilot -team3" val="<c:out value='${team3}'/>">
 				<label for="rdoPil1Team3" class="pilot">Pilot 1</label>
 			</div>
 			<div class="form-line" id="pilot2team2">
-				<input type="radio" name="pilot2Select" id="rdoPil2Team3">
+				<input type="radio" name="pilot2Select" id="rdoPil2Team3" class="-pilot -team3" val="<c:out value='${team3}'/>">
 				<label for="rdoPil2Team3" class="pilot">Pilot 2</label>
 			</div>
 		</div>

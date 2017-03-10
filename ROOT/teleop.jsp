@@ -17,15 +17,15 @@
 <div class="form-block">
 	<div class="form-line">
 		<input type="radio" name="actionAttempt" id="attLowGoal" value="low"/>
-		<label for="AttLowGoal">Attempted Low Goal</label>
+		<label for="attLowGoal">Attempted Low Goal</label>
 	</div>
 	<div class="form-line">
 		<input type="radio" name="actionAttempt" id="attHighGoal" value="high"/>
-		<label for="AttHighGoal">Attempted High Goal</label>
+		<label for="attHighGoal">Attempted High Goal</label>
 	</div>
 	<div class="form-line">
 		<input type="radio" name="actionAttempt" id="attGear" value="gear"/>
-		<label for="AttGear">Attempted Gear</label>
+		<label for="attGear">Attempted Gear</label>
 	</div>
 </div>
 <br/>
@@ -41,5 +41,5 @@
 </div>
 <br/><br/>
 <div class="form-block noborder">
-	<input type="submit" id="btnFinishTeleop" onclick="finishTeleop()" value="Teleop is Finished">
+	<input type="submit" id="btnFinishTeleop" value="Teleop is Finished">
 </div>

@@ -73,7 +73,7 @@
 		<sql:update dataSource="${database}">
 			INSERT INTO match_team_cycles VALUES (?, ?, ?, ?, ?, ?);<%-- Columns in order: Tournament, matchnum, team number, cycle number, operation, success --%>
 			<sql:param value="${tournamentID}" />
-			<sql:param value="${sessionScope.matchNumber}" />
+			<sql:param value="${matchNum}" />
 			<sql:param value='${cycleTeam }' />
 			<sql:param value='${cycleNum}' />
 			<sql:param value='${sqlOp}' />

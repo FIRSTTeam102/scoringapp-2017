@@ -23,9 +23,15 @@ function finishAutonomous(){
 		
 		var autoData = arrayOut.toString();
 		
+		//val somehow doesn't work as expected, so gotta do fancy array shit to get val 
+		var pilot1 = $("input[name='pilot1Select']:checked")[0].getAttribute("val");
+		var pilot2 = $("input[name='pilot2Select']:checked")[0].getAttribute("val");
+		
 		$.post("autonomous-finish.jsp",
 			{
-				autoData: autoData
+				autoData: autoData,
+				pilot1: pilot1,
+				pilot2: pilot2
 			}
 			,function(data, status, xhr) {
 				console.log("Received finishAutonomous");

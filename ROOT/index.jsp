@@ -16,7 +16,7 @@
 	<meta charset="utf-8" />
 	<title>FRC 2017 Scoring App | Team 102</title>
 	<link rel="stylesheet" type="text/css" href="resources/css/style.css"/>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> <!-- OOH! JQuery! -->
+	<script src="resources/js/jquery-3.1.1.min.js"></script> <!-- OOH! JQuery! -->
 	<script src="resources/js/main.js" type="text/javascript"></script>
 	<script src="resources/js/login.js" type="text/javascript"></script>
 	<script src="resources/js/ui.js" type="text/javascript"></script>
@@ -54,11 +54,11 @@
 						<input type="submit" value="Mobile Alliance Lighter" onclick="swap('lighter', false);">
 					</div>
 		</nav>
-		<article id="alliance" class="alliance-container"></article>
-		<article id="choosematch" class="choosematch-container"></article>
-		<article id="autonomous" class="autonomous-container"></article>
-		<article id="teleop" class="teleop-container"></article>
-		<article id="postmatch" class="postmatch-container"></article>
+		<article id="alliance" class="alliance-container" style="display: none;"></article>
+		<article id="choosematch" class="choosematch-container" style="display: none;"></article>
+		<article id="autonomous" class="autonomous-container" style="display: none;"></article>
+		<article id="teleop" class="teleop-container" style="display: none;"></article>
+		<article id="postmatch" class="postmatch-container" style="display: none;"></article>
 		<div id="lighter" style="display: none;">
 			<div>&nbsp;</div>
 			<div class="red"><a onclick="lighter('red');" style="color: white; text-decoration: none;">Red Lighter</a></div>

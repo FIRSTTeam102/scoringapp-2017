@@ -20,7 +20,14 @@ function initLogin(){
 							console.error("Login unsuccessful");
 						}
 					}, 1);
-
+					
+					//alkjfalksdfjasklfjlaskjfaklsfjaklsfjasklfjv kfj;la ejaklsfjdk
+					//requestChoosematch(); Cannot be requested until alliance is selected
+					requestAutonomous();
+					requestTeleop();
+					requestPostMatch();
+					
+					swap("alliance", true)
 				}else if(status == "error"){
 					alert("A login error occurred.");
 					console.error("Error:" + xhr.status);

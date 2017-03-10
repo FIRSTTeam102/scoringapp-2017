@@ -17,7 +17,7 @@ select mt1.match_number, m.start_time, mt1.team_number as team1, mt2.team_number
         and mt3.tournament_id = mt1.tournament_id
         and mt3.match_number = mt1.match_number  and mt3.completed = mt1.completed
         and mt3.alliance = mt1.alliance  and mt3.seq_no = 3   order by m.match_number;
-	<sql:param value="Blue"/>
+	<sql:param value="${alliance }"/>
 </sql:query>
 <c:set var="matches" scope="page" value="${result}" />
 
