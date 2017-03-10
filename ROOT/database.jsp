@@ -15,7 +15,7 @@ if(osName.equals("Linux")){
 	url="jdbc:mysql://localhost/Scoring2017?useOldAliasMetadataBehavior=true" user="root"
 	password=""/>
 
-<!--  UNCOMMENT FOR ACTUAL DB USE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+<!--  UNCOMMENT FOR team102.net DB USE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 <% if(isServer == true){ %> <%-- If program is running on server, use localhost --%>
 <sql:setDataSource var="database" driver="com.mysql.jdbc.Driver"
 	url="jdbc:mysql://localhost/Scoring2017?useOldAliasMetadataBehavior=true" user="gearheads"

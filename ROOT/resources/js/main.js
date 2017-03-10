@@ -282,11 +282,18 @@ function requestPostMatch(){
 }
 
 function finishPostmatch(){
-	//console.error("finishpostmatch not made yet");
-	var blueT1Climb = $("input[name='']:checked").val();
+	//blue stuff
+	var blueT1Climb = $("input[name='chkTeam1ClimbedRope']:checked").val();
+	var blueT2Climb = $("input[name='chkTeam2ClimbedRope']:checked").val();
+	var blueT3Climb = $("input[name='chkTeam3ClimbedRope']:checked").val();
 	
 	var blueRotNum = $("input[name='rdoBlueRotors']:checked").val();
-	var redRotNum = $("input[name='rdoRedRotors']:checked").val();
+	
+	var blueNumFouls = $("input[id='txtBlueNumFouls']").val();
+	var blueNumFoulPts = $("input[id='txtBlueNumFoulPts']").val();
+	
+	var bluePts = $("input[id='txtBluePts']").val();
+	var bluePressure = $("input[id='txtBluePressure']").val();
 	
 	
 	
@@ -295,6 +302,14 @@ function finishPostmatch(){
 			   //throw in all the things 
 				// remember to filter inputs on other end
 				
+				t1Climb: blueT1Climb,
+				t2Climb: blueT2Climb,
+				t3Climb: blueT3Climb,
+				rotNum: blueRotNum,
+				numFouls: blueNumFouls,
+				numFoulPoints: blueNumFoulPts,
+				pts: bluePts,
+				pressure: bluePressure
 			   
 			}, function(data, status, xhr) {
 				console.log("Received finishPostmatch");

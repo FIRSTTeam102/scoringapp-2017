@@ -35,11 +35,11 @@
 	<c:out value="${sessionScope.matchNumber }" />
 	<c:out value="${sessionScope.team1 }${sessionScope.team2 }${sessionScope.team3 }"/>
 	
-	
+<!--  	
 <c:out value="${ autoDataRW}"/>
 <c:out value="      ${fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam1HumanGearSucc'), ',' )=='Y'?'S':'f' }"/>
 
-	<c:out value="${tournamentID }" />
+	<c:out value="${tournamentID }" /> -->
 
 <%-- Team 1 --%>
 <sql:update dataSource="${database}">
