@@ -15,10 +15,10 @@ if(osName.equals("Linux")){
 <% if(isServer == true){ %> <!-- If program is running on server, use gearheads@localhost -->
 
 <sql:setDataSource var="database" driver="com.mysql.jdbc.Driver"
-	url="jdbc:mysql://localhost/scoring2017?useOldAliasMetadataBehavior=true" user="gearheads"
+	url="jdbc:mysql://localhost/Scoring2017?useOldAliasMetadataBehavior=true" user="gearheads"
 	password="Gearhe3ads4prezdent"/>
+	
 <% } else { %> <!-- If program is running on Eclipse, use root@localhost -->
-
 
 <sql:setDataSource var="database" driver="com.mysql.jdbc.Driver"
 	url="jdbc:mysql://localhost/scoring2017?useOldAliasMetadataBehavior=true" user="root"
@@ -28,4 +28,3 @@ if(osName.equals("Linux")){
 	url="jdbc:mysql://198.100.45.55/Scoring2017?useOldAliasMetadataBehavior=true" user="gearheads"
 	password="Gearhe3ads4prezdent"/>--%>
 <% } %>
--->
