@@ -154,6 +154,34 @@ set_time_limit(300);
 			echo "inserted match: " . $row["tournament_id"] . '-' . $row["match_number"] . "<br>";
 		}
 	}
+	// MOVE NEW MATCHES-TEAMS TO LOCAL
+	$selectReturn = $remoteLink->query("select * from match_teams");
+	if(!$selectReturn)
+		die(sprintf("Error selecting match_teams, Err: %s", $remoteLink->error));
+	
+	// if any are not found in the local DB, create them.
+	while($row = $selectReturn->fetch_assoc()) 
+	{
+		$sql = sprintf("INSERT IGNORE INTO match_teams
+				(tournament_id, match_number, team_number, alliance, seq_no) 
+				VALUES ('%s', %s, %s, '%s', %s);"
+						 , $remoteLink->real_escape_string($row["tournament_id"])
+						 , $row["match_number"]
+						 , $row["team_number"]
+						 , $remoteLink->real_escape_string($row["alliance"])
+						 , $row["seq_no"]
+						);
+//		echo $sql;
+//		echo "<br>";				
+		$insertReturn = $localLink->query($sql);
+		if(!$insertReturn)
+			die(sprintf("Error inserting match_team: %s-%s-%s, Err: %s",$row["tournament_id"], $row["match_number"], $row["team_number"], $localLink->error));
+		if($localLink->affected_rows == 1)
+		{
+			echo "inserted match_team: " . $row["tournament_id"] . '-' . $row["match_number"] . '-' . $row["team_number"] . "<br>";
+		}
+	}
+	
 	// UPDATE EXISTING MATCHES FROM LOCAL TO REMOTE
 	$selectReturn = $localLink->query(sprintf("select * from matches where tournament_id = '%s'", $tournament));
 	if(!$selectReturn)
@@ -205,34 +233,6 @@ set_time_limit(300);
 //		}		
 	}
 
-	// MOVE NEW MATCHES-TEAMS TO LOCAL
-	$selectReturn = $remoteLink->query("select * from match_teams");
-	if(!$selectReturn)
-		die(sprintf("Error selecting match_teams, Err: %s", $remoteLink->error));
-	
-	// if any are not found in the local DB, create them.
-	while($row = $selectReturn->fetch_assoc()) 
-	{
-		$sql = sprintf("INSERT IGNORE INTO match_teams
-				(tournament_id, match_number, team_number, alliance, seq_no) 
-				VALUES ('%s', %s, %s, '%s', %s);"
-						 , $remoteLink->real_escape_string($row["tournament_id"])
-						 , $row["match_number"]
-						 , $row["team_number"]
-						 , $remoteLink->real_escape_string($row["alliance"])
-						 , $row["seq_no"]
-						);
-//		echo $sql;
-//		echo "<br>";				
-		$insertReturn = $localLink->query($sql);
-		if(!$insertReturn)
-			die(sprintf("Error inserting match_team: %s-%s-%s, Err: %s",$row["tournament_id"], $row["match_number"], $row["team_number"], $localLink->error));
-		if($localLink->affected_rows == 1)
-		{
-			echo "inserted match_team: " . $row["tournament_id"] . '-' . $row["match_number"] . '-' . $row["team_number"] . "<br>";
-		}
-	}
-	
 	// UPDATE EXISTING MATCH-TEAMS FROM LOCAL TO REMOTE
 	$selectReturn = $localLink->query(sprintf("select * from match_teams where tournament_id = '%s'", $tournament));
 	if(!$selectReturn)
