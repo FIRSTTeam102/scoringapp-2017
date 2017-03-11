@@ -14,8 +14,8 @@
 		<script id="self-destruct">
 			//setTimeout( function(){requestChoosematch();}, 1); 
 			alliance = '<%=allianceInput%>';
-			updateAlliance();
 			requestChoosematch(); //Requests Choosematch because it needs to be done after alliance is selected
+			updateAlliance();
 			swap("choosematch",true);//Makes choosematch visible
 			console.log("( ͡° ͜ʖ ͡°)");
 			console.log("(that's a lenny face)")

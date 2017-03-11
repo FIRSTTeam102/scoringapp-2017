@@ -31,28 +31,28 @@
 			<h2 class='header' id='Tournament'><c:out value='${tournament}' /></h2>
 		</header>
 		<nav id="login" class="login-container">
-				<form id="login-form" class="login-form" name="login-form" method="post">
-					Your Initials: <input type="text" name="initialsInput" maxlength="4" autocorrect="off" autocapitalize="characters" ><br>
-					&nbsp;&nbsp;&nbsp;Password: <input type="password" name="password"><br>
-					<div class="btn-container">
-						<input type="submit" value="Team 102 Scoring App">
-					</div>
-				</form>
-					<div class="btn-container">
-						<input type="submit" value="Scouting Survey">
-					</div>
-					<div class="btn-container">
-						<input type="submit" value="Match Preview">
-					</div>		
-					<div class="btn-container">
-						<input type="submit" value="Upcoming Matches">
-					</div>	
-					<div class="btn-container">
-						<input type="submit" value="Alliance Selection">
-					</div>
-					<div class="btn-container">
-						<input type="submit" value="Mobile Alliance Lighter" onclick="swap('lighter', false);">
-					</div>
+			<form id="login-form" class="login-form" name="login-form" method="post">
+				Your Initials: <input type="text" name="initialsInput" maxlength="4" autocorrect="off" autocapitalize="characters" ><br>
+				&nbsp;&nbsp;&nbsp;Password: <input type="password" name="password"><br>
+				<div class="btn-container">
+					<input type="submit" value="Team 102 Scoring App">
+				</div>
+			</form>
+			<div class="btn-container">
+				<input type="submit" value="Scouting Survey" onclick="requestSurvey();">
+			</div>
+			<div class="btn-container">
+				<input type="submit" value="Match Preview">
+			</div>		
+			<div class="btn-container">
+				<input type="submit" value="Upcoming Matches">
+			</div>	
+			<div class="btn-container">
+				<input type="submit" value="Alliance Selection">
+			</div>
+			<div class="btn-container">
+				<input type="submit" value="Mobile Alliance Lighter" onclick="swap('lighter', false);">
+			</div>
 		</nav>
 		<article id="alliance" class="alliance-container" style="display: none;"></article>
 		<article id="choosematch" class="choosematch-container" style="display: none;"></article>
