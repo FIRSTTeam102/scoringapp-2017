@@ -29,8 +29,8 @@
 			sqlOp = "G";
 		}
 		else {//There's a hacker! (Or real bad packet loss...)
-			System.exit(1); //do nothing and end the program, so we won't get slammed by a dos attack on our dbase
-			
+			return; 
+				
 		}
 			
 			
@@ -58,11 +58,11 @@
 		pageContext.setAttribute("sqlOp", sqlOp);
 		pageContext.setAttribute("sqlSucc", sqlSucc);
 		
-		//Eeeeew
+		//Below works on success, but not on anything else, apparently
 		
 		try {
-			//Long cycNum = (Long) session.getAttribute("cycleNum"); 
-			//Integer cycNum = Integer.parseInt((String) session.getAttribute("cycleNum"));
+			/*//Long cycNum = (Long) session.getAttribute("cycleNum"); 
+			//Integer cycNum = Integer.parseInt((String) session.getAttribute("cycleNum"));*/
 			Integer cycNum = (Integer) session.getAttribute("cycleNum");
 			if (cycNum == null) {
 				session.setAttribute("cycleNum", (Integer) 0);	
@@ -74,6 +74,9 @@
 		}
 		catch (NumberFormatException l) { 
 			session.setAttribute("cycleNum", 0);
+		}
+		catch (ClassCastException l) {
+			session.setAttribute("cycleNum",(Integer) session.getAttribute("cycleNum") + 1);
 		}
 		
 		//Thar be MySQL thingz below
