@@ -57,6 +57,7 @@ set_time_limit(300);
 			echo "inserted tournament: " . $row["Title"] . "<br>";
 		}
 	}
+*/
 	// MOVE NEW TEAMS TO LOCAL
 	$selectReturn = $remoteLink->query("select * from teams");
 	if(!$selectReturn)
@@ -109,7 +110,7 @@ set_time_limit(300);
 			echo "inserted tournament_team: " . $row["tournament_id"] . '-' . $row["team_number"] . "<br>";
 		}
 	}
-*/
+
 	// MOVE NEW MATCHES TO LOCAL
 	$selectReturn = $remoteLink->query(sprintf("select * from matches where tournament_id = '%s'", $tournament));
 	if(!$selectReturn)
