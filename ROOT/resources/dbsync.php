@@ -22,7 +22,7 @@ set_time_limit(300);
 	echo "Local Password: " . $localPwd."<br>";
 	// Connect to local database
 //	$localLink = new mysqli('team102.org', 'team102_webuser', $localPwd, 'team102_2016_Local');
-	$localLink = new mysqli('team102.net', 'gearheads', $localPwd, 'Scoring2017');
+	$localLink = new mysqli('localhost', 'root', $localPwd, 'Scoring2017');
 	if ($localLink->connect_errno) 
 	{
 		echo sprintf('Could not connect to local database, Err: %s', $localLink->connect_error);
@@ -203,7 +203,7 @@ set_time_limit(300);
 	}
 
 	// MOVE NEW MATCHES-TEAMS TO LOCAL
-/*	$selectReturn = $remoteLink->query("select * from match_teams");
+	$selectReturn = $remoteLink->query("select * from match_teams");
 	if(!$selectReturn)
 		die(sprintf("Error selecting match_teams, Err: %s", $remoteLink->error));
 	
@@ -211,27 +211,13 @@ set_time_limit(300);
 	while($row = $selectReturn->fetch_assoc()) 
 	{
 		$sql = sprintf("INSERT IGNORE INTO match_teams
-				(tournament_id, match_number, team_number, alliance, seq_no, completed, match_result, comments, initials, fouls, tech_fouls, auto_reach, auto_cross, auto_goal
-				, auto_goal_success, end_position, did_show_up) 
-				VALUES ('%s', %s, %s, '%s', %s, '%s', '%s', '%s', '%s', %s, %s, '%s', '%s'
-				, 'auto_goal', 'auto_goal_success', 'end_position', 'did_show_up');"
+				(tournament_id, match_number, team_number, alliance, seq_no) 
+				VALUES ('%s', %s, %s, '%s', %s);"
 						 , $remoteLink->real_escape_string($row["tournament_id"])
 						 , $row["match_number"]
 						 , $row["team_number"]
 						 , $remoteLink->real_escape_string($row["alliance"])
 						 , $row["seq_no"]
-						 , $remoteLink->real_escape_string($row["completed"])
-						 , $remoteLink->real_escape_string($row["match_result"])
-						 , $remoteLink->real_escape_string($row["comments"])
-						 , $remoteLink->real_escape_string($row["initials"])
-						 , $row["fouls"]
-						 , $row["tech_fouls"]
-						 , $remoteLink->real_escape_string($row["auto_reach"])
-						 , $remoteLink->real_escape_string($row["auto_cross"])
-						 , $remoteLink->real_escape_string($row["auto_goal"])
-						 , $remoteLink->real_escape_string($row["auto_goal_success"])
-						 , $remoteLink->real_escape_string($row["end_position"])
-						 , $remoteLink->real_escape_string($row["did_show_up"])
 						);
 //		echo $sql;
 //		echo "<br>";				
@@ -243,7 +229,7 @@ set_time_limit(300);
 			echo "inserted match_team: " . $row["tournament_id"] . '-' . $row["match_number"] . '-' . $row["team_number"] . "<br>";
 		}
 	}
-	*/
+	
 	// UPDATE EXISTING MATCH-TEAMS FROM LOCAL TO REMOTE
 	$selectReturn = $localLink->query(sprintf("select * from match_teams where tournament_id = '%s'", $tournament));
 	if(!$selectReturn)
