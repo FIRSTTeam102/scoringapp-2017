@@ -245,18 +245,18 @@ set_time_limit(300);
 		$sql = sprintf("UPDATE match_teams 
 				SET 
 					completed = '%s'
-					,ignore_match
-					,comments
-					,initials
-					,foul_pts
-					,did_show_up
-					,did_break_down
-					,auto_crossed_baseline
-					,auto_gear_attempt
-					,auto_gear_outcome
-					,auto_goal_attempt
-					,auto_high_fuel
-					,climbed_rope
+					,ignore_match = '%s'
+					,comments = '%s'
+					,initials = '%s'
+					,foul_pts = %s
+					,did_show_up = '%s'
+					,did_break_down = '%s'
+					,auto_crossed_baseline = '%s'
+					,auto_gear_attempt = '%s'
+					,auto_gear_outcome = '%s'
+					,auto_goal_attempt = '%s'
+					,auto_high_fuel = %s
+					,climbed_rope = '%s'
 					WHERE tournament_id = '%s' AND  match_number = %s and team_number = %s;"
 						 , $remoteLink->real_escape_string($row["completed"])
 						 , $remoteLink->real_escape_string($row["ignore_match"])
