@@ -27,6 +27,13 @@ function swap(page, refreshInput){
 		currentPage = "#" + page; //Hides current page, sets new page, shows new page
 		$(currentPage).show();
 	//} //if the page has not been loeaded yet for some god forsaken reason :UUUas
+	if(page == "autonomous" || page == "teleop" || page == "postmatch"){
+		updateMatch();
+		updateAlliance();
+	}else if(page == "choosematch"){
+		updateAlliance();
+	}
+			
 		
 	if(pages[page] == false){
 		switch(page){
@@ -76,7 +83,7 @@ function updateMatch(){
 
 	$("#autonomous #match").html(match);
 	$("#teleop #match").html(match);
-	$("##match").html(match);
+	$("#postmatch #match").html(match);
 }
 
 function updateAlliance(){
