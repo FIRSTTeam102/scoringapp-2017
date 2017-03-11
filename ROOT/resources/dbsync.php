@@ -22,7 +22,7 @@ set_time_limit(300);
 	echo "Local Password: " . $localPwd."<br>";
 	// Connect to local database
 //	$localLink = new mysqli('team102.org', 'team102_webuser', $localPwd, 'team102_2016_Local');
-	$localLink = new mysqli('team102.net', 'gearheads', $localPwd, 'Scoring2017');
+	$localLink = new mysqli('localhost', 'root', $localPwd, 'Scoring2017');
 	if ($localLink->connect_errno) 
 	{
 		echo sprintf('Could not connect to local database, Err: %s', $localLink->connect_error);
@@ -57,6 +57,7 @@ set_time_limit(300);
 			echo "inserted tournament: " . $row["Title"] . "<br>";
 		}
 	}
+*/
 	// MOVE NEW TEAMS TO LOCAL
 	$selectReturn = $remoteLink->query("select * from teams");
 	if(!$selectReturn)
@@ -109,7 +110,7 @@ set_time_limit(300);
 			echo "inserted tournament_team: " . $row["tournament_id"] . '-' . $row["team_number"] . "<br>";
 		}
 	}
-*/
+
 	// MOVE NEW MATCHES TO LOCAL
 	$selectReturn = $remoteLink->query(sprintf("select * from matches where tournament_id = '%s'", $tournament));
 	if(!$selectReturn)
@@ -123,7 +124,7 @@ set_time_limit(300);
 				, red_pressure, blue_pressure, red_rotors, blue_rotors, red_foulpts
 				, blue_foulpts, blue_pilot_1, blue_pilot_2, red_pilot_1, red_pilot_2
 				) 
-				VALUES ('%s', %s, '%s', %s, %s, '%s', '%s', '%s', '%s', '%s', '%s', '%s')
+				VALUES ('%s', %s, '%s', %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
 				 ON DUPLICATE KEY UPDATE red_score = %s, blue_score = %s;"
 						 , $remoteLink->real_escape_string($row["tournament_id"])
 						 , $row["match_number"]
@@ -140,6 +141,8 @@ set_time_limit(300);
 						 , ($row["blue_pilot_2"] == "") ? 0 : $row["blue_pilot_2"]
 						 , ($row["red_pilot_1"] == "") ? 0 : $row["red_pilot_1"]
 						 , ($row["red_pilot_2"] == "") ? 0 : $row["red_pilot_2"]
+						 , ($row["red_score"] == "") ? 0 : $row["red_score"]
+						 , ($row["blue_score"] == "") ? 0 : $row["blue_score"]
 						);
 //		echo $sql;
 //		echo "<br>";				
@@ -151,6 +154,34 @@ set_time_limit(300);
 			echo "inserted match: " . $row["tournament_id"] . '-' . $row["match_number"] . "<br>";
 		}
 	}
+	// MOVE NEW MATCHES-TEAMS TO LOCAL
+	$selectReturn = $remoteLink->query("select * from match_teams");
+	if(!$selectReturn)
+		die(sprintf("Error selecting match_teams, Err: %s", $remoteLink->error));
+	
+	// if any are not found in the local DB, create them.
+	while($row = $selectReturn->fetch_assoc()) 
+	{
+		$sql = sprintf("INSERT IGNORE INTO match_teams
+				(tournament_id, match_number, team_number, alliance, seq_no) 
+				VALUES ('%s', %s, %s, '%s', %s);"
+						 , $remoteLink->real_escape_string($row["tournament_id"])
+						 , $row["match_number"]
+						 , $row["team_number"]
+						 , $remoteLink->real_escape_string($row["alliance"])
+						 , $row["seq_no"]
+						);
+//		echo $sql;
+//		echo "<br>";				
+		$insertReturn = $localLink->query($sql);
+		if(!$insertReturn)
+			die(sprintf("Error inserting match_team: %s-%s-%s, Err: %s",$row["tournament_id"], $row["match_number"], $row["team_number"], $localLink->error));
+		if($localLink->affected_rows == 1)
+		{
+			echo "inserted match_team: " . $row["tournament_id"] . '-' . $row["match_number"] . '-' . $row["team_number"] . "<br>";
+		}
+	}
+	
 	// UPDATE EXISTING MATCHES FROM LOCAL TO REMOTE
 	$selectReturn = $localLink->query(sprintf("select * from matches where tournament_id = '%s'", $tournament));
 	if(!$selectReturn)
@@ -174,16 +205,16 @@ set_time_limit(300);
 					, red_pilot_2 = %s
 				WHERE tournament_id = '%s' AND  match_number = %s;"
 						 , $remoteLink->real_escape_string($row["start_time"])
-						 , $row["red_pressure"]
-						 , $row["blue_pressure"]
-						 , $row["red_rotors"]
-						 , $row["blue_rotors"]
-						 , $row["red_foulpts"]
-						 , $row["blue_foulpts"]
-						 , $row["blue_pilot_1"]
-						 , $row["blue_pilot_2"]
-						 , $row["red_pilot_1"]
-						 , $row["red_pilot_2"]
+						 , ($row["red_pressure"] == "") ? 'NULL' : $row["red_pressure"]
+						 , ($row["blue_pressure"] == "") ? 'NULL' : $row["blue_pressure"]
+						 , ($row["red_rotors"] == "") ? 'NULL' : $row["red_rotors"]
+						 , ($row["blue_rotors"] == "") ? 'NULL' : $row["blue_rotors"]
+						 , ($row["red_foulpts"] == "") ? 'NULL' : $row["red_foulpts"]
+						 , ($row["blue_foulpts"] == "") ? 'NULL' : $row["blue_foulpts"]
+						 , ($row["blue_pilot_1"] == "") ? 'NULL' : $row["blue_pilot_1"]
+						 , ($row["blue_pilot_2"] == "") ? 'NULL' : $row["blue_pilot_2"]
+						 , ($row["red_pilot_1"] == "") ? 'NULL' : $row["red_pilot_1"]
+						 , ($row["red_pilot_2"] == "") ? 'NULL' : $row["red_pilot_2"]
 						 , $remoteLink->real_escape_string($row["tournament_id"])
 						 , $row["match_number"]
 						);
@@ -202,48 +233,6 @@ set_time_limit(300);
 //		}		
 	}
 
-	// MOVE NEW MATCHES-TEAMS TO LOCAL
-/*	$selectReturn = $remoteLink->query("select * from match_teams");
-	if(!$selectReturn)
-		die(sprintf("Error selecting match_teams, Err: %s", $remoteLink->error));
-	
-	// if any are not found in the local DB, create them.
-	while($row = $selectReturn->fetch_assoc()) 
-	{
-		$sql = sprintf("INSERT IGNORE INTO match_teams
-				(tournament_id, match_number, team_number, alliance, seq_no, completed, match_result, comments, initials, fouls, tech_fouls, auto_reach, auto_cross, auto_goal
-				, auto_goal_success, end_position, did_show_up) 
-				VALUES ('%s', %s, %s, '%s', %s, '%s', '%s', '%s', '%s', %s, %s, '%s', '%s'
-				, 'auto_goal', 'auto_goal_success', 'end_position', 'did_show_up');"
-						 , $remoteLink->real_escape_string($row["tournament_id"])
-						 , $row["match_number"]
-						 , $row["team_number"]
-						 , $remoteLink->real_escape_string($row["alliance"])
-						 , $row["seq_no"]
-						 , $remoteLink->real_escape_string($row["completed"])
-						 , $remoteLink->real_escape_string($row["match_result"])
-						 , $remoteLink->real_escape_string($row["comments"])
-						 , $remoteLink->real_escape_string($row["initials"])
-						 , $row["fouls"]
-						 , $row["tech_fouls"]
-						 , $remoteLink->real_escape_string($row["auto_reach"])
-						 , $remoteLink->real_escape_string($row["auto_cross"])
-						 , $remoteLink->real_escape_string($row["auto_goal"])
-						 , $remoteLink->real_escape_string($row["auto_goal_success"])
-						 , $remoteLink->real_escape_string($row["end_position"])
-						 , $remoteLink->real_escape_string($row["did_show_up"])
-						);
-//		echo $sql;
-//		echo "<br>";				
-		$insertReturn = $localLink->query($sql);
-		if(!$insertReturn)
-			die(sprintf("Error inserting match_team: %s-%s-%s, Err: %s",$row["tournament_id"], $row["match_number"], $row["team_number"], $localLink->error));
-		if($localLink->affected_rows == 1)
-		{
-			echo "inserted match_team: " . $row["tournament_id"] . '-' . $row["match_number"] . '-' . $row["team_number"] . "<br>";
-		}
-	}
-	*/
 	// UPDATE EXISTING MATCH-TEAMS FROM LOCAL TO REMOTE
 	$selectReturn = $localLink->query(sprintf("select * from match_teams where tournament_id = '%s'", $tournament));
 	if(!$selectReturn)
@@ -256,18 +245,18 @@ set_time_limit(300);
 		$sql = sprintf("UPDATE match_teams 
 				SET 
 					completed = '%s'
-					,ignore_match
-					,comments
-					,initials
-					,foul_pts
-					,did_show_up
-					,did_break_down
-					,auto_crossed_baseline
-					,auto_gear_attempt
-					,auto_gear_outcome
-					,auto_goal_attempt
-					,auto_high_fuel
-					,climbed_rope
+					,ignore_match = '%s'
+					,comments = '%s'
+					,initials = '%s'
+					,foul_pts = %s
+					,did_show_up = '%s'
+					,did_break_down = '%s'
+					,auto_crossed_baseline = '%s'
+					,auto_gear_attempt = '%s'
+					,auto_gear_outcome = '%s'
+					,auto_goal_attempt = '%s'
+					,auto_high_fuel = %s
+					,climbed_rope = '%s'
 					WHERE tournament_id = '%s' AND  match_number = %s and team_number = %s;"
 						 , $remoteLink->real_escape_string($row["completed"])
 						 , $remoteLink->real_escape_string($row["ignore_match"])
