@@ -22,7 +22,7 @@ set_time_limit(300);
 	echo "Local Password: " . $localPwd."<br>";
 	// Connect to local database
 //	$localLink = new mysqli('team102.org', 'team102_webuser', $localPwd, 'team102_2016_Local');
-	$localLink = new mysqli('team102.net', 'gearheads', $localPwd, 'Scoring2017');
+	$localLink = new mysqli('localhost', 'root', $localPwd, 'Scoring2017');
 	if ($localLink->connect_errno) 
 	{
 		echo sprintf('Could not connect to local database, Err: %s', $localLink->connect_error);
