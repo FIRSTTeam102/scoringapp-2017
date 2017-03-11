@@ -177,16 +177,16 @@ set_time_limit(300);
 					, red_pilot_2 = %s
 				WHERE tournament_id = '%s' AND  match_number = %s;"
 						 , $remoteLink->real_escape_string($row["start_time"])
-						 , $row["red_pressure"]
-						 , $row["blue_pressure"]
-						 , $row["red_rotors"]
-						 , $row["blue_rotors"]
-						 , $row["red_foulpts"]
-						 , $row["blue_foulpts"]
-						 , $row["blue_pilot_1"]
-						 , $row["blue_pilot_2"]
-						 , $row["red_pilot_1"]
-						 , $row["red_pilot_2"]
+						 , ($row["red_pressure"] == "") ? 'NULL' : $row["red_pressure"]
+						 , ($row["blue_pressure"] == "") ? 'NULL' : $row["blue_pressure"]
+						 , ($row["red_rotors"] == "") ? 'NULL' : $row["red_rotors"]
+						 , ($row["blue_rotors"] == "") ? 'NULL' : $row["blue_rotors"]
+						 , ($row["red_foulpts"] == "") ? 'NULL' : $row["red_foulpts"]
+						 , ($row["blue_foulpts"] == "") ? 'NULL' : $row["blue_foulpts"]
+						 , ($row["blue_pilot_1"] == "") ? 'NULL' : $row["blue_pilot_1"]
+						 , ($row["blue_pilot_2"] == "") ? 'NULL' : $row["blue_pilot_2"]
+						 , ($row["red_pilot_1"] == "") ? 'NULL' : $row["red_pilot_1"]
+						 , ($row["red_pilot_2"] == "") ? 'NULL' : $row["red_pilot_2"]
 						 , $remoteLink->real_escape_string($row["tournament_id"])
 						 , $row["match_number"]
 						);
