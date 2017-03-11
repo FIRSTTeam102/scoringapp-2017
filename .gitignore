@@ -1,1 +1,3 @@
 *.orig
+ROOT/resources/garbage
+ROOT/resources/trash
