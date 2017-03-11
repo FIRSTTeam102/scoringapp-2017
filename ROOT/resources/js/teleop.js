@@ -64,7 +64,7 @@ function subTeleCycle(button){
 				},
 				function(data, status, xhr) {
 					if(status == "success"){
-						console.log(data);
+						$("#content").append(data);
 					//clear all checkboxes... for now, I'll just reload teleop again?	
 					requestTeleop();	
 					}else if(status == "error"){
@@ -81,7 +81,8 @@ function subTeleCycle(button){
 		$.post("teleop-cycle.jsp",
 				{
 					clickedButton: button,
-					action: val
+					action: val,
+					cycleTeam: selectedTeam.innerHTML
 				},
 				function(data, status, xhr) {
 					if(status == "success"){
@@ -102,7 +103,8 @@ function subTeleCycle(button){
 		$.post("teleop-cycle.jsp",
 				{
 					clickedButton: button,
-					action: val
+					action: val,
+					cycleTeam: selectedTeam.innerHTML
 				},
 				function(data, status, xhr) {
 					if(status == "success"){
@@ -123,7 +125,8 @@ function subTeleCycle(button){
 		$.post("teleop-cycle.jsp",
 				{
 					clickedButton: button,
-					action: val
+					action: val,
+					cycleTeam: selectedTeam.innerHTML
 				},
 				function(data, status, xhr) {
 					if(status == "success"){
