@@ -3,14 +3,14 @@
 
 set_time_limit(300);
 	
-	$tournament = 'SEN';
+	$tournament = 'GDC';
 //	session_start();
 	
 	// Connect to the remote database.
 	$remotePwd = file_get_contents('garbage');
 //	$remotePwd = $_SESSION['password'];
 //	echo "Remote Password: " . $remotePwd."<br>";
-	//$remoteLink = new mysqli('208.100.19.247', 'team102_webuser', $remotePwd, 'team102_2016');	// :3306
+	$remoteLink = new mysqli('team102.net', 'gearheads', $remotePwd, 'Scoring2017');	// :3306
 //	$remoteLink = new mysqli('208.100.19.247', 'team102_mike', $remotePwd, 'team102_2016');	// :3306
 	if ($remoteLink->connect_errno) 
 	{
@@ -22,7 +22,7 @@ set_time_limit(300);
 	echo "Local Password: " . $localPwd."<br>";
 	// Connect to local database
 //	$localLink = new mysqli('team102.org', 'team102_webuser', $localPwd, 'team102_2016_Local');
-	$localLink = new mysqli('gearheads-5', 'scoring102', $localPwd, 'scoring2016');
+	$localLink = new mysqli('team102.net', 'gearheads', $localPwd, 'Scoring2017');
 	if ($localLink->connect_errno) 
 	{
 		echo sprintf('Could not connect to local database, Err: %s', $localLink->connect_error);
@@ -119,7 +119,10 @@ set_time_limit(300);
 	while($row = $selectReturn->fetch_assoc()) 
 	{
 		$sql = sprintf("INSERT INTO matches
-				(tournament_id, match_number, start_time, red_score, blue_score, ignore_match, red_breach, blue_breach, red_capture, blue_capture, red_spy_human, blue_spy_human) 
+				(tournament_id, match_number, start_time, red_score, blue_score
+				, red_pressure, blue_pressure, red_rotors, blue_rotors, red_foulpts
+				, blue_foulpts, blue_pilot_1, blue_pilot_2, red_pilot_1, red_pilot_2
+				) 
 				VALUES ('%s', %s, '%s', %s, %s, '%s', '%s', '%s', '%s', '%s', '%s', '%s')
 				 ON DUPLICATE KEY UPDATE red_score = %s, blue_score = %s;"
 						 , $remoteLink->real_escape_string($row["tournament_id"])
@@ -127,15 +130,16 @@ set_time_limit(300);
 						 , $remoteLink->real_escape_string($row["start_time"])
 						 , ($row["red_score"] == "") ? 0 : $row["red_score"]
 						 , ($row["blue_score"] == "") ? 0 : $row["blue_score"]
-						 , $remoteLink->real_escape_string($row["ignore_match"])
-						 , $remoteLink->real_escape_string($row["red_breach"])
-						 , $remoteLink->real_escape_string($row["blue_breach"])
-						 , $remoteLink->real_escape_string($row["red_capture"])
-						 , $remoteLink->real_escape_string($row["blue_capture"])
-						 , $remoteLink->real_escape_string($row["red_spy_human"])
-						 , $remoteLink->real_escape_string($row["blue_spy_human"])
-						 , ($row["red_score"] == "") ? 0 : $row["red_score"]
-						 , ($row["blue_score"] == "") ? 0 : $row["blue_score"]
+						 , ($row["red_pressure"] == "") ? 0 : $row["red_pressure"]
+						 , ($row["blue_pressure"] == "") ? 0 : $row["blue_pressure"]
+						 , ($row["red_rotors"] == "") ? 0 : $row["red_rotors"]
+						 , ($row["blue_rotors"] == "") ? 0 : $row["blue_rotors"]
+						 , ($row["red_foulpts"] == "") ? 0 : $row["red_foulpts"]
+						 , ($row["blue_foulpts"] == "") ? 0 : $row["blue_foulpts"]
+						 , ($row["blue_pilot_1"] == "") ? 0 : $row["blue_pilot_1"]
+						 , ($row["blue_pilot_2"] == "") ? 0 : $row["blue_pilot_2"]
+						 , ($row["red_pilot_1"] == "") ? 0 : $row["red_pilot_1"]
+						 , ($row["red_pilot_2"] == "") ? 0 : $row["red_pilot_2"]
 						);
 //		echo $sql;
 //		echo "<br>";				
@@ -156,17 +160,30 @@ set_time_limit(300);
 	while($row = $selectReturn->fetch_assoc()) 
 	{
 		$sql = sprintf("UPDATE matches 
-				SET start_time = '%s'
-				, ignore_match = '%s', red_breach = '%s', blue_breach = '%s', red_capture = '%s', blue_capture = '%s'
-				, red_spy_human = '%s', blue_spy_human = '%s' WHERE tournament_id = '%s' AND  match_number = %s;"
+				SET 
+					start_time = '%s'
+					, red_pressure = %s
+					, blue_pressure = %s
+					, red_rotors = %s
+					, blue_rotors = %s
+					, red_foulpts = %s
+					, blue_foulpts = %s
+					, blue_pilot_1 = %s
+					, blue_pilot_2 = %s
+					, red_pilot_1 = %s
+					, red_pilot_2 = %s
+				WHERE tournament_id = '%s' AND  match_number = %s;"
 						 , $remoteLink->real_escape_string($row["start_time"])
-						 , $remoteLink->real_escape_string($row["ignore_match"])
-						 , $remoteLink->real_escape_string($row["red_breach"])
-						 , $remoteLink->real_escape_string($row["blue_breach"])
-						 , $remoteLink->real_escape_string($row["red_capture"])
-						 , $remoteLink->real_escape_string($row["blue_capture"])
-						 , $remoteLink->real_escape_string($row["red_spy_human"])
-						 , $remoteLink->real_escape_string($row["blue_spy_human"])
+						 , $row["red_pressure"]
+						 , $row["blue_pressure"]
+						 , $row["red_rotors"]
+						 , $row["blue_rotors"]
+						 , $row["red_foulpts"]
+						 , $row["blue_foulpts"]
+						 , $row["blue_pilot_1"]
+						 , $row["blue_pilot_2"]
+						 , $row["red_pilot_1"]
+						 , $row["red_pilot_2"]
 						 , $remoteLink->real_escape_string($row["tournament_id"])
 						 , $row["match_number"]
 						);
@@ -237,21 +254,34 @@ set_time_limit(300);
 	{
 		// NOTE: We do not update alliance and seq_no
 		$sql = sprintf("UPDATE match_teams 
-				SET completed = '%s', match_result = '%s', comments = '%s', initials = '%s', fouls = %s, tech_fouls = %s
-				, auto_reach = '%s', auto_cross = '%s', auto_goal = '%s', auto_goal_success = '%s', end_position = '%s'
-				, did_show_up = '%s' WHERE tournament_id = '%s' AND  match_number = %s and team_number = %s;"
+				SET 
+					completed = '%s'
+					,ignore_match
+					,comments
+					,initials
+					,foul_pts
+					,did_show_up
+					,did_break_down
+					,auto_crossed_baseline
+					,auto_gear_attempt
+					,auto_gear_outcome
+					,auto_goal_attempt
+					,auto_high_fuel
+					,climbed_rope
+					WHERE tournament_id = '%s' AND  match_number = %s and team_number = %s;"
 						 , $remoteLink->real_escape_string($row["completed"])
-						 , $remoteLink->real_escape_string($row["match_result"])
+						 , $remoteLink->real_escape_string($row["ignore_match"])
 						 , $remoteLink->real_escape_string($row["comments"])
 						 , $remoteLink->real_escape_string($row["initials"])
-						 , $row["fouls"]
-						 , $row["tech_fouls"]
-						 , $remoteLink->real_escape_string($row["auto_reach"])
-						 , $remoteLink->real_escape_string($row["auto_cross"])
-						 , $remoteLink->real_escape_string($row["auto_goal"])
-						 , $remoteLink->real_escape_string($row["auto_goal_success"])
-						 , $remoteLink->real_escape_string($row["end_position"])
+						 , $row["foul_pts"]
 						 , $remoteLink->real_escape_string($row["did_show_up"])
+						 , $remoteLink->real_escape_string($row["did_break_down"])
+						 , $remoteLink->real_escape_string($row["auto_crossed_baseline"])
+						 , $remoteLink->real_escape_string($row["auto_gear_attempt"])
+						 , $remoteLink->real_escape_string($row["auto_gear_outcome"])
+						 , $remoteLink->real_escape_string($row["auto_goal_attempt"])
+						 , $row["auto_high_fuel"]
+						 , $remoteLink->real_escape_string($row["climbed_rope"])
 						 , $remoteLink->real_escape_string($row["tournament_id"])
 						 , $row["match_number"]
 						 , $row["team_number"]
