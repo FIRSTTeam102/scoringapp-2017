@@ -124,7 +124,7 @@ set_time_limit(300);
 				, red_pressure, blue_pressure, red_rotors, blue_rotors, red_foulpts
 				, blue_foulpts, blue_pilot_1, blue_pilot_2, red_pilot_1, red_pilot_2
 				) 
-				VALUES ('%s', %s, '%s', %s, %s, '%s', '%s', '%s', '%s', '%s', '%s', '%s')
+				VALUES ('%s', %s, '%s', %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
 				 ON DUPLICATE KEY UPDATE red_score = %s, blue_score = %s;"
 						 , $remoteLink->real_escape_string($row["tournament_id"])
 						 , $row["match_number"]
