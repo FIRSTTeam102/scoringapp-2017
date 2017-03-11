@@ -19,6 +19,7 @@ $(function(){
 });
 
 function swap(page, refreshInput){
+	/*
 	//if(pages[page] == true){
 		if(refreshInput == true){//If command is asked to refresh radio/checkboxes on the page, jQuery unchecks all checkboxes in the specified page.
 			$('#' + page + " input").prop('checked', false);
@@ -35,9 +36,13 @@ function swap(page, refreshInput){
 	}
 			
 		
-	if(pages[page] == false){
+	if(pages[page] == false){*/
 		switch(page){
 		case "login":
+				$('#' + page + " input").prop('checked', false);
+			$(currentPage).hide();
+			currentPage = "#" + page; //Hides current page, sets new page, shows new page
+			$(currentPage).show();
 			console.error("Login page was marked as false???");
 			break;
 		case "alliance":
@@ -58,7 +63,7 @@ function swap(page, refreshInput){
 		default:
 			console.error("Unknown page requested to load");
 		}
-	}
+	//}
 }
 
 function navSwap(page, refreshInput){ //Used to check whether the nav buttons are disabled or not, then passes the same request to swap() if it is not disabled
@@ -112,15 +117,15 @@ function requestAllianceSelection(){
 				//$("#content").html(data); 
 				if(status == "success"){
 					
-					/*if(currentPage != "#alliance"){
+					if(currentPage != "#alliance"){
 						$(currentPage).hide(0, function(){
 							
 							$("#alliance").html(data.trim());
 							currentPage = "#alliance";
 						});
-					}else{*/
+					}else{
 						$("#alliance").html(data.trim());
-					//}
+					}
 					pages["alliance"] = true; //Sets it that alliance-sel is loaded
 					
 					$("#nav-alliance").prop("disabled", false);
@@ -168,15 +173,15 @@ function requestChoosematch(){
 		//$("#content").html(data); 
 		if(status == "success"){
 			
-			/*if(currentPage != "#choosematch"){
+			if(currentPage != "#choosematch"){
 				$(currentPage).hide(0, function(){
 					
 					$("#choosematch").html(data.trim());
 					currentPage = "#choosematch";
 				});
-			}else{*/
+			}else{
 				$("#choosematch").html(data.trim());
-			//}
+			}
 			pages["choosematch"] = true;
 			
 			$("#nav-choosematch").prop("disabled", false);
@@ -233,15 +238,15 @@ function requestAutonomous(){
 		//$("#content").html(data); 
 		if(status == "success"){
 			
-			/*if(currentPage != "#autonomous"){
+			if(currentPage != "#autonomous"){
 				$(currentPage).hide(0, function(){
 					
 					$("#autonomous").html(data.trim());
 					currentPage = "#autonomous";
 				});
-			}else{*/
+			}else{
 				$("#autonomous").html(data.trim());
-			//}
+			}
 			pages["autonomous"] = true;
 			
 			$("#nav-autonomous").prop("disabled", false);
@@ -264,15 +269,15 @@ function requestTeleop(){
 		//Sets the content div's contents to whatever the jsp page has on it.
 		if(status == "success"){
 			
-			/*if(currentPage != "#teleop"){
+			if(currentPage != "#teleop"){
 				$(currentPage).hide(0, function(){
 					
 					$("#teleop").html(data.trim());
 					currentPage = "#teleop";
 				});
-			}else{*/
+			}else{
 				$("#teleop").html(data.trim());
-			//}
+			}
 			
 			pages["teleop"] = true;
 			$("#nav-teleop").prop("disabled", false);
@@ -295,15 +300,15 @@ function requestPostMatch(){
 		//Sets the content div's contents to whatever the jsp page has on it.
 		if(status == "success"){
 			
-			/*if(currentPage != "#postmatch"){
+			if(currentPage != "#postmatch"){
 				$(currentPage).hide(0, function(){
 					
 					$("#postmatch").html(data.trim());
 					currentPage = "#postmatch";
 				});
-			}else{*/
+			}else{
 				$("#postmatch").html(data.trim());
-			//}
+			}
 			
 			pages["postmatch"] = true;
 			$("#nav-postmatch").prop("disabled", false);

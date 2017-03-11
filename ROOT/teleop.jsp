@@ -2,9 +2,6 @@
 	pageEncoding="ISO-8859-1"%>
 <%@include file="auth.jsp"%> 
 
-<%-- for teleop-cycle --%>
-<c:set var="cycleNum" scope="session" value="${0}"/>
-
 <script src="resources/js/teleop.js"></script>
 <h1>Teleop | Match <span id="match"><c:out value="${matchNum }"/></span> | <span id="alliance"><c:out value="${alliance }"/></span> Alliance</h1>
 <table class="form-block teams" id="teleopTeamHolder">
