@@ -141,6 +141,8 @@ set_time_limit(300);
 						 , ($row["blue_pilot_2"] == "") ? 0 : $row["blue_pilot_2"]
 						 , ($row["red_pilot_1"] == "") ? 0 : $row["red_pilot_1"]
 						 , ($row["red_pilot_2"] == "") ? 0 : $row["red_pilot_2"]
+						 , ($row["red_score"] == "") ? 0 : $row["red_score"]
+						 , ($row["blue_score"] == "") ? 0 : $row["blue_score"]
 						);
 //		echo $sql;
 //		echo "<br>";				
