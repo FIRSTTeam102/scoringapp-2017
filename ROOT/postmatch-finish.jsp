@@ -65,8 +65,7 @@
 			        , blue_pressure = ?
 			        , blue_rotors = ?
 			        , blue_foulpts = ?
-				WHERE
-					tournament_id = ?
+				WHERE tournament_id = ?
 					AND match_number = ?
 			<sql:param value="${score}"/>
 			<sql:param value="${pressure}"/>
@@ -84,8 +83,7 @@
 			        red_pressure = ?
 			        red_rotors = ?
 			        red_foulpts = ?
-				WHERE
-					tournament_id = ?
+				WHERE tournament_id = ?
 					AND match_number = ?
 			<sql:param value="${score}"/>
 			<sql:param value="${pressure}"/>
