@@ -19,6 +19,7 @@ $(function(){
 });
 
 function swap(page, refreshInput){
+	/*
 	//if(pages[page] == true){
 		if(refreshInput == true){//If command is asked to refresh radio/checkboxes on the page, jQuery unchecks all checkboxes in the specified page.
 			$('#' + page + " input").prop('checked', false);
@@ -35,9 +36,13 @@ function swap(page, refreshInput){
 	}
 			
 		
-	if(pages[page] == false){
+	if(pages[page] == false){*/
 		switch(page){
 		case "login":
+			$('#' + page + " input").prop('checked', false);
+			$(currentPage).hide();
+			currentPage = "#" + page; //Hides current page, sets new page, shows new page
+			$(currentPage).show();
 			console.error("Login page was marked as false???");
 			break;
 		case "alliance":
@@ -58,7 +63,7 @@ function swap(page, refreshInput){
 		default:
 			console.error("Unknown page requested to load");
 		}
-	}
+	//}
 }
 
 function navSwap(page, refreshInput){ //Used to check whether the nav buttons are disabled or not, then passes the same request to swap() if it is not disabled
@@ -87,13 +92,13 @@ function updateMatch(){
 }
 
 function updateAlliance(){
-	//all elements with alliance id are inside h1 tags. Blue class will highlight blue, Red class will highlight red
+/*	//all elements with alliance id are inside h1 tags. Blue class will highlight blue, Red class will highlight red
 	$("#autonomous #alliance")[0].parentElement.className = alliance;
 
 	$("#teleop #alliance")[0].parentElement.className = alliance;
 
 	$("#postmatch #alliance")[0].parentElement.className = alliance;
-}
+*/}
 
 function remove(){
 	//Any script returned from server has id 'self-destruct' and at the end of its code calling this function.
@@ -112,19 +117,20 @@ function requestAllianceSelection(){
 				//$("#content").html(data); 
 				if(status == "success"){
 					
-					/*if(currentPage != "#alliance"){
+					if(currentPage != "#alliance"){
 						$(currentPage).hide(0, function(){
 							
 							$("#alliance").html(data.trim());
 							currentPage = "#alliance";
+							$("#alliance").show();
 						});
-					}else{*/
+					}else{
 						$("#alliance").html(data.trim());
-					//}
+					}
 					pages["alliance"] = true; //Sets it that alliance-sel is loaded
 					
 					$("#nav-alliance").prop("disabled", false);
-						
+					$("#alliance").show();
 			}else if(status == "error"){
 					error("Error:" + xhr.status);
 					alert("An allianceSelection error occurred.");
@@ -168,15 +174,16 @@ function requestChoosematch(){
 		//$("#content").html(data); 
 		if(status == "success"){
 			
-			/*if(currentPage != "#choosematch"){
+			if(currentPage != "#choosematch"){
 				$(currentPage).hide(0, function(){
 					
 					$("#choosematch").html(data.trim());
 					currentPage = "#choosematch";
+					$("#choosematch").show();
 				});
-			}else{*/
+			}else{
 				$("#choosematch").html(data.trim());
-			//}
+			}
 			pages["choosematch"] = true;
 			
 			$("#nav-choosematch").prop("disabled", false);
@@ -233,19 +240,20 @@ function requestAutonomous(){
 		//$("#content").html(data); 
 		if(status == "success"){
 			
-			/*if(currentPage != "#autonomous"){
+			if(currentPage != "#autonomous"){
 				$(currentPage).hide(0, function(){
 					
 					$("#autonomous").html(data.trim());
 					currentPage = "#autonomous";
+					$("#autonomous").show();
 				});
-			}else{*/
+			}else{
 				$("#autonomous").html(data.trim());
-			//}
+			}
 			pages["autonomous"] = true;
 			
 			$("#nav-autonomous").prop("disabled", false);
-			
+			$("#autonomous").show();
 		}else if(status == "error"){
 			alert("An autonomous error occurred.");
 			error("Error:" + xhr.status);
@@ -264,19 +272,20 @@ function requestTeleop(){
 		//Sets the content div's contents to whatever the jsp page has on it.
 		if(status == "success"){
 			
-			/*if(currentPage != "#teleop"){
+			if(currentPage != "#teleop"){
 				$(currentPage).hide(0, function(){
 					
 					$("#teleop").html(data.trim());
 					currentPage = "#teleop";
+					$("#teleop").show();
 				});
-			}else{*/
+			}else{
 				$("#teleop").html(data.trim());
-			//}
+			}
 			
 			pages["teleop"] = true;
 			$("#nav-teleop").prop("disabled", false);
-			
+			$("#teleop").show()
 		}else if(status == "error"){
 			alert("A teleop error occurred.");
 			error("Error:" + xhr.status);
@@ -295,19 +304,20 @@ function requestPostMatch(){
 		//Sets the content div's contents to whatever the jsp page has on it.
 		if(status == "success"){
 			
-			/*if(currentPage != "#postmatch"){
+			if(currentPage != "#postmatch"){
 				$(currentPage).hide(0, function(){
 					
 					$("#postmatch").html(data.trim());
 					currentPage = "#postmatch";
+					$("#postmatch").show();
 				});
-			}else{*/
+			}else{
 				$("#postmatch").html(data.trim());
-			//}
+			}
 			
 			pages["postmatch"] = true;
 			$("#nav-postmatch").prop("disabled", false);
-			
+			$("#postmatch").show();
 		}else if(status == "error"){
 			alert("A postmatch error occurred.");
 			error("Error:" + xhr.status);
@@ -329,7 +339,7 @@ function finishPostmatch(){
 	var Pts = $("input[id='txtPts']").val();
 	var Pressure = $("input[id='txtPressure']").val();
 	
-	
+	var ignore = $("#chkIgnoreMatch").prop("checked");
 	
 	$.post("postmatch-finish.jsp",
 			{
@@ -343,8 +353,10 @@ function finishPostmatch(){
 				numFouls: NumFouls,
 				numFoulPoints: NumFoulPts,
 				pts: Pts,
-				pressure: Pressure
+				pressure: Pressure,
 			   
+				ignore: ignore
+				
 			}, function(data, status, xhr) {
 				console.log("Received finishPostmatch");
 				//Sets the content div's contents to whatever the jsp page has on it.

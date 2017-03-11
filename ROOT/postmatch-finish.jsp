@@ -11,6 +11,7 @@
 	int foulPoints;
 	int points;
 	int pressure;
+	String ignore;
 	
 	try{
 		rotorCount = Integer.parseInt(request.getParameter("rotNum"));
@@ -43,11 +44,31 @@
 		pressure = 0;
 	}
 	
+	try {
+		if(request.getParameter("ignore") != null){
+			
+			if(request.getParameter("ignore").equals("true")){
+				ignore = "Y";
+			}else{
+				ignore = "N";
+			}
+		}else{
+			
+			ignore = "N";
+		}
+	}
+	catch(NumberFormatException l){
+		ignore = "N";
+	}
+	
 	pageContext.setAttribute("score", points);
 	pageContext.setAttribute("pressure", pressure);
 	pageContext.setAttribute("rotors", rotorCount);
 	pageContext.setAttribute("foulpts", foulPoints);
+	pageContext.setAttribute("ignore", ignore);
 	
+	//creates alliance color in allcaps
+	String allianceCaps = alliance.toUpperCase();
 %>
 <%-- 	debugging
 			<c:out value="${score}"/>
@@ -78,11 +99,10 @@
 	<c:when test="${alliance == 'Red' }">
 		<sql:update dataSource="${database }">
 			UPDATE matches
-				SET 
-			        red_score = ?
-			        red_pressure = ?
-			        red_rotors = ?
-			        red_foulpts = ?
+				SET red_score = ?
+			        , red_pressure = ?
+			        , red_rotors = ?
+			        , red_foulpts = ?
 				WHERE tournament_id = ?
 					AND match_number = ?
 			<sql:param value="${score}"/>
@@ -99,8 +119,30 @@
 	</script>
 	</c:otherwise>
 </c:choose>
+
+<sql:update dataSource="${database }">
+	UPDATE match_teams
+		SET ignore_match = ?
+		WHERE tournament_id = ?
+			AND match_number = ?
+	<sql:param value="${ignore }"/>
+	<sql:param value="${tournamentID }"/>
+	<sql:param value="${matchNum }"/>
+</sql:update>
+
+<sql:update dataSource ="${database }">
+		UPDATE match_teams
+		SET completed = 'Y'
+        WHERE tournament_id = ?
+	    	AND match_number = ?
+	    	AND alliance = ?
+	<sql:param value="${tournamentID }"/>
+	<sql:param value="${matchNum }"/>
+	<sql:param value="<%=allianceCaps %>"/>
+</sql:update>
+
 <script id="self-destruct">
-swap("choosematch",true);
+location.reload();
 remove();
 </script>
 	<!--  	ADD COMPLETED FOR THE MATCH!!!!!!!! -->

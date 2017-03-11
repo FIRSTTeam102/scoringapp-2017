@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@include file="auth.jsp"%> 
-    
+    <%session.setAttribute("cycleNum", 0); %>
 <h1>Post-match | Match <span id="match"><c:out value="${matchNum }"/></span> | <span id="alliance"><c:out value="${alliance }"/></span> Alliance</h1>
 <div id="AlliancePostMatch">
 	<div class="form-block">

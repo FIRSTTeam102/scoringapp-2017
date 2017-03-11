@@ -263,14 +263,14 @@ set_time_limit(300);
 						 , $remoteLink->real_escape_string($row["comments"])
 						 , $remoteLink->real_escape_string($row["initials"])
 						 , $row["foul_pts"]
-						 , $remoteLink->real_escape_string($row["did_show_up"])
-						 , $remoteLink->real_escape_string($row["did_break_down"])
-						 , $remoteLink->real_escape_string($row["auto_crossed_baseline"])
-						 , $remoteLink->real_escape_string($row["auto_gear_attempt"])
-						 , $remoteLink->real_escape_string($row["auto_gear_outcome"])
-						 , $remoteLink->real_escape_string($row["auto_goal_attempt"])
-						 , $row["auto_high_fuel"]
-						 , $remoteLink->real_escape_string($row["climbed_rope"])
+						 , ($row["did_show_up"] == "") ? 'NULL' : $remoteLink->real_escape_string($row["did_show_up"])
+						 , ($row["did_break_down"] == "") ? 'NULL' : $remoteLink->real_escape_string($row["did_break_down"])
+						 , ($row["auto_crossed_baseline"] == "") ? 'NULL' : $remoteLink->real_escape_string($row["auto_crossed_baseline"])
+						 , ($row["auto_gear_attempt"] == "") ? 'NULL' : $remoteLink->real_escape_string($row["auto_gear_attempt"])
+						 , ($row["auto_gear_outcome"] == "") ? 'NULL' : $remoteLink->real_escape_string($row["auto_gear_outcome"])
+						 , ($row["auto_goal_attempt"] == "") ? 'NULL' : $remoteLink->real_escape_string($row["auto_goal_attempt"])
+						 , ($row["auto_high_fuel"] == "") ? 'NULL' : $row["auto_high_fuel"]
+						 , ($row["climbed_rope"] == "") ? 'NULL' : $remoteLink->real_escape_string($row["climbed_rope"])
 						 , $remoteLink->real_escape_string($row["tournament_id"])
 						 , $row["match_number"]
 						 , $row["team_number"]

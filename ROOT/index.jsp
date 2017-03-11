@@ -54,11 +54,11 @@
 				<input type="submit" value="Mobile Alliance Lighter" onclick="swap('lighter', false);">
 			</div>
 		</nav>
-		<article id="alliance" class="alliance-container" style="display: none;"></article>
-		<article id="choosematch" class="choosematch-container" style="display: none;"></article>
-		<article id="autonomous" class="autonomous-container" style="display: none;"></article>
-		<article id="teleop" class="teleop-container" style="display: none;"></article>
-		<article id="postmatch" class="postmatch-container" style="display: none;"></article>
+		<article id="alliance" class="alliance-container"></article>
+		<article id="choosematch" class="choosematch-container"></article>
+		<article id="autonomous" class="autonomous-container"></article>
+		<article id="teleop" class="teleop-container"></article>
+		<article id="postmatch" class="postmatch-container"></article>
 		<div id="lighter" style="display: none;">
 			<div>&nbsp;</div>
 			<div class="red"><a onclick="lighter('red');" style="color: white; text-decoration: none;">Red Lighter</a></div>
