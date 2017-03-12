@@ -6,6 +6,29 @@
 	boolean t2Climbed = Boolean.parseBoolean(request.getParameter("t2Climb"));
 	boolean t3Climbed = Boolean.parseBoolean(request.getParameter("t3Climb"));
 	
+	String t1ClimbedStr,t2ClimbedStr,t3ClimbedStr;
+	
+	if(t1Climbed == true){
+		t1ClimbedStr = "Y";
+	}
+	else {
+		t1ClimbedStr = "N";
+	}
+	
+	if(t2Climbed == true){
+		t2ClimbedStr = "Y";
+	}
+	else {
+		t2ClimbedStr = "N";
+	}
+	
+	if(t3Climbed == true){
+		t3ClimbedStr = "Y";
+	}
+	else {
+		t3ClimbedStr = "N";
+	}
+	
 	int rotorCount;
 	int foulCount;
 	int foulPoints;
@@ -136,6 +159,45 @@
         WHERE tournament_id = ?
 	    	AND match_number = ?
 	    	AND alliance = ?
+	<sql:param value="${tournamentID }"/>
+	<sql:param value="${matchNum }"/>
+	<sql:param value="<%=allianceCaps %>"/>
+</sql:update>
+
+<sql:update dataSource ="${database }">
+		UPDATE match_teams
+		SET climbed_rope = ?
+        WHERE tournament_id = ?
+	    	AND match_number = ?
+	    	AND alliance = ?
+	    	AND seq_no = 1
+	<sql:param value="<%=t1ClimbedStr%>"/>
+	<sql:param value="${tournamentID }"/>
+	<sql:param value="${matchNum }"/>
+	<sql:param value="<%=allianceCaps %>"/>
+</sql:update>
+
+<sql:update dataSource ="${database }">
+		UPDATE match_teams
+		SET climbed_rope = ?
+        WHERE tournament_id = ?
+	    	AND match_number = ?
+	    	AND alliance = ?
+	    	AND seq_no = 2
+	<sql:param value="<%=t2ClimbedStr%>"/>
+	<sql:param value="${tournamentID }"/>
+	<sql:param value="${matchNum }"/>
+	<sql:param value="<%=allianceCaps %>"/>
+</sql:update>
+
+<sql:update dataSource ="${database }">
+		UPDATE match_teams
+		SET climbed_rope = ?
+        WHERE tournament_id = ?
+	    	AND match_number = ?
+	    	AND alliance = ?
+	    	AND seq_no = 3
+	<sql:param value="<%=t3ClimbedStr%>"/>
 	<sql:param value="${tournamentID }"/>
 	<sql:param value="${matchNum }"/>
 	<sql:param value="<%=allianceCaps %>"/>
