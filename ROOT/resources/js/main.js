@@ -60,6 +60,9 @@ function swap(page, refreshInput){
 		case "postmatch":
 			requestPostMatch();//doesn't exist yet
 			break;
+		case "survey":
+			requestSurvey();
+			break;
 		default:
 			console.error("Unknown page requested to load");
 		}
@@ -386,5 +389,45 @@ function lighter(color){
 		$("#content").show();
 		document.body.className = "";
 		swap('login', false);
+	}
+}
+
+function requestSurvey(){
+	/*
+	$.post("http://team102.net/public_html/2017/survey.php",{
+		//No input necessary
+	}, function(data, status, xhr){
+		console.log("Received survey");
+		
+		if(status == "success"){
+			
+			if(currentPage != "#survey"){
+				$(currentPage).hide(0, function(){
+					
+					//data.trim returns whole tree, parseHTML returns array of html stuff inside it, 15 is what we need
+					$("#survey").html($.parseHTML(data.trim())[15]);
+					currentPage = "#survey";
+					$("#survey").show();
+				});
+			}else{
+				
+				$("#survey").html($.parseHTML(data.trim())[15]);
+			}
+		}else if(status == "error"){
+			
+			alert("An error occurred.");
+			error("Error:" + xhr.status);
+		}
+	});*/
+	if(currentPage != "#survey"){
+		$(currentPage).hide(0, function(){
+			
+			$("#survey").html("<iframe src='http://team102.net/public_html/2017/survey-wip.php'/>");
+			currentPage = "#survey";
+			$("#survey").show();
+		});
+	}else{
+		
+		$("#survey").html("<iframe src='http://team102.net/public_html/2017/survey-wip.php'/>");
 	}
 }

@@ -59,6 +59,7 @@
 		<article id="autonomous" class="autonomous-container"></article>
 		<article id="teleop" class="teleop-container"></article>
 		<article id="postmatch" class="postmatch-container"></article>
+		<article id="survey" class="survey-container" onclick="requestSurvey();"></article>
 		<div id="lighter" style="display: none;">
 			<div>&nbsp;</div>
 			<div class="red"><a onclick="lighter('red');" style="color: white; text-decoration: none;">Red Lighter</a></div>
@@ -74,6 +75,8 @@
 		<input disabled type="submit" id="nav-autonomous" onclick="navSwap('autonomous', true)" value="Autonomous">
 		<input disabled type="submit" id="nav-teleop" onclick="navSwap('teleop', true)" value="Teleop">
 		<input disabled type="submit" id="nav-postmatch" onclick="navSwap('postmatch', true)" value="Post-Match">
+		<input disabled type="submit" id="nav-survey" onclick="navSwap('survey', true)" value="Scouting Survey">
+		
 	</nav>
 	<input id="back" type="submit" value="Back" onclick="lighter();" style="display: none"><!-- for lighter -->
 </body>
