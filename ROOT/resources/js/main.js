@@ -18,7 +18,31 @@ $(function(){
 	
 });
 
+var bestTeam = document.getElementsByClassName("best_team");
+var highlightColor = "#FFA812";
+var unlightColor = "#573B1F";
+function highlight() {
+	for (var i = 0; i < bestTeam.length; i++) {
+		bestTeam[i].style.borderColor = highlightColor;
+		bestTeam[i].style.boxShadow = "0px 0px 5px #FFA812";
+	}
+	setTimeout(function() {
+		unlight();
+	}, 500);
+}
+function unlight() {
+	for (var i = 0; i < bestTeam.length; i++) {
+		bestTeam[i].style.borderColor = unlightColor;
+		bestTeam[i].style.boxShadow = "0px 0px 0px #FFA812";
+	}
+	setTimeout(function() {
+		highlight();
+	}, 500);
+}
+highlight();
+
 function swap(page, refreshInput){
+
 	/*
 	//if(pages[page] == true){
 		if(refreshInput == true){//If command is asked to refresh radio/checkboxes on the page, jQuery unchecks all checkboxes in the specified page.
@@ -183,6 +207,15 @@ function requestChoosematch(){
 					$("#choosematch").html(data.trim());
 					currentPage = "#choosematch";
 					$("#choosematch").show();
+					
+					//easter egg lel
+					bestTeam = [];
+					for(var i = 0; i < $(".team_holder").length; i++){
+						if($(".team_holder")[i].innerHTML.trim() == "102"){
+							//bestTeam.push($(".team_holder")[i]);
+							$(".team_holder")[i].className += " best_team";
+						}
+					}
 				});
 			}else{
 				$("#choosematch").html(data.trim());
