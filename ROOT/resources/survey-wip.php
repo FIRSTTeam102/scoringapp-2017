@@ -89,8 +89,25 @@ header("access-control-allow-origin: *");
     <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=yes" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<!-- <script type='text/javascript' src='jqueryui/js/jquery-1.10.2.js'></script> -->
-    <link rel="stylesheet" href="stylesheet.css" />
-    <!--[if IE]>
+    <link rel="stylesheet" href="http://app.team102.net/resources/css/style.css" />
+    <style>
+		body{
+			background: none !important;
+		}
+		option{
+				
+			font-size: 1.2em;
+			background-color: #7b7ca7;
+			padding: 0.5em;
+			margin: 0.2em;
+			color: white;
+			font-weight: bold;
+			text-shadow: 1px 1px 7px black;
+			background-size: cover;
+	
+		}
+	</style>
+	<!--[if IE]>
 			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 	<script type='text/javascript'>//<![CDATA[ 
@@ -113,7 +130,7 @@ header("access-control-allow-origin: *");
 	<a href="upcoming.php" style="color:white; text-style:none;">Upcoming</a>
 		</div> -->
         <div class="header">2017 FRC Questionnaire</div>
-        <form id="QuestionsForm" action="survey.php" method="POST">
+        <form id="QuestionsForm" action="survey-wip.php" method="POST">
 			<label for="selectTeamID">Team: </label>			
 			<select name="team" id="selectTeamID" style="width: 20em;">
 				<option value="" disabled="disabled" <?php echo ($teamNumber == null) ? 'selected="selected"' : ''; ?> >Please select a Team</option>
@@ -131,7 +148,7 @@ header("access-control-allow-origin: *");
 					while($row = mysql_fetch_assoc($questions)) {
 						if($row['q_type'] == 'SEP')
 						{
-							?><div class="qSection"><?php echo $row['question'] ?></div>
+							?><div class="form-line"><?php echo $row['question'] ?></div>
 					<?php
 						}
 						else if($row['q_type'] == 'MULT')
