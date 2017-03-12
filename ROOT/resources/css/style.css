@@ -6,7 +6,7 @@ body {
 	
 	background-image: url("../images/steampunk-stylized-1920.jpg");
 	background-repeat: repeat-y;
-	background-size: cover;
+	/*background-size: cover;*/
 	
 	text-align: center;
 	
@@ -293,6 +293,6 @@ h1{
 @media only screen and (min-width: 2200px){
 	body{
 		background-image: url("../images/steampunk-stylized-full.jpg");
-		background-size: cover;
+		/*background-size: cover;*/
 	}
 }
