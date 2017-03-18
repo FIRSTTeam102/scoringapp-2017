@@ -491,12 +491,16 @@ function requestStandings(){
 	}
 }
 
-function requestUpcoming(){
-
+function requestUpcoming(team){
+	
+	if(!team){
+		team = 102;
+	}
+	
 	if(currentPage != "#upcoming"){
 		$(currentPage).hide(0, function(){
 			
-			$("#upcoming").html("<iframe src='http://team102.net/public_html/2017/upcoming-iframe.php'/>");
+			$("#upcoming").html("<iframe src='http://team102.net/public_html/2017/upcoming-iframe.php?team=" + team + "'/>");
 			currentPage = "#upcoming";
 			$("#upcoming").show();
 		});

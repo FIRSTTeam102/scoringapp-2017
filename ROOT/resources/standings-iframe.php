@@ -79,6 +79,12 @@
 		a{
 			color: white;
 		}
+		.highlight{
+			background-color: rgba(160, 160, 160, 0.4)
+		}
+		.unlight{
+			background-color: rgba(10, 10, 15, 0.4)
+		}
 	</style>
 </head>
 <body>
@@ -89,7 +95,7 @@
 	<a href="preview.php" style="color:white; text-style:none;">Preview</a>&nbsp;&nbsp;&nbsp;&nbsp;
 	<a href="upcoming.php" style="color:white; text-style:none;">Upcoming</a>&nbsp;&nbsp;&nbsp;&nbsp;
 	<a href="survey.php" style="color:white; text-style:none;">Survey</a>&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="standings.php?more=<?php echo ($more ? 'false' : 'true') ?>&sort=<?php echo ($sort);?>" style="color:white; text-style:none;">
+	<a href="standings-iframe.php?more=<?php echo ($more ? 'false' : 'true') ?>&sort=<?php echo ($sort);?>" style="color:white; text-style:none;">
 							<?php if($more) echo('Less'); else echo ('More');?></a>
 </div>--></div>
 <div>&nbsp;</div>
@@ -125,7 +131,7 @@
 							$second_sort = ' asc';
 						}
 				   ?>
-					 <th><a href="standings.php?more=<?php echo ($more ? 'true' : 'false')?>&sort=<?php echo ($sort == $colName . $default_sort) ? urlencode('`'.$colName.'`') . $second_sort: urlencode('`'.$colName.'`') . $default_sort;?>" 
+					 <th><a href="standings-iframe.php?more=<?php echo ($more ? 'true' : 'false')?>&sort=<?php echo ($sort == $colName . $default_sort) ? urlencode('`'.$colName.'`') . $second_sort: urlencode('`'.$colName.'`') . $default_sort;?>" 
 									<?php echo (($sort == $colName . $default_sort) || ($sort == $colName . $second_sort)) ? ' class="currentSort"' : '';?> >
 							<?php echo str_replace('_', ' ', $colName); ?></a></th>
 					<?php

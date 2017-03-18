@@ -11,7 +11,7 @@ if(request.getMethod().equals("GET")){ %>
 			requestSurvey();
 		}</script>
 	</c:if>
-	<c:if test="${param.p == 'matchPrev' }"><%-- if match preview is specified, use JS to request survey --%>
+	<c:if test="${param.p == 'preview' }"><%-- if match preview is specified, use JS to request survey --%>
 		<script>window.onload = function(){ 
 			requestPreview(); 
 		}</script>
@@ -20,6 +20,15 @@ if(request.getMethod().equals("GET")){ %>
 		<script>window.onload = function(){ 
 			requestStandings(); 
 		}</script>
+	</c:if>
+	<c:if test="${param.p == 'upcoming' }">
+		<c:if test="${param.team != null }">
+			<script>window.onload = function(){
+				upcomingTeam = <%= request.getParameter("team") %>;
+				requestUpcoming(upcomingTeam);
+			}
+			</script>
+		</c:if>
 	</c:if>
 	<c:if test="${param.p == 'lighter' }"><%-- if lighter is specified, use JS to request survey --%>
 		<script>window.onload = function(){ 
@@ -71,9 +80,9 @@ if(request.getMethod().equals("GET")){ %>
 			</div>
 			<div class="btn-container">
 				<input type="submit" value="Match Preview" onclick="requestPreview();">
-			</div>		
+			</div>
 			<div class="btn-container">
-				<input type="submit" value="Team 102 Upcoming Matches" onclick="requestUpcoming();">
+				<input type="number" id="upcomingTeam" placeholder="Team #" style="width: 80px"><input type="submit" value="Upcoming Matches" onclick="requestUpcoming($('#upcomingTeam').val());">
 			</div>	
 			<div class="btn-container">
 				<input disabled type="submit" value="Alliance Selection">

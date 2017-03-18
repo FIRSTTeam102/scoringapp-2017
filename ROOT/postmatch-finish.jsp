@@ -181,6 +181,14 @@
 	<sql:param value="<%=allianceCaps %>"/>
 </sql:update>
 
+<%
+System.out.println("Tourney ID: " + session.getAttribute("tournamentID")); 
+System.out.println("MatchNum: " + session.getAttribute("matchNum"));
+System.out.println("Alliance: " + allianceCaps);
+%>
+
+
+
 <sql:update dataSource ="${database }">
 		UPDATE match_teams
 		SET climbed_rope = ?
