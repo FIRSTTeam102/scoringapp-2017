@@ -14,7 +14,7 @@
 	if(isset($_GET['team'])){
 		$team = $_GET['team'];
 	}else{
-		$team = 303;
+		$team = 102;
 	}
 	
 

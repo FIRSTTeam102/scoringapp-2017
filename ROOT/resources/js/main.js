@@ -16,6 +16,9 @@ var alliance;
 $(function(){
 	initLogin();
 	
+	var stateObj = { page: "login" }; //History state stuff, not used
+	history.pushState(stateObj, "", "");
+	
 });
 
 var bestTeam = document.getElementsByClassName("best_team");
@@ -67,7 +70,7 @@ function swap(page, refreshInput){
 			$(currentPage).hide();
 			currentPage = "#login"; //Hides current page, sets new page, shows new page
 			$(currentPage).show();
-			console.log("Switched to login page, probably from nav");
+			console.log("Switched to login page, probably from nav");			
 			break;
 		case "alliance":
 			requestAllianceSelection();
