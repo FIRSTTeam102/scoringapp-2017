@@ -24,7 +24,7 @@ function toggleSidenav(){
 			$("#sidenav").css("padding-left", "0px");
 			nav = true;
 		}else{
-			$("#sidenav").css("width", "16%");
+			$("#sidenav").css("width", "185px");
 			$("#sidenav").css("padding-left", "20px");
 			$("#content").css("margin-left", "19%");
 			nav = true;

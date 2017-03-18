@@ -63,11 +63,11 @@ function swap(page, refreshInput){
 	if(pages[page] == false){*/
 		switch(page){
 		case "login":
-			$('#' + page + " input").prop('checked', false);
+			$("#login input").prop('checked', false);
 			$(currentPage).hide();
-			currentPage = "#" + page; //Hides current page, sets new page, shows new page
+			currentPage = "#login"; //Hides current page, sets new page, shows new page
 			$(currentPage).show();
-			console.error("Login page was marked as false???");
+			console.log("Switched to login page, probably from nav");
 			break;
 		case "alliance":
 			requestAllianceSelection();
@@ -87,6 +87,14 @@ function swap(page, refreshInput){
 		case "survey":
 			requestSurvey();
 			break;
+		case "standings":
+			requestStandings();
+			break;
+		case "lighter":$(currentPage).hide();
+			currentPage = "#lighter"; //Hides current page, sets new page, shows new page
+			$(currentPage).show();
+			console.log("Switched to lighter page, probably from nav");
+			break;
 		default:
 			console.error("Unknown page requested to load");
 		}
@@ -100,32 +108,14 @@ function navSwap(page, refreshInput){ //Used to check whether the nav buttons ar
 }
 
 function updateMatch(){
-	
-	$("#autonomous #team1").html(team1);
-	$("#autonomous #team2").html(team2);
-	$("#autonomous #team3").html(team3);
-	
-	$("#teleop #team1").html(team1);
-	$("#teleop #team2").html(team2);
-	$("#teleop #team3").html(team3);
-	
-	$("#postmatch #team1").html(team1);
-	$("#postmatch #team2").html(team2);
-	$("#postmatch #team3").html(team3);
-
-	$("#autonomous #match").html(match);
-	$("#teleop #match").html(match);
-	$("#postmatch #match").html(match);
+	//Complete shit, never use this again
+	console.warn("updateMatch called from somewhere");
 }
 
 function updateAlliance(){
-/*	//all elements with alliance id are inside h1 tags. Blue class will highlight blue, Red class will highlight red
-	$("#autonomous #alliance")[0].parentElement.className = alliance;
-
-	$("#teleop #alliance")[0].parentElement.className = alliance;
-
-	$("#postmatch #alliance")[0].parentElement.className = alliance;
-*/}
+	//Complete shit, never use this again -joe
+	console.warn("updateAlliance called from somewhere");
+}
 
 function remove(){
 	//Any script returned from server has id 'self-destruct' and at the end of its code calling this function.
@@ -212,8 +202,8 @@ function requestChoosematch(){
 					bestTeam = [];
 					for(var i = 0; i < $(".team_holder").length; i++){
 						if($(".team_holder")[i].innerHTML.trim() == "102"){
-							//bestTeam.push($(".team_holder")[i]);
-							$(".team_holder")[i].className += " best_team";
+							bestTeam.push($(".team_holder")[i]);
+							//$(".team_holder")[i].className += " best_team";
 						}
 					}
 				});
@@ -455,12 +445,32 @@ function requestSurvey(){
 	if(currentPage != "#survey"){
 		$(currentPage).hide(0, function(){
 			
-			$("#survey").html("<iframe src='http://team102.net/public_html/2017/survey-wip.php'/>");
+			$("#survey").html("<iframe src='http://team102.net/public_html/2017/survey-iframe.php'/>");
 			currentPage = "#survey";
 			$("#survey").show();
 		});
 	}else{
 		
-		$("#survey").html("<iframe src='http://team102.net/public_html/2017/survey-wip.php'/>");
+		$("#survey").html("<iframe src='http://team102.net/public_html/2017/survey-iframe.php'/>");
+	}
+}
+
+function requestMatchPrev(){
+	
+}
+
+function requestStandings(){
+
+	if(currentPage != "#standings"){
+		$(currentPage).hide(0, function(){
+			
+			$("#standings").html("<iframe src='http://team102.net/public_html/2017/standings-iframe.php'/>");
+			currentPage = "#standings";
+			$("#standings").show();
+			$("#nav-teleop").prop("disabled", false);
+		});
+	}else{
+		
+		$("#standings").html("<iframe src='http://team102.net/public_html/2017/standings-iframe.php'/>");
 	}
 }

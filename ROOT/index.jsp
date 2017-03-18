@@ -4,6 +4,30 @@
 
 <%@include file="database.jsp" %>
 
+<% //If request is get, check if there are any parameters
+if(request.getMethod().equals("GET")){ %>
+	<c:if test="${param.p == 'survey' }"> <%-- 'p' parameter is short for 'page' --%> <%-- if scouting is selected, use JS to request survey --%>
+		<script>window.onload = function(){ 
+			requestSurvey();
+		}</script>
+	</c:if>
+	<c:if test="${param.p == 'matchPrev' }"><%-- if match preview is specified, use JS to request survey --%>
+		<script>window.onload = function(){ 
+			requestMatchPrev(); //not yet implemented (probably)
+		}</script>
+	</c:if>
+	<c:if test="${param.p == 'standings' }"><%-- if standings is specified, use JS to request survey --%>
+		<script>window.onload = function(){ 
+			requestStandings(); //not yet implemented (probably)
+		}</script>
+	</c:if>
+	<c:if test="${param.p == 'lighter' }"><%-- if lighter is specified, use JS to request survey --%>
+		<script>window.onload = function(){ 
+			swap('lighter');
+		}</script>
+	</c:if>
+<% } %>
+
 <sql:query dataSource="${database}" var="tournamentQuery">
 	SELECT * FROM tournaments WHERE active = 'Y'
 </sql:query>
@@ -42,13 +66,16 @@
 				<input type="submit" value="Scouting Survey" onclick="requestSurvey();">
 			</div>
 			<div class="btn-container">
-				<input type="submit" value="Match Preview">
+				<input type="submit" value="Tournament Standings" onclick="requestStandings();">
+			</div>
+			<div class="btn-container">
+				<input disabled type="submit" value="Match Preview">
 			</div>		
 			<div class="btn-container">
-				<input type="submit" value="Upcoming Matches">
+				<input disabled type="submit" value="Upcoming Matches">
 			</div>	
 			<div class="btn-container">
-				<input type="submit" value="Alliance Selection">
+				<input disabled type="submit" value="Alliance Selection">
 			</div>
 			<div class="btn-container">
 				<input type="submit" value="Mobile Alliance Lighter" onclick="swap('lighter', false);">
@@ -59,7 +86,8 @@
 		<article id="autonomous" class="autonomous-container"></article>
 		<article id="teleop" class="teleop-container"></article>
 		<article id="postmatch" class="postmatch-container"></article>
-		<article id="survey" class="survey-container" onclick="requestSurvey();"></article>
+		<article id="survey" class="survey-container"></article>
+		<article id="standings" class="standings-container"></article>
 		<div id="lighter" style="display: none;">
 			<div>&nbsp;</div>
 			<div class="red"><a onclick="lighter('red');" style="color: white; text-decoration: none;">Red Lighter</a></div>
@@ -75,7 +103,8 @@
 		<input disabled type="submit" id="nav-autonomous" onclick="navSwap('autonomous', true)" value="Autonomous">
 		<input disabled type="submit" id="nav-teleop" onclick="navSwap('teleop', true)" value="Teleop">
 		<input disabled type="submit" id="nav-postmatch" onclick="navSwap('postmatch', true)" value="Post-Match">
-		<input disabled type="submit" id="nav-survey" onclick="navSwap('survey', true)" value="Scouting Survey">
+		<input type="submit" id="nav-survey" onclick="navSwap('survey', true)" value="Scouting Survey">
+		<input type="submit" id="nav-standings" onclick="navSwap('standings', true)" value="Standings">
 		
 	</nav>
 	<input id="back" type="submit" value="Back" onclick="lighter();" style="display: none"><!-- for lighter -->
