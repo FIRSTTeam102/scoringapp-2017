@@ -228,8 +228,8 @@
 
 <script id="self-destruct">
 	console.log("Autonomous successful");
-	requestAutonomous();
-	//setTimeout( function() {swap("teleop",true);}, 0);
+	//requestAutonomous(); DEBUGGING ONLY
+	setTimeout( function() {swap("teleop",true);}, 0);
 	remove();
 </script>
 </c:if>
