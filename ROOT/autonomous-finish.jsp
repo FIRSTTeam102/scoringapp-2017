@@ -23,7 +23,7 @@
 			<c:set var="autoDataRW" value="${autoDataRW},${fn:substringBefore(str, ' ')}Y"/>
 		</c:if>
 		<c:if test="${fn:substringAfter(str, ' ').equals('false') }">
-			<c:set var="autoDataRW" value="${autoDataRW},${fn:substringBefore(str, ' ')}F"/>
+			<c:set var="autoDataRW" value="${autoDataRW},${fn:substringBefore(str, ' ')}N"/>
 		</c:if>
 	</c:forEach>
 	
@@ -41,7 +41,7 @@
 				console.error("dont hak us pl0x");
 				remove();	
 			</script>	
-			<% System.exit(1); //eh just in case there's a haxor or something %>
+			<% //System.exit(1); //eh just in case there's a haxor or something %>
 		</c:otherwise>
 	</c:choose>
 	<%-- pilot2 --%>
@@ -62,7 +62,59 @@
 <c:out value="      ${fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam1HumanGearSucc'), ',' )=='Y'?'S':'f' }"/>
 
 	<c:out value="${tournamentID }" /> -->
+<c:choose>
+	<c:when test="${ fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam1HighSucc'), ',') == 'Y' }">
+		<c:set var="t1autogoal" value="HGS"/>
+	</c:when>
+	<c:when test="${ fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam1AttHigh'), ',') == 'Y'
+				&& fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam1HighSucc'), ',') == 'N' }">
+		<c:set var="t1autogoal" value="HGF"/>
+	</c:when>
+	<c:when test="${ fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam1LowSucc'), ',') == 'Y' }">
+		<c:set var="t1autogoal" value="LGS"/>
+	</c:when>
+	<c:when test="${ fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam1AttLow'), ',') == 'Y'
+				&& fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam1LowSucc'), ',') == 'N' }">
+		<c:set var="t1autogoal" value="LGF"/>
+	</c:when>
+</c:choose>
+<c:choose>
+	<c:when test="${ fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam2HighSucc'), ',') == 'Y' }">
+		<c:set var="t2autogoal" value="HGS"/>
+	</c:when>
+	<c:when test="${ fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam2AttHigh'), ',') == 'Y'
+				&& fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam2HighSucc'), ',') == 'N' }">
+		<c:set var="t2autogoal" value="HGF"/>
+	</c:when>
+	<c:when test="${ fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam2LowSucc'), ',') == 'Y' }">
+		<c:set var="t2autogoal" value="LGS"/>
+	</c:when>
+	<c:when test="${ fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam2AttLow'), ',') == 'Y'
+				&& fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam2LowSucc'), ',') == 'N' }">
+		<c:set var="t2autogoal" value="LGF"/>
+	</c:when>
+</c:choose>
+<c:choose>	
+	<c:when test="${ fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam3HighSucc'), ',') == 'Y' }">
+		<c:set var="t3autogoal" value="HGS"/>
+	</c:when>
+	<c:when test="${ fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam3AttHigh'), ',') == 'Y'
+				&& fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam3HighSucc'), ',') == 'N' }">
+		<c:set var="t3autogoal" value="HGF"/>
+	</c:when>
+	<c:when test="${ fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam3LowSucc'), ',') == 'Y' }">
+		<c:set var="t3autogoal" value="LGS"/>
+	</c:when>
+	<c:when test="${ fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam3AttLow'), ',') == 'Y'
+				&& fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam3LowSucc'), ',') == 'N' }">
+		<c:set var="t3autogoal" value="LGF"/>
+	</c:when>
+</c:choose>
 
+<%="| " %>
+<c:out value="${t1autogoal } "/>
+<c:out value="${t2autogoal } "/>
+<c:out value="${t3autogoal } "/>
 <%-- Team 1 --%>
 <sql:update dataSource="${database}">
 		UPDATE match_teams
@@ -82,7 +134,7 @@
 				fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam1RobotGearSucc'), ',' ) == 'Y' ?
 					'H' : 'R'
 		}" /> <%-- Determines the gear outcome by whether robot or human was successful: S=success, H=human failure, R=robot failure --%>
-		<sql:param value="${fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam1Cross'), ',' )}" />
+		<sql:param value="${t1autogoal}" />
 		<sql:param value="${tournamentID }" />
 		<sql:param value="${matchNum }" />
 		<sql:param value="${sessionScope.team1 }" />
@@ -106,7 +158,7 @@
 				fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam2RobotGearSucc'), ',' ) == 'Y' ? 'H' : 
 					'R'
 		}" />
-		<sql:param value="${fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam2Cross'), ',' )}" />
+		<sql:param value="${t2autogoal}" />
 		<sql:param value="${tournamentID }" />
 		<sql:param value="${matchNum }" />
 		<sql:param value="${sessionScope.team2 }" />
@@ -130,7 +182,7 @@
 				fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam3RobotGearSucc'), ',' ) == 'Y' ? 'H' :
 					 'R'
 		}" />
-		<sql:param value="${fn:substringBefore(fn:substringAfter(autoDataRW, 'chkTeam3Cross'), ',' )}" />
+		<sql:param value="${t3autogoal}" />
 		<sql:param value="${tournamentID }" />
 		<sql:param value="${matchNum }" />
 		<sql:param value="${sessionScope.team3 }" />
@@ -176,8 +228,8 @@
 
 <script id="self-destruct">
 	console.log("Autonomous successful");
-	
-	setTimeout( function() {swap("teleop",true);}, 0);
+	requestAutonomous();
+	//setTimeout( function() {swap("teleop",true);}, 0);
 	remove();
 </script>
 </c:if>

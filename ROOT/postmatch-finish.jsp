@@ -225,4 +225,3 @@ location.reload();
 //requestPostMatch(); FOR DEBUGGING ONLY
 remove();
 </script>
-	<!--  	ADD COMPLETED FOR THE MATCH!!!!!!!! -->
