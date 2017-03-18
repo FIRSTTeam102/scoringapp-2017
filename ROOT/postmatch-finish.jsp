@@ -2,30 +2,41 @@
 	pageEncoding="ISO-8859-1"%>
 <%@include file="auth.jsp"%>
 <%
-	boolean t1Climbed = Boolean.parseBoolean(request.getParameter("t1Climb"));
+	/*boolean t1Climbed = Boolean.parseBoolean(request.getParameter("t1Climb"));
 	boolean t2Climbed = Boolean.parseBoolean(request.getParameter("t2Climb"));
-	boolean t3Climbed = Boolean.parseBoolean(request.getParameter("t3Climb"));
+	boolean t3Climbed = Boolean.parseBoolean(request.getParameter("t3Climb"));*/
 	
 	String t1ClimbedStr,t2ClimbedStr,t3ClimbedStr;
-	
-	if(t1Climbed == true){
-		t1ClimbedStr = "Y";
-	}
-	else {
+	try{
+		if(request.getParameter("t1Climb").equals("Y")){
+			t1ClimbedStr = "Y";
+		}
+		else {
+			t1ClimbedStr = "N";
+		}
+	}catch(NullPointerException l){
 		t1ClimbedStr = "N";
 	}
 	
-	if(t2Climbed == true){
-		t2ClimbedStr = "Y";
-	}
-	else {
+	try{
+		if(request.getParameter("t2Climb").equals("Y")){
+			t2ClimbedStr = "Y";
+		}
+		else {
+			t2ClimbedStr = "N";
+		}
+	}catch(NullPointerException l){
 		t2ClimbedStr = "N";
 	}
 	
-	if(t3Climbed == true){
-		t3ClimbedStr = "Y";
-	}
-	else {
+	try{
+		if(request.getParameter("t3Climb").equals("Y")){
+			t3ClimbedStr = "Y";
+		}
+		else {
+			t3ClimbedStr = "N";
+		}
+	}catch(NullPointerException l){
 		t3ClimbedStr = "N";
 	}
 	
@@ -142,7 +153,7 @@
 	</script>
 	</c:otherwise>
 </c:choose>
-
+<%--
 <sql:update dataSource="${database }">
 	UPDATE match_teams
 		SET ignore_match = ?
@@ -152,7 +163,7 @@
 	<sql:param value="${tournamentID }"/>
 	<sql:param value="${matchNum }"/>
 </sql:update>
-
+ 
 <sql:update dataSource ="${database }">
 		UPDATE match_teams
 		SET completed = 'Y'
@@ -163,7 +174,7 @@
 	<sql:param value="${matchNum }"/>
 	<sql:param value="<%=allianceCaps %>"/>
 </sql:update>
-
+--%>
 <sql:update dataSource ="${database }">
 		UPDATE match_teams
 		SET climbed_rope = ?
