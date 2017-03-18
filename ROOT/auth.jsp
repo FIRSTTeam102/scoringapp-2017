@@ -54,6 +54,14 @@ if(session.getAttribute(loginKey) == null){
 }
 %>
 
+
+<sql:query dataSource="${database}" var="tournamentQuery">
+	SELECT * FROM tournaments WHERE active = 'Y'
+</sql:query>
+<c:set var="tournament" scope="session" value="${tournamentQuery.rows[0].title}" />
+<c:set var="tournamentID" scope="session" value="${tournamentQuery.rows[0].ID}" />
+
+
 <% //Sets local variables from session variables when each page loads.
 String alliance = (String)session.getAttribute(allianceKey); //Alliance color
 String tournament = (String)session.getAttribute(tournamentNameKey); //Tournament name
