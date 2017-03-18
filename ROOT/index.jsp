@@ -65,6 +65,7 @@ if(request.getMethod().equals("GET")){ %>
 			<div class="btn-container">
 				<input type="submit" value="Scouting Survey" onclick="requestSurvey();">
 			</div>
+			<br/>
 			<div class="btn-container">
 				<input type="submit" value="Tournament Standings" onclick="requestStandings();">
 			</div>
