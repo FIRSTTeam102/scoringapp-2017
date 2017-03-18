@@ -3,7 +3,7 @@
 
 set_time_limit(300);
 	
-	$tournament = 'GDC';
+	$tournament = 'MBR';
 //	session_start();
 	
 	// Connect to the remote database.
