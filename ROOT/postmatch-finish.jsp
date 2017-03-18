@@ -159,7 +159,7 @@
 	</script>
 	</c:otherwise>
 </c:choose>
-<%--
+
 <sql:update dataSource="${database }">
 	UPDATE match_teams
 		SET ignore_match = ?
@@ -180,7 +180,7 @@
 	<sql:param value="${matchNum }"/>
 	<sql:param value="<%=allianceCaps %>"/>
 </sql:update>
---%>
+
 <sql:update dataSource ="${database }">
 		UPDATE match_teams
 		SET climbed_rope = ?
