@@ -1,3 +1,6 @@
+<head>
+<title>DBSync</title>
+</head>
 <?php
 //set_include_path(get_include_path() . PATH_SEPARATOR . "../" . PATH_SEPARATOR . "../../" . PATH_SEPARATOR . "../../../");
 

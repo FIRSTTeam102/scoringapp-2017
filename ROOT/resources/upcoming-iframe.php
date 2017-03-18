@@ -54,7 +54,9 @@
     <title><? echo $_SESSION['tournament']->Title; ?> Upcoming Matches</title>
     <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=yes" />
 	<script type='text/javascript' src='http://app.team102.net/resources/js/jquery-3.1.1.min.js'></script>
-            <link rel="stylesheet" href="http://app.team102.net/resources/css/style.css" />
+    <!--<link rel="stylesheet" href="http://app.team102.net/resources/css/style.css" /> -->
+	<link rel="stylesheet" type="text/css" href="stylesheet-new.css"/>
+
     <style>
 		body{
 			background: none !important;
