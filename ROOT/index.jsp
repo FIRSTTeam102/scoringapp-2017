@@ -13,12 +13,12 @@ if(request.getMethod().equals("GET")){ %>
 	</c:if>
 	<c:if test="${param.p == 'matchPrev' }"><%-- if match preview is specified, use JS to request survey --%>
 		<script>window.onload = function(){ 
-			requestMatchPrev(); //not yet implemented (probably)
+			requestPreview(); 
 		}</script>
 	</c:if>
 	<c:if test="${param.p == 'standings' }"><%-- if standings is specified, use JS to request survey --%>
 		<script>window.onload = function(){ 
-			requestStandings(); //not yet implemented (probably)
+			requestStandings(); 
 		}</script>
 	</c:if>
 	<c:if test="${param.p == 'lighter' }"><%-- if lighter is specified, use JS to request survey --%>
@@ -70,10 +70,10 @@ if(request.getMethod().equals("GET")){ %>
 				<input type="submit" value="Tournament Standings" onclick="requestStandings();">
 			</div>
 			<div class="btn-container">
-				<input disabled type="submit" value="Match Preview">
+				<input type="submit" value="Match Preview" onclick="requestPreview();">
 			</div>		
 			<div class="btn-container">
-				<input disabled type="submit" value="Upcoming Matches">
+				<input type="submit" value="Team 102 Upcoming Matches" onclick="requestUpcoming();">
 			</div>	
 			<div class="btn-container">
 				<input disabled type="submit" value="Alliance Selection">
@@ -89,6 +89,8 @@ if(request.getMethod().equals("GET")){ %>
 		<article id="postmatch" class="postmatch-container"></article>
 		<article id="survey" class="survey-container"></article>
 		<article id="standings" class="standings-container"></article>
+		<article id="preview" class="preview-container"></article>
+		<article id="upcoming" class="upcoming-container"></article>
 		<div id="lighter" style="display: none;">
 			<div>&nbsp;</div>
 			<div class="red"><a onclick="lighter('red');" style="color: white; text-decoration: none;">Red Lighter</a></div>
@@ -106,6 +108,8 @@ if(request.getMethod().equals("GET")){ %>
 		<input disabled type="submit" id="nav-postmatch" onclick="navSwap('postmatch', true)" value="Post-Match">
 		<input type="submit" id="nav-survey" onclick="navSwap('survey', true)" value="Scouting Survey">
 		<input type="submit" id="nav-standings" onclick="navSwap('standings', true)" value="Standings">
+		<input type="submit" id="nav-preview" onclick="navSwap('preview', true)" value="Match Preview">
+		<input type="submit" id="nav-upcoming" onclick="navSwap('upcoming', true)" value="102 Upcoming">
 		
 	</nav>
 	<input id="back" type="submit" value="Back" onclick="lighter();" style="display: none"><!-- for lighter -->

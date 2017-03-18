@@ -90,6 +90,12 @@ function swap(page, refreshInput){
 		case "standings":
 			requestStandings();
 			break;
+		case "preview":
+			requestPreview();
+			break;
+		case "upcoming":
+			requestUpcoming();
+			break;
 		case "lighter":$(currentPage).hide();
 			currentPage = "#lighter"; //Hides current page, sets new page, shows new page
 			$(currentPage).show();
@@ -353,9 +359,9 @@ function requestPostMatch(){
 
 function finishPostmatch(){
 	// stuff
-	var T1Climb = $("input[name='chkTeam1ClimbedRope']:checked").val();
-	var T2Climb = $("input[name='chkTeam2ClimbedRope']:checked").val();
-	var T3Climb = $("input[name='chkTeam3ClimbedRope']:checked").val();
+	var t1Climb = $("input[name='chkTeam1ClimbedRope']:checked").val();
+	var t2Climb = $("input[name='chkTeam2ClimbedRope']:checked").val();
+	var t3Climb = $("input[name='chkTeam3ClimbedRope']:checked").val();
 	
 	var RotNum = $("input[name='rdoRotors']:checked").val();
 	
@@ -372,9 +378,9 @@ function finishPostmatch(){
 			   //throw in all the things 
 				// remember to filter inputs on other end
 				
-				t1Climb: T1Climb,
-				t2Climb: T2Climb,
-				t3Climb: T3Climb,
+				t1Climb: t1Climb,
+				t2Climb: t2Climb,
+				t3Climb: t3Climb,
 				rotNum: RotNum,
 				numFouls: NumFouls,
 				numFoulPoints: NumFoulPts,
@@ -455,8 +461,19 @@ function requestSurvey(){
 	}
 }
 
-function requestMatchPrev(){
-	
+function requestPreview(){
+
+	if(currentPage != "#preview"){
+		$(currentPage).hide(0, function(){
+			
+			$("#preview").html("<iframe src='http://team102.net/public_html/2017/preview-iframe.php'/>");
+			currentPage = "#preview";
+			$("#preview").show();
+		});
+	}else{
+		
+		$("#standings").html("<iframe src='http://team102.net/public_html/2017/standings-iframe.php'/>");
+	}
 }
 
 function requestStandings(){
@@ -467,10 +484,24 @@ function requestStandings(){
 			$("#standings").html("<iframe src='http://team102.net/public_html/2017/standings-iframe.php'/>");
 			currentPage = "#standings";
 			$("#standings").show();
-			$("#nav-teleop").prop("disabled", false);
 		});
 	}else{
 		
 		$("#standings").html("<iframe src='http://team102.net/public_html/2017/standings-iframe.php'/>");
+	}
+}
+
+function requestUpcoming(){
+
+	if(currentPage != "#upcoming"){
+		$(currentPage).hide(0, function(){
+			
+			$("#upcoming").html("<iframe src='http://team102.net/public_html/2017/upcoming-iframe.php'/>");
+			currentPage = "#upcoming";
+			$("#upcoming").show();
+		});
+	}else{
+		
+		$("#upcoming").html("<iframe src='http://team102.net/public_html/2017/upcoming-iframe.php'/>");
 	}
 }

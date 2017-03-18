@@ -5,6 +5,7 @@
 	/*boolean t1Climbed = Boolean.parseBoolean(request.getParameter("t1Climb"));
 	boolean t2Climbed = Boolean.parseBoolean(request.getParameter("t2Climb"));
 	boolean t3Climbed = Boolean.parseBoolean(request.getParameter("t3Climb"));*/
+	//out.println(request.getParameter("t1Climb"));
 	
 	String t1ClimbedStr,t2ClimbedStr,t3ClimbedStr;
 	try{
@@ -39,7 +40,12 @@
 	}catch(NullPointerException l){
 		t3ClimbedStr = "N";
 	}
-	
+	/* climb debugging
+	out.println("| ");
+	out.println(t1ClimbedStr);
+	out.println(t2ClimbedStr);
+	out.println(t3ClimbedStr);
+	*/
 	int rotorCount;
 	int foulCount;
 	int foulPoints;
@@ -216,6 +222,7 @@
 
 <script id="self-destruct">
 location.reload();
+//requestPostMatch(); FOR DEBUGGING ONLY
 remove();
 </script>
 	<!--  	ADD COMPLETED FOR THE MATCH!!!!!!!! -->
