@@ -60,8 +60,8 @@ h2{
 	
 }
 
-.login-container, .alliance-container, .autonomous-container{
-	margin-top: 50px;
+.container {
+	margin-top: 20px;
 }
 
 input, textarea, select{

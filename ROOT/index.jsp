@@ -47,7 +47,7 @@ if(request.getMethod().equals("GET")){ %>
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title>FRC 2017 Scoring App | Team 102</title>
+	<title>Team 102 | FRC 2017 Scouting App</title>
 	<link rel="stylesheet" type="text/css" href="resources/css/style.css"/>
 	<script src="resources/js/jquery-3.1.1.min.js"></script> <!-- OOH! JQuery! -->
 	<script src="resources/js/main.js" type="text/javascript"></script>
@@ -63,18 +63,7 @@ if(request.getMethod().equals("GET")){ %>
 			<img class='title-small' src='resources/images/header-steamworks-1.png' />
 			<h2 class='header' id='Tournament'><c:out value='${tournament}' /></h2>
 		</header>
-		<nav id="login" class="login-container">
-			<form id="login-form" class="login-form" name="login-form" method="post">
-				Your Initials: <input type="text" name="initialsInput" maxlength="4" autocorrect="off" autocapitalize="characters" ><br>
-				&nbsp;&nbsp;&nbsp;Password: <input type="password" name="password"><br>
-				<div class="btn-container">
-					<input type="submit" value="Team 102 Scoring App">
-				</div>
-			</form>
-			<div class="btn-container">
-				<input type="submit" value="Scouting Survey" onclick="requestSurvey();">
-			</div>
-			<br/>
+		<nav id="login" class="container">
 			<div class="btn-container">
 				<input type="submit" value="Tournament Standings" onclick="requestStandings();">
 			</div>
@@ -84,22 +73,33 @@ if(request.getMethod().equals("GET")){ %>
 			<div class="btn-container">
 				<input type="number" id="upcomingTeam" placeholder="Team #" style="width: 80px"><input type="submit" value="Upcoming Matches" onclick="requestUpcoming($('#upcomingTeam').val());">
 			</div>	
-			<div class="btn-container">
+			<!-- <div class="btn-container">
 				<input disabled type="submit" value="Alliance Selection">
-			</div>
+			</div>  -->
 			<div class="btn-container">
-				<input type="submit" value="Mobile Alliance Lighter" onclick="swap('lighter', false);">
+				<input type="submit" value="Alliance Color Lighter" onclick="swap('lighter', false);">
+			</div>
+			<br/>
+			<form id="login-form" class="login-form" name="login-form" method="post">
+				<!-- Your Initials: <input type="text" name="initialsInput" maxlength="4" autocorrect="off" autocapitalize="characters" ><br>
+				&nbsp;&nbsp;&nbsp; -->Password: <input type="password" name="password" id="password"><br>
+				<div class="btn-container">
+					<input disabled type="submit" value="Team 102 Scoring App" id="btnApp">
+				</div>
+			</form>
+			<div class="btn-container">
+				<input disabled type="submit" value="Scouting Survey" id="btnSurvey" onclick="requestSurvey();">
 			</div>
 		</nav>
-		<article id="alliance" class="alliance-container"></article>
-		<article id="choosematch" class="choosematch-container"></article>
-		<article id="autonomous" class="autonomous-container"></article>
-		<article id="teleop" class="teleop-container"></article>
-		<article id="postmatch" class="postmatch-container"></article>
-		<article id="survey" class="survey-container"></article>
-		<article id="standings" class="standings-container"></article>
-		<article id="preview" class="preview-container"></article>
-		<article id="upcoming" class="upcoming-container"></article>
+		<article id="alliance" class="container"></article>
+		<article id="choosematch" class="container"></article>
+		<article id="autonomous" class="container"></article>
+		<article id="teleop" class="container"></article>
+		<article id="postmatch" class="container"></article>
+		<article id="survey" class="container"></article>
+		<article id="standings" class="container"></article>
+		<article id="preview" class="container"></article>
+		<article id="upcoming" class="container"></article>
 		<div id="lighter" style="display: none;">
 			<div>&nbsp;</div>
 			<div class="red"><a onclick="lighter('red');" style="color: white; text-decoration: none;">Red Lighter</a></div>
@@ -109,7 +109,7 @@ if(request.getMethod().equals("GET")){ %>
 	</div>
 	<input class=sidenav-button id="sidenav-buton" type="submit" onclick="toggleSidenav()" value="Navigation"/>
 	<nav id="sidenav" class="sidenav">
-		<input type="submit" id="navLogin" value="Login" onclick="swap('login', false)">
+		<input type="submit" id="navLogin" value="Home" onclick="swap('login', false)">
 		<input disabled type="submit" id="nav-alliance" onclick="navSwap('alliance', true)" value="Alliance">
 		<input disabled type="submit" id="nav-choosematch" onclick="navSwap('choosematch', true)" value="Choosematch">
 		<input disabled type="submit" id="nav-autonomous" onclick="navSwap('autonomous', true)" value="Autonomous">

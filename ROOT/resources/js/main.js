@@ -19,6 +19,18 @@ $(function(){
 	var stateObj = { page: "login" }; //History state stuff, not used
 	history.pushState(stateObj, "", "");
 	
+	
+	//Detects when password is input and enables scoring app buttons when password is typed
+	$("#password").keydown(function(e){
+		//console.log(this.value); debugging onlyu
+		if(this.value.length > 0){
+			$("#btnApp").prop("disabled", false);
+			$("#btnSurvey").prop("disabled", false);
+		}else{
+			$("#btnApp").prop("disabled", true);
+			$("#btnSurvey").prop("disabled", true);
+		}
+	});
 });
 
 var bestTeam = document.getElementsByClassName("best_team");
