@@ -1,11 +1,13 @@
 function initLogin(){
 	$("#login-form").on("submit", function(event) {
 		   event.preventDefault();//Stops refresh
-		   var user = $(this).find('[name=initialsInput]').val();
+		   //Initials/User has been disabled
+		   //var user = $(this).find('[name=initialsInput]').val();
 		   var pass = $(this).find('[name=password]').val();
 		   $.post("login.jsp",
 			{
-				user: user,
+			   	user: null,
+				//user: user,
 				pass: pass
 			},
 			
