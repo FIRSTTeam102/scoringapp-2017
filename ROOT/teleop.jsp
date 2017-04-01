@@ -7,6 +7,9 @@
 
 <script src="resources/js/teleop.js"></script>
 <h1>Teleop | Match <span id="match"><c:out value="${matchNum }"/></span> | <span id="alliance"><c:out value="${alliance }"/></span> Alliance</h1>
+
+<c:out value="Cycle ${cycleNum + 1}"/>
+
 <table class="form-block teams" id="teleopTeamHolder">
 	<tr>
 		<td class="teleTeam" id="team1"><%=team1 %></td>
@@ -14,9 +17,6 @@
 		<td class="teleTeam" id="team3"><%=team3 %></td>
 	</tr>
 </table>
-
-<c:out value="${cycleNum}"/>
-
 <div class="form-block">
 	<div class="form-line">
 		<input type="radio" name="actionAttempt" id="attLowGoal" value="low"/>

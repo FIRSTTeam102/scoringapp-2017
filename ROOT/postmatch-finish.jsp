@@ -229,7 +229,8 @@ System.out.println("Alliance: " + allianceCaps);
 </sql:update>
 
 <script id="self-destruct">
-location.reload();
+//location.reload();
+swap("choosematch", true);
 //requestPostMatch(); FOR DEBUGGING ONLY
 remove();
 </script>

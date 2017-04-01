@@ -2,6 +2,16 @@
 	pageEncoding="ISO-8859-1"%>
 <%@include file="auth.jsp"%>
 
+<% //Sets whether we care about ignorematch, depending on if this is dev or not
+//out.println(isDev);
+if(isDev == true){
+	out.println("DEV");
+	//pageContext.setAttribute("checkIgnore", "Y | N"); //if dev, then don't check for ignore
+}else{
+	//pageContext.setAttribute("checkIgnore", "Y"); //if not dev, check for ignore
+	isDev = false;
+}
+%>
 
 <sql:query dataSource="${database}" var="result">
 select mt1.match_number, m.start_time, mt1.team_number as team1, mt2.team_number as team2, mt3.team_number as team3, mt1.initials
@@ -9,7 +19,7 @@ select mt1.match_number, m.start_time, mt1.team_number as team1, mt2.team_number
     where t.active = 'Y'  and m.tournament_id = t.ID
       and mt1.tournament_id = m.tournament_id  and mt1.match_number = m.match_number
         and mt1.completed = 'N'  and mt1.alliance = ?
-        and mt1.ignore_match = 'N'
+        and mt1.ignore_match = <% if(isDev == true){out.print("'Y' | 'N'");}else{out.print("'N'");} %> <%--If not dev, then check if ignorematch = Y --%>
         and mt1.seq_no = 1  and mt2.team_number != mt1.team_number
       and mt2.tournament_id = mt1.tournament_id
         and mt2.match_number = mt1.match_number  and mt2.completed = mt1.completed

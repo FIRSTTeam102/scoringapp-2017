@@ -3,3 +3,4 @@ ROOT/resources/garbage
 ROOT/resources/trash
 ROOT/resources/parsematches.php
 ROOT/resources/parseteams.php
+ROOT/resources/isDev.jsp
