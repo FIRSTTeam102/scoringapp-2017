@@ -98,7 +98,7 @@
 	
 	echo "<h1>Parsing Matches</h1>";
 
-	/* Createa a new DomDocument object */
+	/* Create a a new DomDocument object */
 	$dom = new DomDocument;
 	
 	// Load the active tournament
@@ -106,8 +106,8 @@
 	// NOTE: need to put the correct URL for the competition here.
 
 	// NOTE: Set OUR tournament ID here.
-	$FIRSTName = 'NJBRI';	// NJSKI, NJTAB
-	$tournament_id = "MBR";
+	$FIRSTName = 'NJSKI';	// NJSKI - Montgomery, NJTAB, NJBRI - Bridgewater
+	$tournament_id = "MNT";
 	
 	// NOTE: Change FIRST's event id in this URL to select a different tournament.
 	$url = "http://frc-events.firstinspires.org/2017/" . $FIRSTName ."/qualifications";
@@ -208,6 +208,7 @@
 	
 	
 	$numCols = 17;	// NOTE: This changes from year to year depending on their stats.
+	$teamNumber = null;
 	foreach ($nodes as $i => $node) {
 //		echo $i.": ".$node->nodeValue;	// uncomment this to figure out how many columns
 //		echo "<br>";				
@@ -216,17 +217,23 @@
 			if($rank != null)
 			{
 				// A team has been parsed.  Save it to the DB.
+				$rank = ($rank == "") ? "null" : $rank;
+				$rankingPoints = ($rankingPoints == "") ? "null" : $rankingPoints;
+				$autoPoints = ($autoPoints == "") ? "null" : $autoPoints;
 				echo sprintf("%s, %s, %s, %s<br>", $teamNumber, $rank, $rankingPoints, $autoPoints);
 				echo "\n";
 				$sql = sprintf("update tournament_teams set frc_rank = %s, ranking_points = %s, auto_points = %s
 								 where team_number = %s and tournament_id = '%s'"
-								, $rank, $rankingPoints, $autoPoints, $teamNumber, $tournamentID
+								, $rank
+								, $rankingPoints
+								, $autoPoints
+								, $teamNumber, $tournament_id
 								);
 //				echo $sql;
 //				echo "<br>";				
 				$updateReturn = mysql_query($sql, $link);
 				if(!$updateReturn)
-					die(sprintf("Error updating tournament-team: %s-%s, Err: %s", $tournamentID, $teamNumber, mysql_error()));
+					die(sprintf("Error updating tournament-team: %s-%s, Err: %s", $tournament_id, $teamNumber, mysql_error()));
 			}
 			$rank = null;
 			// Get team number.
@@ -249,17 +256,20 @@
 	if($teamNumber != null)
 	{
 		// A team has been parsed.  Save it to the DB.
+		$rank = ($rank == "") ? "null" : $rank;
+		$rankingPoints = ($rankingPoints == "") ? "null" : $rankingPoints;
+		$autoPoints = ($autoPoints == "") ? "null" : $autoPoints;
 		echo sprintf("%s, %s, %s, %s<br>", $teamNumber, $rank, $rankingPoints, $autoPoints);
 		echo "\n";
 		$sql = sprintf("update tournament_teams set frc_rank = %s, ranking_points = %s, auto_points = %s
 						 where team_number = %s and tournament_id = '%s'"
-						, $rank, $rankingPoints, $autoPoints, $teamNumber, $tournamentID
+						, $rank, $rankingPoints, $autoPoints, $teamNumber, $tournament_id
 						);
 //				echo $sql;
 //				echo "\n";				
 		$updateReturn = mysql_query($sql, $link);
 		if(!$updateReturn)
-			die(sprintf("Error updating tournament-team: %s-%s, Err: %s", $tournamentID, $teamNumber, mysql_error()));
+			die(sprintf("Error updating tournament-team: %s-%s, Err: %s", $tournament_id, $teamNumber, mysql_error()));
 	}
 	
 	// parse elimination matches
