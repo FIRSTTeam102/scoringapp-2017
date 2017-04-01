@@ -11,7 +11,7 @@
     		exit;
 	}
 
-	$sql = "select mt.match_number,  m.start_time, mt.alliance, mt.team_number as `_team_number`, tap.tournament_id, 102_rank,FRC_rank, luck
+	$sql = "select mt.match_number,  m.start_time, mt.alliance, mt.team_number as `_team_number`, mt.tournament_id, 102_rank,FRC_rank, luck
 					, num_matches, avg_pts, rank_pts, avg_auto_pts, auto_gear_pct, auto_goal, Avg_Gears, Rope_Pct, Broke_Down
 				from match_teams mt left outer join team_avg_pts_v tap on tap.team_number = mt.team_number, matches m
 				where mt.completed = 'N' and mt.match_number = m.match_number and mt.tournament_id = m.tournament_id
@@ -45,7 +45,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Bridgewater-Raritan MAR District Upcoming Matches</title> <!-- <? echo $_SESSION['tournament']->Title; ?> -->
+    <title>MAR District - Montgomery Event Upcoming Matches</title> <!-- <? echo $_SESSION['tournament']->Title; ?> -->
     <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=yes" />
 	<script type='text/javascript' src='jqueryui/js/jquery-1.10.2.js'></script>
     <link rel="stylesheet" href="stylesheet.css" />

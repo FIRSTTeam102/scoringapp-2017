@@ -6,7 +6,7 @@
 
 set_time_limit(300);
 	
-	$tournament = 'MBR';
+	$tournament = 'MNT';
 //	session_start();
 	
 	// Connect to the remote database.

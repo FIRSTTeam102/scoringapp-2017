@@ -25,13 +25,15 @@
 	if($more)
 		$selectList = "tournament_id,102_rank,FRC_rank, luck, team_number, num_matches, avg_pts, rank_pts, avg_auto_pts, auto_gear_tries, auto_gear_success, auto_gear_PCT, auto_goal, Avg_Gears, Rope_Pct, climbed_rope, Gear_Tries, Gear_Success, Gear_PCT, Gear_pts, avg_Gear_pts, avg_hi_pts, avg_lo_pts, Broke_Down, Recovered";
 		
-	$sql = "select ". $selectList . " from team_avg_pts_v order by ";		// Temporary.
-	
-	if($_GET['AllTournaments'] != null)
-		$sql = "select " . $selectList .
-				" from t_team_avg_pts_v  apv
-				where team_number in (select team_number from tournament_teams tt, tournaments t where tt.tournament_id = t.id and t.active = 'Y')
-				order by ";	// Over all tournaments that are not Active = 'O'
+	if($_GET['Recent'] != null)
+		$queryView = "recent_team_avg_pts_v";
+	else
+		$queryView = "team_avg_pts_v";
+
+	$sql = "select ". $selectList . " from ". $queryView . " 
+	where team_number in (select team_number from tournament_teams tt, tournaments t where tt.tournament_id = t.id and t.active = 'Y')
+	and tournament_id in (select id from tournaments where active = 'Y')
+	order by ";		// Temporary.
 	
 	$sql .= mysql_real_escape_string($sort);
 	
@@ -56,7 +58,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Bridgewater-Raritan MAR District Standings</title> <!-- <? echo $_SESSION['tournament']->Title; ?> -->
+    <title>MAR District - Montgomery Event Standings</title> <!-- <? echo $_SESSION['tournament']->Title; ?> -->
     <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=yes" />
 	<script type='text/javascript' src='jqueryui/js/jquery-1.10.2.js'></script>
     <link rel="stylesheet" href="stylesheet.css" />

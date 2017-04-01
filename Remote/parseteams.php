@@ -33,8 +33,8 @@
 	/* Load the HTML */
 //	$dom->loadHTMLFile("https://my.usfirst.org/myarea/index.lasso?page=teamlist&event_type=FRC&sort_teams=number&year=2015&event=mrcmp");
 
-	$FIRSTName = 'NJBRI';	// NJSKI, NJTAB, NJBRI, MDBET
-	$tournamentID = 'MBR';	// MNT	- Montgomery, SEN - Seneca, MBR - Bridgewater
+	$FIRSTName = 'NJSKI';	// NJSKI - Montgomery, NJTAB, NJBRI - Bridgewater, MDBET
+	$tournamentID = 'MNT';	// MNT	- Montgomery, SEN - Seneca, MBR - Bridgewater
 	$dom->loadHTMLFile("http://frc-events.firstinspires.org/2017/".$FIRSTName);
 	/* Create a new XPath object */
 	$xpath = new DomXPath($dom);
