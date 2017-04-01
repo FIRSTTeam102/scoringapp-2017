@@ -110,11 +110,12 @@
 		<c:set var="t3autogoal" value="LGF"/>
 	</c:when>
 </c:choose>
-
+<%-- some debugging stuff
 <%="| " %>
 <c:out value="${t1autogoal } "/>
 <c:out value="${t2autogoal } "/>
 <c:out value="${t3autogoal } "/>
+ --%>
 <%-- Team 1 --%>
 <sql:update dataSource="${database}">
 		UPDATE match_teams
