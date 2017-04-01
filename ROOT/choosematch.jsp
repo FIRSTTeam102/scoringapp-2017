@@ -3,8 +3,9 @@
 <%@include file="auth.jsp"%>
 
 <% //Sets whether we care about ignorematch, depending on if this is dev or not
-out.println(isDev);
+//out.println(isDev);
 if(isDev == true){
+	out.println("DEV");
 	//pageContext.setAttribute("checkIgnore", "Y | N"); //if dev, then don't check for ignore
 }else{
 	//pageContext.setAttribute("checkIgnore", "Y"); //if not dev, check for ignore
