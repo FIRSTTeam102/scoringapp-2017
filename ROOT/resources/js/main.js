@@ -26,6 +26,7 @@ $(function(){
 		if(this.value.length > 0){
 			$("#btnApp").prop("disabled", false);
 			$("#btnSurvey").prop("disabled", false);
+			$("#btnPlayoffs").prop("disabled", false);
 		}else{
 			$("#btnApp").prop("disabled", true);
 			$("#btnSurvey").prop("disabled", true);
@@ -523,4 +524,32 @@ function requestUpcoming(team){
 		
 		$("#upcoming").html("<iframe src='http://team102.net/public_html/2017/upcoming-iframe.php'/>");
 	}
+}
+
+function requestPlayoffs(){
+	
+	$.post("PlayoffAlliances.jsp",
+			{
+			
+			},
+			
+			function(data, status, xhr) {
+				//Sets the content div's contents to whatever the jsp page has on it.
+				if(status == "success"){
+					
+					if(currentPage != "#playoffs"){
+						$(currentPage).hide(0, function(){
+							
+							$("#content").html(data); 
+							currentPage = "#playoffs";
+						});
+					}else{
+						$("#playoffs").html(data.trim());
+					}
+				}else if(status == "error"){
+					alert("A playoffs error occurred.");
+					error("Error:" + xhr.status);
+				}
+			});
+	
 }

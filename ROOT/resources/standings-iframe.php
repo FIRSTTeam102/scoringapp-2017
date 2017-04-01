@@ -59,10 +59,14 @@
     <title><? echo $_SESSION['tournament']->Title; ?> Standings</title>
     <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=yes" />
 	<script type='text/javascript' src='http://app.team102.net/resources/js/jquery-3.1.1.min.js'></script>
-    <link rel="stylesheet" href="http://app.team102.net/resources/css/style.css" />
+<!--   
+   <link rel="stylesheet" href="http://app.team102.net/resources/css/style.css" />
+-->
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
     <style>
 		body{
 			background: none !important;
+			max-width: 100% !important;
 		}
 		option{
 				
@@ -147,7 +151,7 @@
 			  {
 				if($colName == "team_number")
 				{
-					echo '<td><a href="survey.php?team=' . $row[$colName] . '">' . $row[$colName] . "</a></td>";
+					echo '<td><a href="survey-iframe.php?team=' . $row[$colName] . '">' . $row[$colName] . "</a></td>";
 				}
 				else if($colName != 'tournament_id')
 				{

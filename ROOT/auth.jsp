@@ -10,6 +10,14 @@
 <%-- Database setup code is in a different file, so that index page can access it, so that it can receive tournament name info --%>  
 <%@include file="database.jsp" %>
 
+<%@include file="resources/isDev.jsp" %><%--Page to check if the program is runing on dev or deployed --%>
+
+<% //just in case of null exceptions or something
+if(isDev != true){
+	isDev = false;
+}
+%>
+
 <% //Rejects pageload if request is not 'POST' or if isLoggedIn is not true
 final String loginKey = "isLoggedIn";
 

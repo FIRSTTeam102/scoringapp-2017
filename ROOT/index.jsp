@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 
+<%@include file="resources/isDev.jsp" %>
 <%@include file="database.jsp" %>
 
 <% //If request is get, check if there are any parameters
@@ -90,6 +91,11 @@ if(request.getMethod().equals("GET")){ %>
 			<div class="btn-container">
 				<input disabled type="submit" value="Scouting Survey" id="btnSurvey" onclick="requestSurvey();">
 			</div>
+			<!-- not implemented JOE
+			<div class="btn-container">
+				<input disabled type="submit" value="Playoff Alliances" id="btnPlayoffs" onclick="requestPlayoffs();">
+			</div>
+			 -->
 		</nav>
 		<article id="alliance" class="container"></article>
 		<article id="choosematch" class="container"></article>
