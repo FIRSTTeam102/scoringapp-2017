@@ -41,7 +41,7 @@ $(function(){
 });
 
 function highlight(element){
-	$(element).css("background", "red");
+	$(element).css("background", "#687d87");
 }
 
 function unHighlight(element){
