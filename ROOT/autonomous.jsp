@@ -12,7 +12,7 @@ pageContext.setAttribute("team3", team3);
 %>
 
 <script src="resources/js/autonomous.js"></script>
-<h1>Autonomous | Match <span id="match"><c:out value="${matchNum }"/></span> | <span id="alliance"><c:out value="${alliance }"/></span> Alliance</h1>
+<h1 class="<c:out value="${alliance }"/>">Autonomous | Match <span id="match"><c:out value="${matchNum }"/></span> | <span id="alliance"><c:out value="${alliance }"/></span> Alliance</h1>
 <c:catch var="autoException">
 	<nav class="team<c:if test="${team1 == bestTeam }"> best_team</c:if><%-- bestTeam stuff --%>" id="team1holder">
 		<h2 id="team1" class="teamNumber form-block"><%=team1%></h2>

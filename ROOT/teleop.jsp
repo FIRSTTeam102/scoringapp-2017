@@ -12,7 +12,7 @@ pageContext.setAttribute("team3", team3);
 %>
 
 <script src="resources/js/teleop.js"></script>
-<h1>Teleop | Match <span id="match"><c:out value="${matchNum }"/></span> | <span id="alliance"><c:out value="${alliance }"/></span> Alliance</h1>
+<h1 class="<c:out value="${alliance }"/>">Teleop | Match <span id="match"><c:out value="${matchNum }"/></span> | <span id="alliance"><c:out value="${alliance }"/></span> Alliance</h1>
 
 <c:out value="Cycle ${cycleNum + 1}"/>
 

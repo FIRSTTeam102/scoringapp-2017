@@ -12,7 +12,7 @@ pageContext.setAttribute("team2", team2);
 pageContext.setAttribute("team3", team3);
 %>
     
-<h1>Post-match | Match <span id="match"><c:out value="${matchNum }"/></span> | <span id="alliance"><c:out value="${alliance }"/></span> Alliance</h1>
+<h1 class="<c:out value="${alliance }"/>">Post-match | Match <span id="match"><c:out value="${matchNum }"/></span> | <span id="alliance"><c:out value="${alliance }"/></span> Alliance</h1>
 
 <div id="AlliancePostMatch">
 	<div class="form-block">
