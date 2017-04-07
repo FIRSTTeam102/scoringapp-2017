@@ -482,13 +482,13 @@ function requestPreview(){
 	if(currentPage != "#preview"){
 		$(currentPage).hide(0, function(){
 			
-			$("#preview").html("<iframe src='http://team102.net/public_html/2017/preview-iframe.php'/>");
+			$("#preview").html("<iframe src='http://team102.net/public_html/2017/preview.php'/>");
 			currentPage = "#preview";
 			$("#preview").show();
 		});
 	}else{
 		
-		$("#standings").html("<iframe src='http://team102.net/public_html/2017/standings-iframe.php'/>");
+		$("#preview").html("<iframe src='http://team102.net/public_html/2017/preview.php'/>");
 	}
 }
 
@@ -497,13 +497,13 @@ function requestStandings(){
 	if(currentPage != "#standings"){
 		$(currentPage).hide(0, function(){
 			
-			$("#standings").html("<iframe src='http://team102.net/public_html/2017/standings-iframe.php'/>");
+			$("#standings").html("<iframe src='http://team102.net/public_html/2017/standings.php'/>");
 			currentPage = "#standings";
 			$("#standings").show();
 		});
 	}else{
 		
-		$("#standings").html("<iframe src='http://team102.net/public_html/2017/standings-iframe.php'/>");
+		$("#standings").html("<iframe src='http://team102.net/public_html/2017/standings.php'/>");
 	}
 }
 
