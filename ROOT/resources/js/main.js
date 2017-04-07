@@ -12,6 +12,7 @@ var pages = {
 var nav = false;
 var team1, team2, team3, matchNum; //team and match numbers; updated in choosematch-finish
 var alliance;
+var bestTeam, highlightColor, unlightColor; //easter egg
 
 $(function(){
 	initLogin();
@@ -34,28 +35,32 @@ $(function(){
 	});
 });
 
-var bestTeam = document.getElementsByClassName("best_team");
-var highlightColor = "#FFA812";
-var unlightColor = "#573B1F";
-function highlight() {
+function checkBestTeam(){
+	bestTeam = document.getElementsByClassName("best_team");
+	highlightColor = "#FFA812";
+	unlightColor = "#573B1F";
+	bestTeamHighlight();
+}
+
+function bestTeamHighlight() {
 	for (var i = 0; i < bestTeam.length; i++) {
-		bestTeam[i].style.borderColor = highlightColor;
+		bestTeam[i].style.border = "2px solid" + highlightColor;
 		bestTeam[i].style.boxShadow = "0px 0px 5px #FFA812";
 	}
 	setTimeout(function() {
-		unlight();
+		bestTeamUnlight();
 	}, 500);
 }
-function unlight() {
+function bestTeamUnlight() {
 	for (var i = 0; i < bestTeam.length; i++) {
-		bestTeam[i].style.borderColor = unlightColor;
+		bestTeam[i].style.borderColor = "2px solid" + unlightColor;
 		bestTeam[i].style.boxShadow = "0px 0px 0px #FFA812";
 	}
 	setTimeout(function() {
-		highlight();
+		bestTeamHighlight();
 	}, 500);
 }
-highlight();
+//highlight(); only need to call this after checkBestTeam
 
 function swap(page, refreshInput){
 
@@ -221,13 +226,7 @@ function requestChoosematch(){
 					$("#choosematch").show();
 					
 					//easter egg lel
-					bestTeam = [];
-					for(var i = 0; i < $(".team_holder").length; i++){
-						if($(".team_holder")[i].innerHTML.trim() == "102"){
-							bestTeam.push($(".team_holder")[i]);
-							//$(".team_holder")[i].className += " best_team";
-						}
-					}
+					checkBestTeam();
 				});
 			}else{
 				$("#choosematch").html(data.trim());
@@ -306,6 +305,7 @@ function requestAutonomous(){
 			alert("An autonomous error occurred.");
 			error("Error:" + xhr.status);
 		}
+		checkBestTeam(); //easter egg
 	});
 }
 
@@ -338,6 +338,8 @@ function requestTeleop(){
 			alert("A teleop error occurred.");
 			error("Error:" + xhr.status);
 		}
+		
+		checkBestTeam(); //easter egg
 	});
 }
 
@@ -370,6 +372,7 @@ function requestPostMatch(){
 			alert("A postmatch error occurred.");
 			error("Error:" + xhr.status);
 		}
+		checkBestTeam();
 	});
 }
 
@@ -528,7 +531,7 @@ function requestUpcoming(team){
 
 function requestPlayoffs(){
 	
-	$.post("PlayoffAlliances.jsp",
+	$.post("playoff-alliances.jsp",
 			{
 			
 			},
@@ -540,8 +543,9 @@ function requestPlayoffs(){
 					if(currentPage != "#playoffs"){
 						$(currentPage).hide(0, function(){
 							
-							$("#content").html(data); 
+							$("#playoffs").html(data);
 							currentPage = "#playoffs";
+							$("#playoffs").show();
 						});
 					}else{
 						$("#playoffs").html(data.trim());

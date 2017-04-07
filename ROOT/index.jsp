@@ -91,11 +91,11 @@ if(request.getMethod().equals("GET")){ %>
 			<div class="btn-container">
 				<input disabled type="submit" value="Scouting Survey" id="btnSurvey" onclick="requestSurvey();">
 			</div>
-			<!-- not implemented JOE
+			
 			<div class="btn-container">
 				<input disabled type="submit" value="Playoff Alliances" id="btnPlayoffs" onclick="requestPlayoffs();">
 			</div>
-			 -->
+			 
 		</nav>
 		<article id="alliance" class="container"></article>
 		<article id="choosematch" class="container"></article>
@@ -106,6 +106,7 @@ if(request.getMethod().equals("GET")){ %>
 		<article id="standings" class="container"></article>
 		<article id="preview" class="container"></article>
 		<article id="upcoming" class="container"></article>
+		<article id="playoffs" class="container"></article>
 		<div id="lighter" style="display: none;">
 			<div>&nbsp;</div>
 			<div class="red"><a onclick="lighter('red');" style="color: white; text-decoration: none;">Red Lighter</a></div>

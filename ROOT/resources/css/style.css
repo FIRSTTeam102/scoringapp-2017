@@ -206,6 +206,15 @@ h1{
 }.form-block{
 	margin: 0;
 	border: solid 1px white;
+}.playoff-form-block{
+	width: 25%;
+	margin-left:15px;
+	margin-right:10px;
+	border: solid 1px white;
+	display: table-cell;
+	
+}.playoff-form-row{
+	display: table-row;
 }.pilot1{
 	float: left;
     margin-left: 5%;
@@ -218,7 +227,7 @@ h1{
 }
 
 .rope {
-	width: 33%;
+	width: 3%; /* I have no @%$*ing clue why the heck this needs to be 3, instead of 33, but it works .___. */
 	display: table-cell;
 	padding: 10px 0% 10px 0%;
 	margin-top: 25px;

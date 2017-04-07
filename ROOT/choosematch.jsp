@@ -12,6 +12,9 @@ if(isDev == true){
 	isDev = false;
 }
 %>
+<c:if test="${bestTeam == null }"> <%-- best-team easter egg --%>
+	<c:set var="bestTeam" value="102"/>
+</c:if>
 
 <sql:query dataSource="${database}" var="result">
 select mt1.match_number, m.start_time, mt1.team_number as team1, mt2.team_number as team2, mt3.team_number as team3, mt1.initials
@@ -70,13 +73,13 @@ pageContext.setAttribute(initialsKey, initials);
 				name="team1"></input> <input type="hidden"
 				value="<c:out value="${row.team2}"/>" name="team2"></input> <input
 				type="hidden" value="<c:out value="${row.team3}"/>" name="team3"></input>
-				<div class="team_holder">
+				<div class="team_holder<c:if test="${row.team1 == bestTeam }"> best_team</c:if>"> <%-- bestTeam stuff --%>
 					<c:out value="${row.team1}" />
 				</div>
-				<div class="team_holder">
+				<div class="team_holder<c:if test="${row.team2 == bestTeam }"> best_team</c:if>">
 					<c:out value="${row.team2}" />
 				</div>
-				<div class="team_holder">
+				<div class="team_holder<c:if test="${row.team3 == bestTeam }"> best_team</c:if>">
 					<c:out value="${row.team3}" />
 				</div>
 				<div class="team_holder">

@@ -1,10 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@include file="auth.jsp"%>
+
+<c:if test="${bestTeam == null }"> <%-- best-team easter egg --%>
+	<c:set var="bestTeam" value="102"/>
+</c:if>
+<%
+pageContext.setAttribute("team1", team1);
+pageContext.setAttribute("team2", team2);
+pageContext.setAttribute("team3", team3);
+%>
+
 <script src="resources/js/autonomous.js"></script>
 <h1>Autonomous | Match <span id="match"><c:out value="${matchNum }"/></span> | <span id="alliance"><c:out value="${alliance }"/></span> Alliance</h1>
 <c:catch var="autoException">
-	<nav class="team" id="team1holder">
+	<nav class="team<c:if test="${team1 == bestTeam }"> best_team</c:if><%-- bestTeam stuff --%>" id="team1holder">
 		<h2 id="team1" class="teamNumber form-block"><%=team1%></h2>
 		<div class="form-block">
 			<div class="form-line pilot1" id="pilot1team1">
@@ -53,7 +63,7 @@
 			</div>
 		</div>
 	</nav>
-	<nav class="team" id="team2holder">
+	<nav class="team<c:if test="${team2 == bestTeam }"> best_team</c:if>" id="team2holder">
 		<h2 id="team2" class="teamNumber form-block"><%=team2%></h2>
 		<div class="form-block">
 			<div class="form-line pilot1" id="pilot1team1">
@@ -102,7 +112,7 @@
 			</div>
 		</div>
 	</nav>
-	<nav class="team" id="team3holder">
+	<nav class="team<c:if test="${team3 == bestTeam }"> best_team</c:if>" id="team3holder">
 		<h3 id="team3" class="teamNumber form-block"><%=team3%></h3>
 		<div class="form-block">
 			<div class="form-line pilot1" id="pilot1team1">

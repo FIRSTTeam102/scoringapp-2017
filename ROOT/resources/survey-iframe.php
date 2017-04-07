@@ -45,8 +45,8 @@ header("access-control-allow-origin: *");
 		}		
 	}
 	
-	// Get a list of teams to put in the list box.
-	$sql = "select t.number, t.name
+	// Get a list of teams to put in the list box. Joe Added Nickname query
+	$sql = "select t.number, t.name, t.nickname 
 						from teams t, tournament_teams tt, tournaments tr 
 						where tr.active = 'Y'
 						and tt.tournament_id = tr.ID
