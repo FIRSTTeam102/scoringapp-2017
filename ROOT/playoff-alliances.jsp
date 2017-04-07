@@ -198,8 +198,13 @@
 	</div>
 	
 <input type="submit" class="submit" id="btnUpdateUnchosen" value="Update Unchosen" onclick="updateUnchosen();">
+
+<input type="submit" class="submit" id="btnMoveCaptain" value="Move Captain" onclick="moveCaptain();">
+
 	<div id="update-unchosen">
 	</div>
+	
+	
 <script>initTeams();</script>
 	
 	

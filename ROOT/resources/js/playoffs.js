@@ -7,13 +7,8 @@ function updateUnchosen() {
 	curTeam = $("input[name='radTeam']:checked")[0].getAttribute("val");
 	curAlliance = $("input[name='radAlliance']:checked")[0].getAttribute("val");
 	
-	/*
-	$("playoff-alliances").find(".radTeam").each(function() {
-	    inputTeams.push($(this).val());
-	});
-	*/
 	
-	inputTeams.push(curTeam);
+	//inputTeams.push(curTeam);
 	
 	
 	/* used to have number inputs
@@ -33,17 +28,26 @@ function updateUnchosen() {
 	    	
 	    	console.log("success");
 	    	
-	    	$(data).find(".teamNum").each(function() {    	
+	    	//Move the selected team to the proper alliance.
+	    	$("#al" + curAlliance).append('<div class="form-line"><input type="radio" class="radTeam" name="radTeam" id="rad' + curTeam + '" val="' + curTeam + '"> <label for="rad' + curTeam + '">'+ curTeam + '</label></div>');
+	    	
+	    	//
+	    	
+	    	
+    		$(".playoff-form-block").find(".radTeam").each(function() {
+    		    inputTeams.push($(this)[0].getAttribute("val"));
+    		});
+    	
+	    	
+	    	$(data).find(".teamNum").each(function() {
+	    		console.log($(data).find(".teamNum").html());
 	    		if ($.inArray($(this).html(), inputTeams) == -1) {
 	    			unchosenTeams.push($(this).html());
 	    			
 	    		}
 	    	}); 
 	    	
-	    	//Move the selected team to the proper alliance.
-	    	$("#al" + curAlliance).append('<div class="form-line"><input type="radio" class="radTeam" name="radTeam" id="rad' + curTeam + '" val="' + curTeam + '"> <label for="rad' + curTeam + '">'+ curTeam + '</label></div>');
-	    	
-	    	//
+
 	    	
 	    	
 	    	$("#update-unchosen").empty();
@@ -58,7 +62,7 @@ function updateUnchosen() {
 	    		//console.log(unchosenTeams[i]);
 	    	}
 	    	
-	    	alert("inputTeams: " + inputTeams + "  unchosenTeams: " + unchosenTeams);
+	    	console.log("inputTeams: " + inputTeams + "  unchosenTeams: " + unchosenTeams);
 	    },
 	    error: function() { alert('Failed!'); },
 	    
@@ -98,4 +102,23 @@ function initTeams() { //just to get the buttons in there on the page load
 	    	
 	    }
 	});
+}
+
+function moveCaptain() {
+	curTeam = $("input[name='radTeam']:checked")[0].getAttribute("val");
+	curAlliance = $("input[name='radAlliance']:checked")[0].getAttribute("val");
+	
+	//remove from old alliance
+	$(".playoff-form-block").find(".radTeam").each(function() {
+	    if ($(this)[0].getAttribute("val") == curTeam) {
+	    	$(this).parent().empty();
+	    	
+	    }
+	});
+	
+	//add to the new alliance
+	$("#al" + curAlliance).append('<div class="form-line"><input type="radio" class="radTeam" name="radTeam" id="rad' + curTeam + '" val="' + curTeam + '"> <label for="rad' + curTeam + '">'+ curTeam + '</label></div>');
+	
+	
+	
 }

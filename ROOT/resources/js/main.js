@@ -17,9 +17,9 @@ var bestTeam, highlightColor, unlightColor; //easter egg
 $(function(){
 	initLogin();
 	
-	var stateObj = { page: "login" }; //History state stuff, not used
+	/*var stateObj = { page: "login" }; //History state stuff, not used
 	history.pushState(stateObj, "", "");
-	
+	*/
 	
 	//Detects when password is input and enables scoring app buttons when password is typed
 	$("#password").keydown(function(e){
