@@ -59,11 +59,25 @@ if(request.getMethod().equals("GET")){ %>
 </head>
 <body>
 	<div class="content" id="content">
-		<!-- Contains larger header image by default. Main header loaded as part of AJAX. -->
+		<input class=sidenav-button id="sidenav-buton" type="submit" onclick="toggleSidenav()" value="Navigation"/>
+		<nav id="sidenav" class="sidenav">
+			<input type="submit" id="navLogin" value="Home" onclick="swap('login', false)">
+			<input disabled type="submit" id="nav-alliance" onclick="navSwap('alliance', true)" value="Alliance">
+			<input disabled type="submit" id="nav-choosematch" onclick="navSwap('choosematch', true)" value="Choosematch">
+			<input disabled type="submit" id="nav-autonomous" onclick="navSwap('autonomous', true)" value="Autonomous">
+			<input disabled type="submit" id="nav-teleop" onclick="navSwap('teleop', true)" value="Teleop">
+			<input disabled type="submit" id="nav-postmatch" onclick="navSwap('postmatch', true)" value="Post-Match">
+			<input type="submit" id="nav-survey" onclick="navSwap('survey', true)" value="Scouting Survey">
+			<input type="submit" id="nav-standings" onclick="navSwap('standings', true)" value="Standings">
+			<input type="submit" id="nav-preview" onclick="navSwap('preview', true)" value="Match Preview">
+			<input type="submit" id="nav-upcoming" onclick="navSwap('upcoming', true)" value="102 Upcoming">
+		</nav>
+		
 		<header id="header">
 			<img class='title-small' src='resources/images/header-steamworks-1.png' />
 			<h2 class='header' id='Tournament'><c:out value='${tournament}' /></h2>
 		</header>
+		
 		<nav id="login" class="container">
 			<div class="btn-container">
 				<input type="submit" value="Tournament Standings" onclick="requestStandings();">
@@ -114,20 +128,7 @@ if(request.getMethod().equals("GET")){ %>
 			<div class="blue"><a onclick="lighter('blue');" style="color: white; text-decoration: none;" class="fullWidthLink">Blue Lighter</a></div>
 		</div>
 	</div>
-	<input class=sidenav-button id="sidenav-buton" type="submit" onclick="toggleSidenav()" value="Navigation"/>
-	<nav id="sidenav" class="sidenav">
-		<input type="submit" id="navLogin" value="Home" onclick="swap('login', false)">
-		<input disabled type="submit" id="nav-alliance" onclick="navSwap('alliance', true)" value="Alliance">
-		<input disabled type="submit" id="nav-choosematch" onclick="navSwap('choosematch', true)" value="Choosematch">
-		<input disabled type="submit" id="nav-autonomous" onclick="navSwap('autonomous', true)" value="Autonomous">
-		<input disabled type="submit" id="nav-teleop" onclick="navSwap('teleop', true)" value="Teleop">
-		<input disabled type="submit" id="nav-postmatch" onclick="navSwap('postmatch', true)" value="Post-Match">
-		<input type="submit" id="nav-survey" onclick="navSwap('survey', true)" value="Scouting Survey">
-		<input type="submit" id="nav-standings" onclick="navSwap('standings', true)" value="Standings">
-		<input type="submit" id="nav-preview" onclick="navSwap('preview', true)" value="Match Preview">
-		<input type="submit" id="nav-upcoming" onclick="navSwap('upcoming', true)" value="102 Upcoming">
-		
-	</nav>
+<!-- moved sidenav to top -->
 	<input id="back" type="submit" value="Back" onclick="lighter();" style="display: none"><!-- for lighter -->
 </body>
 </html>

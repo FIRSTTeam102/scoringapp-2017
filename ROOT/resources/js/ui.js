@@ -20,8 +20,8 @@ $(window).bind('resizeEnd', function() {
 function toggleSidenav(){
 	if(!nav){ //if nav = false, nav must be opened
 		if(window.innerWidth < 800){
-			$("#sidenav").css("width", "100%");
-			$("#sidenav").css("padding-left", "0px");
+			$("#sidenav").css("height", "initial");
+			//$("#sidenav").css("padding-left", "0px");
 			nav = true;
 		}else{
 			$("#sidenav").css("width", "185px");
@@ -31,11 +31,15 @@ function toggleSidenav(){
 		}
 		
 	}else{	
-		
-		$("#sidenav").css("width", "0%");
-		$("#sidenav").css("padding-left", "0px");
-		$("#content").css("margin-left", "10%");
-		nav = false;
+		if(window.innerWidth < 800){
+			$("#sidenav").css("height", "0px");
+			nav = false;
+		}else{
+			$("#sidenav").css("width", "0%");
+			$("#sidenav").css("padding-left", "0px");
+			$("#content").css("margin-left", "10%");
+			nav = false;
+		}
 		
 	}
 }

@@ -23,9 +23,10 @@
 <!-- TODO: Add a SUBMIT button + finisher and maybe a new table (playoff-matches) to the db for match predictions?-->
 
 <h1>Playoff Alliance Selection</h1>
+	<div id="playoff-alliances">
 	<div class="playoff-form-row">	
 		<div class="playoff-form-block" id="al1">
-			<input type="radio" name="radAlliance" id="radAlliance1"><label for="radAlliance1"><h3>Alliance 1</h3></label>
+			<input type="radio" name="radAlliance" id="radAlliance1" val="1"><label for="radAlliance1"><h3>Alliance 1</h3></label>
 			
 			<div class="allianceTeam1" id="alliance1Team1"></div>
 			<div class="allianceTeam2" id="alliance1Team2"></div>
@@ -46,7 +47,7 @@
 			</div> -->
 		</div>
 		<div class="playoff-form-block" id="al2">
-			<input type="radio" name="radAlliance" id="radAlliance2"><label for="radAlliance2"><h3>Alliance 2</h3></label>
+			<input type="radio" name="radAlliance" id="radAlliance2" val="2"><label for="radAlliance2"><h3>Alliance 2</h3></label>
 				
 			<div class="allianceTeam1" id="alliance2Team1"></div>
 			<div class="allianceTeam2" id="alliance2Team2"></div>
@@ -67,7 +68,7 @@
 				</div> -->
 		</div>
 		<div class="playoff-form-block" id="al3">
-			<input type="radio" name="radAlliance" id="radAlliance3"><label for="radAlliance3"><h3>Alliance 3</h3></label>
+			<input type="radio" name="radAlliance" id="radAlliance3" val="3"><label for="radAlliance3"><h3>Alliance 3</h3></label>
 			
 			<div class="allianceTeam1" id="alliance3Team1"></div>
 			<div class="allianceTeam2" id="alliance3Team2"></div>
@@ -88,7 +89,7 @@
 				</div> -->
 		</div>
 		<div class="playoff-form-block" id="al4">
-			<input type="radio" name="radAlliance" id="radAlliance4"><label for="radAlliance4"><h3>Alliance 4</h3></label>
+			<input type="radio" name="radAlliance" id="radAlliance4" val="4"><label for="radAlliance4"><h3>Alliance 4</h3></label>
 				
 			<div class="allianceTeam1" id="alliance4Team1"></div>
 			<div class="allianceTeam2" id="alliance4Team2"></div>
@@ -111,7 +112,7 @@
 	</div>
 	<div class="playoff-form-row">	
 		<div class="playoff-form-block" id="al5">
-			<input type="radio" name="radAlliance" id="radAlliance5"><label for="radAlliance5"><h3>Alliance 5</h3></label>
+			<input type="radio" name="radAlliance" id="radAlliance5" val="5"><label for="radAlliance5"><h3>Alliance 5</h3></label>
 			
 			<div class="allianceTeam1" id="alliance5Team1"></div>
 			<div class="allianceTeam2" id="alliance5Team2"></div>
@@ -131,7 +132,7 @@
 				</div> -->
 		</div>
 		<div class="playoff-form-block" id="al6">
-			<input type="radio" name="radAlliance" id="radAlliance6"><label for="radAlliance6"><h3>Alliance 6</h3></label>
+			<input type="radio" name="radAlliance" id="radAlliance6" val="6"><label for="radAlliance6"><h3>Alliance 6</h3></label>
 			
 			<div class="allianceTeam1" id="alliance6Team1"></div>
 			<div class="allianceTeam2" id="alliance6Team2"></div>
@@ -152,7 +153,7 @@
 				</div> -->
 		</div>
 		<div class="playoff-form-block" id="al7">
-			<input type="radio" name="radAlliance" id="radAlliance7"><label for="radAlliance7"><h3>Alliance 7</h3></label>
+			<input type="radio" name="radAlliance" id="radAlliance7" val="7"><label for="radAlliance7"><h3>Alliance 7</h3></label>
 			
 			<div class="allianceTeam1" id="alliance7Team1"></div>
 			<div class="allianceTeam2" id="alliance7Team2"></div>
@@ -173,7 +174,7 @@
 				</div> -->
 		</div>
 		<div class="playoff-form-block" id="al8">
-			<input type="radio" name="radAlliance" id="radAlliance8"><label for="radAlliance8"><h3>Alliance 8</h3></label>
+			<input type="radio" name="radAlliance" id="radAlliance8" val="8"><label for="radAlliance8"><h3>Alliance 8</h3></label>
 			
 			<div class="allianceTeam1" id="alliance8Team1"></div>
 			<div class="allianceTeam2" id="alliance8Team2"></div>
@@ -193,14 +194,13 @@
 					<label for="Team3Alliance8">&emsp; Team Three &emsp;</label>
 				</div> -->
 		</div>
+		</div>
 	</div>
 	
 <input type="submit" class="submit" id="btnUpdateUnchosen" value="Update Unchosen" onclick="updateUnchosen();">
 	<div id="update-unchosen">
-		
-		
 	</div>
-	
+<script>initTeams();</script>
 	
 	
 	
