@@ -52,3 +52,6 @@ pageContext.setAttribute("team3", team3);
 <div class="form-block noborder">
 	<input type="submit" id="btnFinishTeleop" value="Teleop is Finished">
 </div>
+<script id="self-destruct"> <%-- Sets title --%>
+	document.title = "Teleop | Match <c:out value="${matchNum }"/> | <c:out value="${alliance }"/> Alliance"
+</script>

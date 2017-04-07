@@ -161,7 +161,12 @@ pageContext.setAttribute("team3", team3);
 			</div>
 		</div>
 	</nav>
-	<input type="submit" onclick="finishAutonomous()" id="subAuto"> 
+	<input type="submit" onclick="finishAutonomous()" id="subAuto">
+	 
+	<script id="self-destruct"> <%-- Sets title --%>
+		document.title = "Autonomous | Match <c:out value="${matchNum }"/> | <c:out value="${alliance }"/> Alliance"
+	</script>
+	
 </c:catch>
 <c:if test="${autoException != null }">
 	<script id="self-destruct">

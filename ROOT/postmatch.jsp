@@ -83,4 +83,6 @@ pageContext.setAttribute("team3", team3);
 	<input type="submit" id="btnFinishPostmatch" name="btnFinishPostmatch" onclick="finishPostmatch()">
 </div>
 	
-</div>
+<script id="self-destruct"> <%-- Sets title --%>
+	document.title = "Post-Match | Match <c:out value="${matchNum }"/> | <c:out value="${alliance }"/> Alliance"
+</script>

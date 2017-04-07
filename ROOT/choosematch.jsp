@@ -94,3 +94,6 @@ pageContext.setAttribute(initialsKey, initials);
 <input type="submit" class="submit" name="btnRefresh" value="Refresh Page" onclick="requestChoosematch()"/>
 </body>
 
+<script id="self-destruct"> <%-- Sets title --%>
+	document.title = "Match Selection | Match <c:out value="${matchNum }"/> | <c:out value="${alliance }"/> Alliance"
+</script>
