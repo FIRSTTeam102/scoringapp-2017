@@ -106,14 +106,15 @@ function updateUnchosen() {
 	    		
 	    		//console.log(unchosenTeams[i]);
 	    	}
-	    	
-	    	console.log("inputTeams: " + inputTeams + "  unchosenTeams: " + unchosenTeams);
+	    	gitSums();
+	    	//console.log("inputTeams: " + inputTeams + "  unchosenTeams: " + unchosenTeams);
 	    },
 	    error: function() { 
 	    	alert('Failed!'); 
 	    },
 	    
 	});
+
 }
 
 function initTeams() { //just to get the buttons in there on the page load
@@ -177,6 +178,8 @@ function moveCaptain() {
 	curAlliance = $("input[name='radAlliance']:checked")[0].getAttribute("val");
 	curAvg = sessionStorage.getItem(curTeam);
 	
+//	console.log(curTeam);
+	
 	//remove from old alliance
 	$(".playoff-form-block").find(".radTeam").each(function() {
 	    if ($(this)[0].getAttribute("val") == curTeam) {
@@ -189,7 +192,7 @@ function moveCaptain() {
 	$("#al" + curAlliance).append('<div class="form-line"><input type="radio" class="radTeam" name="radTeam" val="'+ sessionStorage.getItem(curTeam) +'"id="rad' + curTeam + '" val="' + curTeam + '"> <label for="rad' + curTeam + '">'+ curTeam + ' - ' + sessionStorage.getItem(curTeam) + '</label></div>');
 	
 	
-	
+	gitSums();
 }
 
 function removeTeam() {
@@ -204,10 +207,106 @@ function removeTeam() {
 	    }
 	});
 	
+	gitSums();
+	
 }
 
 function gitSums() {
+	a1sum();
+	a2sum();	
+	a3sum();
+	a4sum();
+	a5sum();
+	a6sum();
+	a7sum();
+	a8sum();
+}
+
+function a1sum() {
+	var alSum = 0;
+	$("#al1").find(".radTeam").each(function(){
+		alSum += parseFloat(sessionStorage.getItem($(this)[0].getAttribute("val")));
+	});
 	
-	$(".playoff-form-block")
+	$("#alliance1Team1").empty();
+	$("#alliance1Team1").append("<p> Total Points: " + alSum + "</p>");
 	
 }
+
+function a2sum() {
+	var alSum = 0;
+	$("#al2").find(".radTeam").each(function(){
+		alSum += parseFloat(sessionStorage.getItem($(this)[0].getAttribute("val")));
+	});
+	
+	$("#alliance2Team1").empty();
+	$("#alliance2Team1").append("<p> Total Points: " + alSum + "</p>");
+	
+}
+
+function a3sum() {
+	var alSum = 0;
+	$("#al3").find(".radTeam").each(function(){
+		alSum += parseFloat(sessionStorage.getItem($(this)[0].getAttribute("val")));
+	});
+	
+	$("#alliance3Team1").empty();
+	$("#alliance3Team1").append("<p> Total Points: " + alSum + "</p>");
+	
+}
+
+function a4sum() {
+	var alSum = 0;
+	$("#al4").find(".radTeam").each(function(){
+		alSum += parseFloat(sessionStorage.getItem($(this)[0].getAttribute("val")));
+	});
+	
+	$("#alliance4Team1").empty();
+	$("#alliance4Team1").append("<p> Total Points: " + alSum + "</p>");
+	
+}
+
+function a5sum() {
+	var alSum = 0;
+	$("#al5").find(".radTeam").each(function(){
+		alSum += parseFloat(sessionStorage.getItem($(this)[0].getAttribute("val")));
+	});
+	
+	$("#alliance5Team1").empty();
+	$("#alliance5Team1").append("<p> Total Points: " + alSum + "</p>");
+	
+}
+
+function a6sum() {
+	var alSum = 0;
+	$("#al6").find(".radTeam").each(function(){
+		alSum += parseFloat(sessionStorage.getItem($(this)[0].getAttribute("val")));
+	});
+	
+	$("#alliance6Team1").empty();
+	$("#alliance6Team1").append("<p>  Total Points: " + alSum + "</p>");
+	
+}
+
+function a7sum() {
+	var alSum = 0;
+	$("#al7").find(".radTeam").each(function(){
+		alSum += parseFloat(sessionStorage.getItem($(this)[0].getAttribute("val")));
+	});
+	
+	$("#alliance7Team1").empty();
+	$("#alliance7Team1").append("<p> Total Points: " + alSum + "</p>");
+	
+}
+
+function a8sum() {
+	var alSum = 0;
+	$("#al8").find(".radTeam").each(function(){
+		alSum += parseFloat(sessionStorage.getItem($(this)[0].getAttribute("val")));
+	});
+	
+	$("#alliance8Team1").empty();
+	$("#alliance8Team1").append("<p> Total Points: " + alSum + "</p>");
+	
+}
+
