@@ -208,7 +208,7 @@ h1{
 	margin: 0;
 	border: solid 1px white;
 }.playoff-form-block{
-	width: 25%;
+	width: 5%; /*Shouldn't work, but whatever, kid*/
 	margin-left:15px;
 	margin-right:10px;
 	border: solid 1px white;
